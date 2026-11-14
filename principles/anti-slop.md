@@ -68,3 +68,33 @@ it is not finished.
 - Don't order sections arbitrarily; sequence as a decision narrative with the primary action reachable throughout.
 - Don't mix multiple type families or leave headline tracking loose at large sizes.
 - Don't drop a section in without a recognizable header grammar.
+
+
+---
+
+## Additions from Source 03 (dashboard / data-density / shadcn)
+
+- Token method (thin semantic layer): never reference a ramp step (a '600', a '-foreground-900') directly in a component — a numeric scale step inside a component means the semantic layer was bypassed; bind to a role token.
+- Never create parallel light/dark component variants or a 'dark-'-prefixed palette — dark is a value mode on the same semantic names; a second component or palette name is the ramp-era tell.
+- Never ship a foreground without its paired background (or vice versa) — orphan 'on-color' tokens break the contrast-travels-with-the-token guarantee.
+- Never store colors as frozen hex when you need tints/rings — keep channels so alpha variants (rings, overlays, disabled) derive from one token instead of spawning new ones.
+- Never invent a new semantic token per component in the thin-layer method — the role set is small and closed; a new role must be a new MEANING, not a new appearance (resist 'card-button-border' sprawl).
+- Never implement focus/invalid as a layout border that changes box size — use a ring (shadow-spread) token so focus never reflows the element.
+- Never treat a component library as a black-box dependency themed via overrides — own the atom source and theme through the token names (the contract is the names).
+- Data density: never signal importance with large type in a dense view — if you reach for 24px+ inside a table or KPI strip, switch to weight + muted-color contrast on the existing 12/14px scale.
+- Never hardcode cell padding or badge insets as arbitrary px — pull from the micro-spacing ramp so density stays on-grid.
+- Never left-align numeric columns or use proportional figures — right-align with tabular figures so columns compare vertically.
+- Never build the data table as one hardcoded block — toolbar, body, and footer (selection count + pagination) are separate, independently toggle-able regions, with checkbox/sort slots pre-reserved so turning them on causes no reflow.
+- Never scatter saturated color for decoration in a data view — reserve hue strictly for status badges, signed trend deltas, and the single active/current control.
+- Never float dense cards with soft/blurred drop shadows — use a 1px ring shadow + small radius for flat elevation that reads at high card counts.
+- Never give every chart its own full card — inline sparklines/mini-bars/donuts into stat cards by default; reserve full chart cards for charts that are themselves the subject.
+- Never separate dense rows with empty margin you don't have — use hairline dividers, zebra striping, and card borders as the density-era substitute for whitespace.
+- Never let a KPI/stat card have two competing focal points — exactly one dominant big value; label, timeframe, delta chip, and micro-chart are all subordinate.
+- Never redesign cards per breakpoint — keep per-card density constant and reflow by collapsing the column count and the nav rail.
+- App shell: never build one sidebar component per role or per display mode — build ONE rail parameterized by (role, display-mode, active-page); roles subtract/reorder from a shared definition, modes change density/placement.
+- Never let the menu and the access control disagree — a link visible to a role must open to a permitted (not 'access denied') state; both derive from the same permission matrix.
+- Never ship a blank or spinner-only empty/loading state — every widget kind needs a typed empty state (icon + title + support line) and a loading skeleton matching its final layout; show a CTA only when the current role can perform the action.
+- Never re-render the shell on navigation — nav rail, header frame, and user footer persist; only the content slot swaps (collapsing the rail is a state change, not a route change).
+- Never hardcode shell metrics — rail width, header height, content padding, and radii come from named structural tokens so theming, density modes, and responsive collapse stay consistent.
+- Never treat count/notification badges as decoration — a nav badge must reflect real per-destination state and clear when the user addresses it.
+- Never flatten navigation into one long list — group into labeled semantic sections with a stable slot order so role-based hiding and future features have predictable insertion points.

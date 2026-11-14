@@ -13,3 +13,17 @@
 - [ ] Density strategy: whether the project needs a parallel compact library at all, and where the density line falls, is a scope/UX call.
 - [ ] Page section sequence and the funnel arc: the specific section order, where narrowing grid-breaks land, and what proof recurs where are per-page editorial/conversion judgments the human should own.
 - [x] **RESOLVED (policy):** Signature boldness → **Always exactly one bold move per project.** Mandated by the method as atelier's core anti-slop guarantee. See "Standing policy" in methodology.md. *(Per-project: WHERE to spend the one bold move stays a human call each engagement.)*
+
+
+## New taste/scope calls surfaced by Source 03 (dashboard / shadcn)
+
+- [ ] Token method per project: with a third option now on the table (thin semantic-variable layer), the color-method choice is tonal-ramp vs category-color vs thin-semantic — decide per engagement by product type (rich app → thin-semantic; taxonomy shop → category; expressive formal library → ramp), and state why in the brief.
+- [ ] Dark-mode strategy: whether the project ships a dark theme at all, and if so whether via value-mode twins on one semantic name (thin-semantic method) or via per-element ramp-step reselection (ramp method) — a taste + scope call tied to the token method chosen.
+- [ ] Radius strategy: one global radius knob (flat/uniform app idiom) vs size-keyed per-component radius (expressive component family). The two are mutually exclusive; pick by product character.
+- [ ] Elevation strategy: flat 1px-ring (dense, tiling, flat UI) vs two-layer ambient+contact shadow ramp (expressive/marketing surfaces). Choose by product; don't mix idioms within one system.
+- [ ] Density tiers: does the product need a data-dense surface at all, and if so where the density line falls (does it warrant the micro-spacing sub-rungs and a parallel compact register) — a UX/scope call.
+- [ ] Component-model stance: own-the-atom copy-paste source (naming-contract portability, no upgrade lock-in) vs a versioned shared component package — an engineering/governance decision with design consequences.
+- [ ] Role model: whether the product is multi-role, the actual role set and view inventory, and the contents of the permission matrix (who sees/can-do what) — a product-architecture decision that must be authored as one artifact before menus or guards are built.
+- [ ] Empty/loading/error copy and CTA policy: the wording per widget-kind empty state and the rule for when a role-gated CTA appears — brand-voice plus permission policy the human should own.
+- [ ] Nav structure: the labeled section grouping, slot order, which items carry count badges, and which display modes the rail must support — an IA decision per app.
+- [ ] Where the one bold move lives in a dashboard: at density the usual boldness levers (hero scale, decorative color) are unavailable, so the single deliberate bold move must be spent elsewhere (e.g. a signature data-viz treatment, a distinctive nav-rail behavior, an unexpected but disciplined accent) — a per-project taste call under the standing one-bold-move policy.

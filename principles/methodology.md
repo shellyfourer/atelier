@@ -38,11 +38,14 @@ These two calls are resolved at the skill level, not per project:
 4. **Document to teach, not to dump.** Every foundation ships as explain → show → apply: a plain-language definition, a live specimen of every level, and a per-level "where to use this" note, all on one shared column grid.
 5. **Method pluralism — there is no single correct system.** Each layer below describes *more
    than one legitimate construction method*, and atelier **chooses the method per project**, not
-   by dogma. (Learned by contrasting a large formal ramp-based library against a lean
-   category-color agency project — both excellent, built oppositely.) Match the method to the
-   product: a rich-UI app wants tonal ramps; a taxonomy-driven shop wants category colors. The
-   failure is picking a method reflexively; the discipline is choosing it deliberately and
-   stating *why* in the brief.
+   by dogma. (Learned by contrasting three real systems: a large formal ramp-based library, a
+   lean category-color commerce project, and a thin-semantic shadcn/Tailwind dashboard — all
+   excellent, built differently.) Match the method to the product. For color specifically there
+   are now **three** methods: **(A) tonal ramp** (expressive/formal libraries), **(B)
+   category-color** (taxonomy-driven commerce), **(C) thin semantic variable layer** (rich apps
+   / dashboards, theme-by-mode). The failure is picking a method reflexively; the discipline is
+   choosing it deliberately and stating *why* in the brief. (See the token-method decision in
+   `_DECISIONS-NEEDED.md`.)
 6. **Live components over style boards.** When a documented style sheet and the actual built
    components disagree, the components are the truer current state; the board is documentation
    that may lag. Read both, trust the build.
@@ -52,15 +55,20 @@ These two calls are resolved at the skill level, not per project:
 ## 1. Color
 
 **First, choose the color method (per spine rule 5):**
-- **(A) Tonal-ramp system** — for rich, stateful UI (apps, dashboards, deep component trees).
-  Full stepped ramps per hue. Detailed below; this is the default for product UI.
+- **(A) Tonal-ramp system** — for expressive/formal libraries with a wide chromatic range. Full
+  stepped ramps per hue, per-step contrast. Detailed below.
 - **(B) Category-color system** — for taxonomy-driven commerce (a shop whose products fall into
   natural categories). Each category gets a **base + a light/tint pairing** used for
   surfaces/backgrounds, kept separate from a small **functional set** (primary, success, error,
   hover). Color becomes wayfinding — users learn categories by hue. Flat, lean, no deep ramps.
-- Both still obey the spine: a semantic tier names roles; nothing in UI binds a raw value.
+- **(C) Thin semantic variable layer** — for rich apps / dashboards that need theming. A small,
+  closed set of role tokens in foreground/background pairs (`background/foreground`, `primary/
+  -foreground`, `muted`, `accent`, `destructive`, `border`, `ring`…), theme-switched by **mode
+  on the same names** (light/dark are value columns, not new palettes). See the Source 03
+  additions at the end of this doc for the full method.
+- All three obey the spine: a semantic tier names roles; nothing in UI binds a raw value.
 
-The rest of this section details method (A).
+The rest of this section details method (A); methods (B) and (C) are detailed in their sections.
 
 **Primitive ramps.** Organize as **Family → Ramp → Step**, three namespace levels. A family groups perceptually-adjacent ramps; allow **multiple ramps per hue family** (a warm variant, a muted variant, a tinted variant) rather than forcing one compromise ramp per hue.
 
@@ -149,3 +157,125 @@ Model each style as a **composite token**, never a bare font-size. Every step bu
 - **Order sections as a decision narrative.** Sequence by the user's journey — desire → justify → handle objections → next step — and keep the primary action reachable across the arc (e.g. a persistent commitment bar on long transactional pages). Section order is an argument, not a stack.
 - **Consistent section-opening grammar.** A reusable header unit (optional badge + heading + support line, held to the narrow measure) opens most bands so every new topic has a predictable entry point while its interior varies freely.
 
+
+
+---
+
+# Additions from Source 03 (dashboard / shadcn+Tailwind)
+
+> New layers/choices this source justifies: a third token method (thin semantic variable layer), a data-density method, and an app-shell/state method. Integrated under the existing spine + method-pluralism rules.
+
+The following are genuinely NEW sections to append to `methodology.md`. They do not restate the existing two-tier spine, the tonal-ramp/category-color color methods, the single/multi-typeface split, the stacked-shadow elevation ramp, or the band-chassis page composition — they extend method pluralism into a third token method and add two new domains (data density, app shell) that the prior page-oriented sources never covered.
+
+---
+
+## 1b. Color — third method: the thin semantic-variable layer (apps/dashboards)
+
+Add a third option to the color-method choice (spine rule 5), alongside (A) tonal-ramp and (B) category-color:
+
+- **(C) Thin-semantic-variable system** — for rich, stateful *application* UI (dashboards, admin
+  consoles, deep component trees that re-theme). A full primitive ramp sits underneath, but the
+  *only* thing components ever touch is a **small, closed set of role tokens**. This is the spine's
+  two-tier rule taken to its minimal top layer: not Source 01's exhaustive Role×Prominence×Context
+  matrix, but a deliberately tiny role set.
+
+Rules specific to method (C):
+- **Role tokens in foreground/background pairs.** Surface pairs (background, card, popover), an
+  action pair (primary + its foreground), quiet pairs (muted, accent + foregrounds), a status pair
+  (destructive + ring), and chrome roles (border, input, ring). Every "on-X" foreground ships with
+  its "X" background so contrast travels with the token.
+- **Theme by value-mode on one name.** Light and dark are twins sharing identical role names; only
+  the resolved value changes per mode. Adding a theme = adding a value column, never a component
+  variant or a `dark-`-prefixed palette. (Contrast method (A), where dark mode means re-selecting
+  ramp steps per element.)
+- **Channel-split colors.** Store base colors as bare channels and apply alpha at use-site, so one
+  token yields solid fills, borders, *and* translucent rings/overlays — no new token per opacity.
+- **One radius knob.** A single base-radius token derives every corner (named steps resolve from
+  it). This is a method-pluralism alternative to Section 3's size-keyed per-component radius: the
+  one-knob form suits a flat, uniform app idiom; the size-keyed ramp suits an expressive component
+  family. Choose by product.
+- **State-as-enum wired to tokens, ring-as-shadow.** Interactive atoms carry
+  Default/Focus/Invalid/Disabled as variant axes; focus pulls the ring token, invalid pulls
+  destructive, disabled pulls muted; focus/validation render as a **spread box-shadow** in the ring
+  color so focus never changes the box model (no 1px reflow).
+- **Own-the-atom contract.** Atoms are source you paste and bind to your tokens, not a versioned
+  black-box dependency. Portability is the *naming contract* (primary, foreground, ring, radius) —
+  any project honoring the names gets consistent, re-skinnable components with no upgrade lock-in.
+
+---
+
+## 6. Data density (dashboards, tables, data-dense surfaces)
+
+A new domain the prior page-oriented sources did not cover. Density **inverts** the marketing-page
+levers: you cannot push things apart with whitespace or signal importance with scale, so hierarchy
+and separation must be *drawn*.
+
+- **Micro-spacing ramp.** Extend the base spacing scale with fine sub-rungs (e.g. 2/6/10 between
+  the usual rungs) so cell padding, badge insets, and icon gaps tune tightly while staying on-grid.
+  Density is achieved by selecting smaller rungs — never by hardcoding arbitrary gaps.
+- **Hierarchy by weight + color, not size.** On a tiny type scale (xs/sm), stack a bold near-black
+  primary over a muted secondary inside one cell (name over email, value over label). Font-weight
+  and foreground-vs-muted color are the two space-free levers that replace the 32–48px scale jumps
+  of a hero.
+- **Slot-based tables.** Model the data table as three independently toggle-able regions — an
+  optional toolbar (filters/search/bulk actions), the body (header + rows), and a footer
+  (selection-count readout + pagination) — plus an optional caption. The same primitive scales
+  from a bare list to a full grid.
+- **Typed cells with fixed alignment.** Treat cells as a small library: identity (avatar +
+  two-line stack), numeric (tabular, right-aligned), status (semantic pill), media/brand, action
+  (ellipsis menu). Identity/text left; numbers right with tabular figures; actions right.
+- **Reserve interactive slots even when off.** Pre-allocate the selection-checkbox column, the
+  sort indicator on sortable headers, the selection-count readout, and pagination (current page is
+  the *only* filled chip) so toggling state never reflows the grid.
+- **Stat-card grammar — one dominant value.** Optional parts: icon, label, big value (the single
+  anchor), a signed+colored delta chip, timeframe, and an inline micro-visual
+  (sparkline/mini-bar/donut/progress). Everything but the big value is subordinate.
+- **Charts-as-cards, inline-micro-chart by default.** Embed sparklines/mini-bars inside stat cards
+  for glanceable trend; reserve a full chart card only when the plot itself is the subject. Keep
+  axis furniture sparse and muted; let data ink dominate.
+- **Whitespace is relational at density.** Hairline borders, zebra striping, and card edges do the
+  separation job a large margin does on a landing page. The unit of breathing room shifts from the
+  section gap to the row divider and cell padding.
+- **Color is a scarce signal.** Near-monochrome neutral foundation; spend saturated hue only on
+  status badges, signed deltas, and the single active/current control — so color always carries
+  information.
+- **Flat 1px-ring elevation.** Cards/popovers separate via a crisp low-alpha ring + small radius,
+  not a soft blurred drop shadow. (Method-pluralism tension with Section 3's two-layer
+  ambient+contact ramp: both valid — the ring for dense, tiling, flat UI; the stacked ramp for
+  expressive marketing surfaces.)
+
+---
+
+## 7. Application shell & state-as-design (multi-role apps)
+
+A second new domain. Where Section 5 composes *pages* (independent full-page layouts repainted per
+route), an application is a **persistent frame plus swappable content**, and its states and roles
+are design surfaces in their own right.
+
+- **Shell + content slot.** The shell is three fixed regions (vertical nav rail, top
+  header/toolbar, main content). It renders once and survives navigation; only the content slot
+  re-renders. Decide up front which chrome is global (shell) vs local (content). Collapsing the
+  rail is a *state change*, not a route change or a component swap.
+- **One parameterized nav rail.** Build a single rail with orthogonal display-mode
+  (expanded / collapsed-icon-only / compact / minimal / detached-floating / with-switcher /
+  with-in-nav-search) and content axes — never a forked component per mode. Collapsed keeps
+  icons+badges and drops labels (tooltips carry the label), so layout must survive label removal.
+- **Grouped nav with count badges.** Labeled semantic sections with a stable slot order (not a
+  flat list), each item with an optional trailing count badge so the nav doubles as a status
+  surface and role-hiding/future features have predictable insertion points.
+- **Permission-matrix as source of truth.** A single explicit matrix (rows = view IDs,
+  columns = roles, cells = allowed/denied, plus a global row for everyone) drives menus, route
+  guards, and empty/denied states — all *derived*, never hand-curated per role. One app re-skins
+  itself per role; this is the application analogue of the commerce world's separate
+  guest/customer/admin experiences.
+- **Typed empty/loading/error states.** First-class archetypes, one per widget kind
+  (passive-data / actionable-first-run / empty-table / generic-widget). All share a skeleton
+  (icon → title → support line → optional CTA) but copy and CTA-presence depend on whether the
+  *current role* can act. Loading = the same grid filled with placeholder skeletons so layout is
+  identical before and after data arrives (no content shift).
+- **Tokenize structural metrics, not just color.** Rail width, header height, content padding, and
+  radii are named tokens so collapse/expand and responsive breakpoints compute from one source and
+  the shell stays aligned with the content grid.
+- **Persistent shell + reflowing card grid.** Top KPI band → primary chart row → multi-column
+  data/list/table cards. Reflow by collapsing column count (4→2→1) and the rail (rail→drawer) per
+  breakpoint; per-card density stays constant — never redesign cards per breakpoint.
