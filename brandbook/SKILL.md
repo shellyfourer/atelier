@@ -55,6 +55,9 @@ answers make others moot.
 - **Do you have brand colors?** If yes → collect exact values (HEX/RGB/Pantone/CMYK if print).
   If no → generate a palette per the color method.
 - **Do you have brand fonts?** If yes → names + licensing/source. If no → propose a pairing.
+- **Do you have brand photography?** If yes → use it on the placement/imagery pages. If no → the
+  skill sources real, mood + color-matched licensed stock (`template/photography.md`) — **never a
+  placeholder block.**
 - **Any existing brand book, references, or sites** you like (and dislike)?
 - **Where will this brand live?** (web, print, app, packaging) — decides which pages matter.
 
@@ -87,6 +90,9 @@ Everything generated obeys the atelier method (don't reinvent it):
   Quality rule 2. Never ship generic fallbacks.
 - **The one bold move** → the brand's signature, surfaced as a dedicated spread (the reference book
   spends it on "logo elements in typography" — the italic *u* threaded into words).
+- **Photography** → `template/photography.md`. Use client photos if supplied; otherwise source real,
+  mood + color-matched licensed stock for the placement / on-imagery pages. **Never a placeholder
+  block** (Quality rule). Embed the photos and credit the photographer.
 
 ## Quality bar — non-negotiable execution rules
 

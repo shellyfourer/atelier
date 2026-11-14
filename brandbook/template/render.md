@@ -56,6 +56,13 @@ A render that falls back to Georgia/system fonts, or that reconstructs the logo,
   allowed as an explicit, labelled color version generated from the real asset.
 - All other images (photography) must be local files or data URIs too. No remote URLs at render time.
 
+### Real photography (never placeholder blocks)
+- The placement / on-imagery pages must carry **real photos** (see `photography.md`), embedded as
+  base64 data URIs. Use the same `src.html` → `final.html` injection: `PHOTO_<slot>` and
+  `CREDIT_<slot>` placeholders swapped at build.
+- Put a **scrim** (gradient) behind any logo/text over a photo, and a small photographer **credit**
+  (white + shadow) top-right. Record photos/credits in `assets/photos/credits.json`.
+
 ## Render pipeline (headless browser print-to-PDF)
 
 Preferred: a headless Chromium "print to PDF" of the HTML. Any of these work; pick what's installed:

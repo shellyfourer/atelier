@@ -42,14 +42,23 @@ until every item passes.
 - [ ] Register match: the book *feels* like this specific brand's register (premium/editorial/
       playful/clinical…), not a generic template with the colors swapped in.
 
-## 5. Completeness
+## 5. Photography (no raw placeholder blocks, ever)
+- [ ] **Real photos are present** on the placement / on-imagery pages — never a flat color block.
+      Sourced per `photography.md` (Unsplash default), mood + color matched to the brand.
+- [ ] **No third-party trademarks/logos** visible in any photo (a branded product implies
+      endorsement and violates the license) — re-query if the top result has one.
+- [ ] Photos are **embedded** (base64) so the PDF is self-contained; a **scrim** sits behind any
+      logo/text over a photo for legibility; a small **photographer credit** is shown.
+- [ ] Credits + source recorded (e.g. `assets/photos/credits.json`) for traceable attribution.
+
+## 6. Completeness
 - [ ] All required pages present (see `pages.md`); recommended pages included where the brief needs.
-- [ ] Placeholders (photography blocks, lorem) are clearly flagged for the client to replace — not
-      passed off as final.
+- [ ] Any remaining placeholder (lorem copy, etc.) is clearly flagged for the client — not passed
+      off as final.
 - [ ] Page count and order match the intended structure.
 
-## 6. Final
+## 7. Final
 - [ ] **Rendered and reviewed page-by-page** — not judged unrendered. If you can't point to each
       fix above in the actual PDF, it isn't done.
-- [ ] Honest limits stated to the client (logo = direction if generated; photography placeholders;
-      "strong first draft, not zero-edit final").
+- [ ] Honest limits stated to the client (logo = direction if generated; photos are licensed stock
+      unless the client supplies their own; "strong first draft, not zero-edit final").

@@ -99,15 +99,18 @@ brief needs (see the required/recommended/optional tags in `../SKILL.md`), in th
 - The same three formats with the logo's **safe-area / inset construction** drawn.
 
 ## 18. Logo placement  *[recommended]*
-- The logo placed on **photography** in vertical + horizontal formats — on a solid brand bar at
-  the bottom, or directly on the image.
+- The logo placed on **REAL photography** (never a placeholder color block — see `photography.md`)
+  in vertical + horizontal formats, on a solid brand bar at the bottom. Photos are mood + color
+  matched to the brand, embedded, with a small photographer credit.
 
 ## 19. Logo placement — guidelines  *[optional]*
 - The same with diagonal safe-area guides / inset marks showing the construction.
 
 ## 20. Logo on background image  *[recommended]*
-- The logo set **directly over imagery** (vertical + horizontal), proving contrast/legibility;
-  state the rule for choosing the on-image logo color.
+- The logo set **directly over REAL imagery** (vertical + horizontal), proving contrast/legibility:
+  e.g. the emblem in a light tile over a dark photo, and the wordmark in the on-dark color over a
+  textured photo (with a scrim behind it). State the rule for choosing the on-image logo color.
+  Photos per `photography.md` — never placeholder blocks.
 
 ## 21. Logo misuse  *[required]*
 - A grid of **don'ts**, each with a cross/strike: don't recolor off-palette, don't stretch/skew,
