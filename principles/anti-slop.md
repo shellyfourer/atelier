@@ -98,3 +98,30 @@ it is not finished.
 - Never hardcode shell metrics — rail width, header height, content padding, and radii come from named structural tokens so theming, density modes, and responsive collapse stay consistent.
 - Never treat count/notification badges as decoration — a nav badge must reflect real per-destination state and clear when the user addresses it.
 - Never flatten navigation into one long list — group into labeled semantic sections with a stable slot order so role-based hiding and future features have predictable insertion points.
+
+
+---
+
+## Additions from Source 04 (storefront / responsive)
+
+- Responsive component: never ship one fluid layout and call it responsive — author an explicit variant per breakpoint (Desktop/Tablet/Mobile) as siblings in one component set, so each reflow is a deliberate decision, not a flexbox side effect.
+- Never keep inline horizontal nav links on tablet/mobile 'because they fit' — collapse to a hamburger at the defined threshold and hold the bar height constant.
+- Never shrink icon/touch targets to make a toolbar fit — shed lower-priority utility icons by priority (5→4→3) and keep the survivors at full hit-target size.
+- Never author a menu/overlay open-state as a disconnected separate screen — co-locate it as a hidden child frame inside the same breakpoint variant so collapsed and open states never drift.
+- Never merely wrap multi-column content when stacking — choose column count per breakpoint (N→N/2→1), widen each block to fill, and consciously choose stacking order (promote high-value items) rather than accepting raw source order.
+- Never reflow every element uniformly — keep band-spanning rows (newsletter / section-header + input) full-width at every breakpoint while only the grid columns below them collapse.
+- Storefront: never merge the primary category nav and the right-pinned utility cluster (locale/currency, search, offers, account, cart) into one undifferentiated menu — they are distinct component classes.
+- Never ship a retail category menu as a plain link list — make it a two-pane merchandising surface with a descriptor category rail and a featured-product pane.
+- Never hardcode product-card width in px — bind it to a block-size token so grids reflow by column count, not by resizing the card.
+- Never render an empty cart as a dead end, and never omit the free-shipping/threshold progress line from the cart drawer — the empty state must cross-sell and offer a 'view all' path.
+- Never build a thin link footer for a storefront — carry opening hours, address, contacts/social, a locale switcher, a legal row, and a payment-badge row.
+- Never present newsletter signup as a bare form — lead with the discount incentive and include consent microcopy linking terms/privacy.
+- Never scatter trust signals across the page — consolidate them into one icon+label strip below the nav or hero.
+- On mobile, never leave an always-open desktop filter sidebar — collapse filters behind a Filter trigger with a sticky 'Show results' commit bar.
+- Page skeletons: never model a page as one flat section list — split GLOBAL CHROME (promo/header/footer, authored once) from the per-template BODY stack, and prepend a breadcrumb only on deep/transactional pages.
+- Never treat the slide-out mini-cart and the full cart PAGE as the same skeleton — the page adds a breadcrumb, an incentive bar, a two-column summary+reassurance panel, and a cross-sell rail.
+- Never stack a homepage as pure product rails with no trust/story bands between them — alternate discovery bands with trust/story bands or it reads as a catalog dump.
+- Never flatten the PDP buybox into 'title + price + button' — it is an ordered named sub-skeleton (rating+cert → title → spec chips → desc → price → variant swatches → option controls → ATC → payment badges → trust strip → accordions → mini cross-sell).
+- Never give a long-form/editorial page (blog/about/legal) a full-width body or a buy-CTA ending — constrain it to a readable measure and close with lateral navigation (related/next).
+- Never re-order sections per breakpoint — author section order at desktop, keep it breakpoint-invariant, and derive mobile by collapsing columns and drawer-izing filters.
+- Never drop the PLP toolbar (live result count + sort) or a progressive load affordance — they are the irreducible core of a collection page, not decoration.

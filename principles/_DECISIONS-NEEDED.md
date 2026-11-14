@@ -27,3 +27,12 @@
 - [ ] Empty/loading/error copy and CTA policy: the wording per widget-kind empty state and the rule for when a role-gated CTA appears — brand-voice plus permission policy the human should own.
 - [ ] Nav structure: the labeled section grouping, slot order, which items carry count badges, and which display modes the rail must support — an IA decision per app.
 - [ ] Where the one bold move lives in a dashboard: at density the usual boldness levers (hero scale, decorative color) are unavailable, so the single deliberate bold move must be spent elsewhere (e.g. a signature data-viz treatment, a distinctive nav-rail behavior, an unexpected but disciplined accent) — a per-project taste call under the standing one-bold-move policy.
+
+
+## New taste/scope calls surfaced by Source 04 (storefront)
+
+- [ ] Storefront anatomy (new Section 8) and the page-skeleton library (new Section 9) are a *conditional* method layer — they apply only when the product IS a transactional commerce storefront. Confirm atelier's decision brief gains a 'product archetype' gate (storefront / dashboard / marketing-site / app) that selects whether Sections 8–9 are in scope, parallel to the existing color/token-method choice.
+- [ ] The responsive-component discipline (new Section 5a) is proposed as UNIVERSAL (applies to every component in every project, not just storefronts), since 'author 3 breakpoints from their own frames' was already a standing rule and this only specifies how. Confirm it should be promoted to the always-on spine rather than gated as storefront-only.
+- [ ] Where to spend the mandated single bold move on a storefront is still a per-project human call, but storefronts have strong conventional pulls (hero, mega-menu, PDP gallery). Decide whether atelier recommends spending boldness on a NON-conversion surface (editorial/brand-story bands, the journal rail) so the bold move never fights the funnel.
+- [ ] The buybox sub-skeleton order is given as a fixed canonical sequence (identify→trust→price→configure→commit→reassure→detail). Confirm this is a hard default that requires an explicit documented reason to depart from, versus a soft recommendation.
+- [ ] Representative device-width anchors (~wide/medium/narrow) are kept deliberately non-numeric in the method. Confirm atelier should NOT pin literal breakpoint px in the portable methodology (keeping them a per-project tuning value), consistent with the 'defaults-then-tuning' standing policy.

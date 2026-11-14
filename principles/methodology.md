@@ -279,3 +279,137 @@ are design surfaces in their own right.
 - **Persistent shell + reflowing card grid.** Top KPI band → primary chart row → multi-column
   data/list/table cards. Reflow by collapsing column count (4→2→1) and the rail (rail→drawer) per
   breakpoint; per-card density stays constant — never redesign cards per breakpoint.
+
+
+---
+
+# Additions from Source 04 (Shopify storefront)
+
+> New: responsive-component discipline + storefront anatomy. (Color/type/space/composition were independently re-confirmed — see VALIDATION.md.)
+
+---
+
+# Additions from Source 04 (warm-retail commerce storefront)
+
+> New method this source justifies: a **responsive-component discipline** (how one component is
+> authored across breakpoints), **storefront anatomy** (the component classes an operating shop
+> carries), and a **page-skeleton library** (chrome/body split + per-type section stacks).
+> Integrated under the existing spine + method-pluralism rules. This source also independently
+> re-confirms the two-tier token spine, the two-family type ramp, the 4-based spacing/radius scale,
+> the warm-retail color/type register, the named-effect elevation rule, and the band-chassis page
+> method — none of which are re-stated here.
+
+---
+
+## 5a. Responsive-component discipline (how ONE component spans breakpoints)
+
+Section 5 composes bands and the method already mandates "author three breakpoints from their own
+frames." This adds the missing *component-level* contract: how a single reusable component (header,
+footer, nav, composed input) is modelled across those frames.
+
+- **One component set, a `Breakpoint` variant property = {Desktop, Tablet, Mobile}.** Model a
+  responsive component as ONE set whose breakpoints are *sibling variants*, not three unrelated
+  frames. Each variant is explicitly drawn at a fixed device-width anchor (wide / medium / narrow)
+  with a fixed inner container; page padding **steps DOWN** as width narrows, so blocks grow to fill
+  the narrower container rather than the gutter shrinking. Identity and tokens are shared; only
+  layout changes.
+- **Reflow is a priority-ordered set of authored decisions, never emergent flexbox.** In order:
+  (1) **Nav collapse threshold** — inline horizontal nav links exist only at the widest breakpoint;
+  at the first step down they are removed from the bar entirely and replaced by a hamburger beside
+  the logo, with the **bar height held constant**. (2) **Action icons shed by priority** — the
+  utility cluster drops lower-priority icons as width shrinks (e.g. 5→4→3), keeping the highest-value
+  actions at every breakpoint, survivors unchanged in size and order; never shrink hit targets to
+  fit. (3) **Overlay state is co-located** — author the open menu as a hidden child frame *inside the
+  same variant*; collapsed nav becomes a full-width accordion (chevron per section) with a pinned
+  action footer, and any rich grid re-tiles to fewer columns. (4) **Multi-column blocks follow a
+  column ladder** N → N/2 → 1, each block widening step-wise as columns drop while reading order is
+  preserved via predictable x/y. (5) **Bands vs grids** — keep band-spanning rows (newsletter /
+  section-header + input) full-width at *every* breakpoint while only the columns below re-grid; a
+  composed field+button goes from compact fixed-width to a full-width field with the button pinned
+  inline. (6) **Bottom utility bar may stack AND reorder** — a right-aligned legal/payment group may
+  be promoted *above* the fine print when it stacks on mobile.
+- **The throughline:** what changes per breakpoint is **column count, nav disclosure, icon priority,
+  and stacking order** — each an explicit decision. Hit-target sizing for interactive controls stays
+  constant across all three.
+
+---
+
+## 8. Storefront anatomy (component classes for an operating commerce shop)
+
+A new domain. Source 02 taught *palette as wayfinding* for a shop; this is the *compositional
+anatomy* of an operating storefront's chrome and templates — the parts a dashboard, configurator, or
+formal library simply do not have. (Only build this layer when the product *is* a transactional
+storefront; it's method-pluralism, not a universal requirement.)
+
+- **Header splits into category NAV + a right-pinned UTILITY CLUSTER, modeled as different component
+  classes.** The cluster holds, in order, locale/currency → search → offers/promo (often badged) →
+  account → cart. Keeping them a distinct class keeps the center nav clean and global affordances
+  reachable from every page.
+- **The category mega-menu is a two-pane merchandising surface,** not a link list: a descriptor
+  category rail beside a featured-product pane. Navigation doubles as product discovery.
+- **The product card is a fixed slot stack** (image+optional badge → optional microcopy → swatch row
+  → title → price with sale emphasized + struck original) whose **width is bound to a block-size
+  token**, so one card serves grids, carousels, cross-sell rails, and mega-menu panes and reflows by
+  column count, never by resizing the card. This is the shared atom across home, PLP, PDP cross-sell,
+  and cart.
+- **The cart has two distinct forms.** A slide-out **drawer** (item count + line items + a
+  free-shipping/threshold **progress** indicator; its empty state cross-sells rather than dead-ends)
+  and a full cart **page** (a different skeleton — see §9). The threshold-progress line is a
+  storefront upsell primitive; never omit it from the drawer.
+- **The footer is a physical-retail store-info taxonomy:** parallel columns [shop categories | store
+  links | opening hours | contacts+social] + a locale switcher + a legal row + a **payment-badge
+  row**. Hours, address, and payment marks signal a legitimate operating business — a different
+  contract from a thin link footer.
+- **Newsletter capture is a discount-capture block,** not a bare form: a value-led headline naming
+  the incentive, one field + submit, and a consent line linking terms/privacy.
+- **Trust signals ride one dedicated full-width strip** of icon+label pairs below the nav or hero —
+  the scannable node of the page-wide "threaded proof" (Section 5), consolidated rather than
+  scattered.
+- **Promotions are a layered system of reusable, tokenized primitives:** top banner, moving marquee,
+  timed popups (bonus / discount-code), an offers/bundle surface, and a slide-out offers panel — so
+  merchandising swaps copy and timing without touching layout.
+
+---
+
+## 9. Page-skeleton library (chrome/body split + per-type section stacks)
+
+The layer *above* Section 5 (which gives the band grammar) and §8 (which gives the component
+classes): **which sections, in what order, on which page type.** Store it so one system spans ~10
+page types without redundancy.
+
+- **Model every page as `GLOBAL CHROME + BODY STACK`.** Chrome = {promo bar [opt], header/nav [req],
+  footer [req]}, authored **once** and template-invariant; each template defines only its body stack.
+  Deep/transactional pages prepend a breadcrumb as the first in-body element; the homepage does not.
+- **Author section order at desktop and treat it as breakpoint-invariant.** Derive mobile by
+  **column-collapse + drawer-izing filters**, never by re-ordering sections. (§5a governs how each
+  component inside a section reflows.)
+- **Each page type has a named, tagged body stack** (required / recommended / optional):
+  - **HOME** — alternate product-discovery bands with trust/story bands: hero+CTA [req] → trust/USP
+    ticker [rec] → tab-filterable product rail [req] → lookbook rail [opt] → value-props split [rec]
+    → reviews wall [rec] → featured rail [rec] → UGC/shoppable rail [opt] → brand/journal rail [opt]
+    → press strip [opt] → newsletter [rec].
+  - **PLP/COLLECTION** — breadcrumb [rec] → collection header [req] → subcategory tiles [opt] →
+    {filter sidebar [rec] + toolbar(count+sort) [req] + product grid [req] + pagination/load-more
+    [rec]} → cross-sell rail [opt]. The **toolbar (count+sort) and the grid are the irreducible
+    core**; filters degrade to a mobile drawer with a sticky "Show results" commit bar.
+  - **PDP** — breadcrumb [rec] → {gallery [req] | BUYBOX} → rating summary (histogram + media) [rec]
+    → review list [rec] → content split [opt] → FAQ accordion [opt] → benefits split [opt] → related
+    rail [rec].
+  - **CART PAGE** (distinct from the drawer) — breadcrumb → header + incentive bar (free-ship
+    progress / urgency) [rec] → {line items + in-cart cross-sell | order-summary(breakdown, total,
+    note, checkout CTA, payment badges) + reassurance(privacy/SSL/guarantee)} → cross-sell rail. The
+    summary panel is sticky-eligible and bundles total + CTA + payment proof together.
+  - **BLOG POST** — breadcrumb → hero image → title+meta → rich body at a constrained measure → tags+
+    share → prev/next pager → related posts.
+  - **ABOUT/STORY** — hero image → alternating image|text splits → benefits split.
+  - **AUTH** — breadcrumb → {form(heading, fields, security line, submit, alt-link) | brand image}.
+  - **ACCOUNT DASHBOARD** — breadcrumb → heading+sign-out → stacked editable info blocks (contact,
+    address).
+  - **LEGAL** — breadcrumb → title → long-form rich text at a constrained measure.
+- **Promote the BUYBOX to a named sub-skeleton** with its own strict order, reusable across physical/
+  digital/gift-card products: rating+cert badges → title → spec chips → description → price(+discount)
+  → variant swatches → option controls(dropdown/segmented/qty) → ATC [req] → payment badges → micro
+  trust strip → detail accordions → mini cross-sell. Don't re-derive it per product type.
+- **Universal closers.** A cross-sell rail closes nearly every commerce page. Editorial pages (blog/
+  about/legal) **constrain the body to a readable measure and end in lateral navigation (related/
+  next), never a buy-CTA** — a distinct skeleton family from commerce pages.
