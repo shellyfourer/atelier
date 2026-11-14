@@ -70,9 +70,19 @@ For each project, record:
   thin-semantic roles, greybox method, purpose-alternation composition.
 - **Extraction status:** done → [analysis/figma/source-05-method.md](./analysis/figma/source-05-method.md)
 
+### 6. Source 06 — brand-dominant storefront
+- **Source & type:** Figma — a storefront whose primary surface is a bold brand hue (anonymized)
+- **Why it's here:** Added a **4th color posture (brand-dominant)** — one saturated brand hue as
+  the primary full-bleed surface, where color-field switching *is* the section rhythm and the
+  semantic tier needs ground-aware foreground pairs. Richest page-skeleton harvest yet (two-phase
+  PDP, order-confirmation receipt, quiz funnel, slide-out templates, terminal-state frames).
+- **What to distill:** brand-dominant color posture, color-blocking composition, dual-ground
+  foreground pairs, counted-block-collection reuse, named-slot instance-swap, page skeletons.
+- **Extraction status:** done → [analysis/figma/source-06-method.md](./analysis/figma/source-06-method.md)
+
 ## Shopify
 
-_Figma-stage storefront designs analyzed above (Sources 02, 04). Live-store analysis TBD._
+_Figma-stage storefront designs analyzed above (Sources 02, 04, 06). Live-store analysis TBD._
 
 ## WordPress
 

@@ -21,6 +21,10 @@
 - **Source 05** — [method notes](./source-05-method.md) (an app-leaning store, shadcn admin register):
   reframed the color methods as composable TIERS (not either/or); added alpha-ramp tokens,
   translucent-border convention, sub-namespaced roles, and the greybox/wireframe method.
+- **Source 06** — [method notes](./source-06-method.md) (a brand-dominant storefront):
+  a 4th color posture (brand hue as primary full-bleed surface); color-blocking composition;
+  ground-aware foreground pairs; rich page skeletons (two-phase PDP, order confirmation, quiz
+  funnel, slide-out templates, terminal-state frames).
 
 ## Source 01 — by layer
 
