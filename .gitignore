@@ -1,0 +1,24 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Scratch / temp
+tmp/
+scratch/
+*.log
+
+# Large raw asset dumps (keep distilled data in git, not raw exports)
+extraction/**/raw/
+*.fig
+
+# NEVER commit client-identifying material. Source screenshots, renders, and raw
+# reference images stay local-only. The repo holds anonymized METHOD, not client work.
+.local-reference/
+**/_scratch/
+**/*-assets/
+*.png
+*.jpg
+*.jpeg
