@@ -441,3 +441,17 @@ Blog index adds a **featured/lead post** `[recommended]` above the card grid; Ar
 - **Threaded proof** distributes ratings/badges/counts/quotes across depths (in cards, a proof band, standalone strips) AND, in a high-chroma register, binds them to the single reserved accent so "saturated" reliably reads as "credible/commit." Don't spend that accent on decoration.
 - **One token ramp** drives every gap/padding/width even when the palette is loud; variety comes from surface color + content, not ad-hoc pixels.
 - **Breakpoint-invariant order:** author desktop as canonical; derive mobile by column-collapse + drawer-izing only — never re-order sections per breakpoint.
+
+
+---
+
+## The page-shell container contract (from Source 07)
+
+Every page skeleton sits inside a breakpoint-scoped container:
+- **Desktop:** a wide, capped content column, centered, with symmetric margin.
+- **Tablet:** a mid-width column; smaller margin.
+- **Mobile:** a narrow column that goes **edge-to-edge** (margin → 0); padding does the insetting.
+
+Container width = `device-width − 2 × margin`. Section rhythm, container inset, and device margin
+are three independent responsive knobs. Author section *order* once (breakpoint-invariant); reflow
+by collapsing columns and drawer-izing filters, never by resequencing.

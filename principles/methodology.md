@@ -541,3 +541,31 @@ Two register-specific amplifiers (not replacements of the core moves):
 - **Order Confirmation = its own receipt template**, not "checkout minus the form": success headline + info recap + actions + support | summary + **loyalty-points-earned callout** + item recap.
 - **Enumerate terminal states as named sibling frames**, not runtime conditionals: self-service RMA as Enabled / Disabled / Success.
 - **Non-standard page families to add to any storefront catalogue:** guided QUIZ FUNNEL (Start → repeated question steps, card & tag-chip layouts → personalized RESULTS skeleton: diagnostic headline → recommended set → comparison → social proof → UGC); SLIDE-OUT overlays (cart/search/finder) as first-class templates with {header / scrollable body / pinned footer-action}.
+
+
+---
+
+# Grid & layout system (from Source 07 — a tokenized, breakpoint-first grid)
+
+A layout grid is a token system like any other foundation, not an ad-hoc per-page decision. It
+obeys the spine (primitives → semantic aliases) and **inherits the global spacing cadence** so
+layout and component spacing stay harmonically aligned.
+
+- **Breakpoint is the top grid axis.** Namespace grid tokens per device tier
+  (`grid/<breakpoint>/…`). Each breakpoint owns a *complete, independent* grid definition — the
+  grid is resolved by tier, never interpolated. Each layout frame stays authoritative.
+- **Three paired sizing tokens define the frame per breakpoint:** a device/viewport width, a
+  container/content max-width, and a margin. **Margin = (device − container) / 2** — the content
+  column is *derived*, not hand-placed.
+- **Column count is a per-breakpoint set, not one global number.** Each tier enumerates several
+  valid column counts (most on desktop, fewest on mobile), each count carrying its own gutter.
+- **Gutter is tokenized per (breakpoint × column-count)** — denser and sparser grids within one
+  breakpoint carry different gutters.
+- **Gutters and margins draw from the shared spacing scale** (same 4-based steps as everything
+  else), surfaced as semantic aliases — the grid never invents bespoke numbers.
+- **Three distinct responsive padding families:** device margin ≠ container inset ≠ section
+  spacing. Keep them as independent token groups so each is its own responsive knob; all shrink
+  from generous (desktop) to tight (mobile).
+- **Container max-width is capped and breakpoint-scoped.** Large screens center a fixed content
+  column; small screens go **edge-to-edge** with margin collapsing toward zero and padding doing
+  the insetting.

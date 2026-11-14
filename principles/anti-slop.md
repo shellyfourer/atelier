@@ -173,3 +173,15 @@ it is not finished.
 - Don't treat Order Confirmation as 'checkout minus the form'; it is a separate receipt template with its own required slots including the loyalty/points-earned callout.
 - Don't collapse a PDP to 'gallery + buybox + tabs'; the evidence narrative (science → proof → usage → social proof → FAQ → cross-sell) is the conversion engine, modeled as an ordered, individually-optional stack.
 - Don't treat drawers/slide-outs as loose states; give each its own {header / body / pinned-action} skeleton so overlays get the same anatomy discipline as full pages.
+
+
+---
+
+## Additions from Source 07 (grid / layout)
+
+- Never express the grid as one global column count / one gutter — resolve both from the active breakpoint tier.
+- Never invent gutter/margin pixel values; bind them to the shared spacing-scale steps so the grid stays on the global rhythm.
+- Never hardcode a content width — derive the container from `device-width − 2×margin` (or an explicit container-width token) so margins recompute per tier.
+- Never reuse desktop gutters/padding on tablet or mobile; each tier carries its own smaller values — collapsing them flattens the responsive intent.
+- Never conflate the three padding families (device margin ≠ container inset ≠ section spacing); keep them independent so each responds on its own.
+- Never bake a nonzero margin into the column math on small breakpoints — margin legitimately goes to 0 (edge-to-edge) there.

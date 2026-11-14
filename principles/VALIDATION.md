@@ -23,8 +23,13 @@
 | S04 | Shopify storefront (warm retail) | Tonal-ramp (warm), responsive-component, storefront anatomy |
 | S05 | App-leaning store (shadcn admin register) | Thin-semantic stacked on ramp; alpha-ramp tokens; greybox method |
 | S06 | Brand-dominant storefront | 4th color posture (brand hue as surface); color-blocking composition; rich page skeletons |
+| S07 | Formal twin of S01 (delta/validation) | Reproduces S01's method; adds the tokenized grid/layout system |
 
-_(Sources C/06b pending analysis — ledger will grow as each lands.)_
+_(Source 06b — games retail — pending analysis.)_
+
+> **S07 is a reproducibility check:** an independent twin of S01 that confirms S01's spine,
+> composite type tokens, Family→Ramp→Step, and component library are reproducible — strong
+> evidence the method is real, not one file's artifact. Its CONFIRMS bump S01-only rows below.
 
 ### Revisions log
 Principles that a later source downgraded, upgraded, or reframed (not just confirmed):
@@ -51,8 +56,8 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 ### Color
 | Principle | Sources | Tier |
 |---|---|---|
-| Family → Ramp → Step naming hierarchy | S01, S04 | 🟡 Corroborated |
-| One fixed step ladder shared across all ramps (e.g. 25…950) | S01, S04 | 🟡 Corroborated |
+| Family → Ramp → Step naming hierarchy | S01, S04, S07 | 🟢 Load-bearing |
+| One fixed step ladder shared across all ramps (e.g. 25…950) | S01, S04, S07 | 🟢 Load-bearing |
 | Multiple named sibling ramps per family (not one ramp per hue) | S01, S04 | 🟡 Corroborated |
 | Per-step measured WCAG contrast + pass/fail on every swatch | S01, S04 | 🟡 Corroborated |
 | Semantic/alias layer resolves to ramp steps (no loose hexes) | S01, S03, S04, S05 | 🟢 Load-bearing |
@@ -92,6 +97,16 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 | Named/tokenized effect styles over ad-hoc shadows | S01, S04 | 🟡 Corroborated |
 | Single global radius knob (flat app idiom) | S03 | 🟠 Provisional |
 | Two-layer (ambient + contact) shadow ramp | S01 | 🟠 Provisional |
+
+### Grid & layout
+| Principle | Sources | Tier |
+|---|---|---|
+| Grid is a token system; breakpoint is the top axis (each tier a full independent grid) | S07 | 🟠 Provisional |
+| Container derived: margin = (device − container)/2; content column not hand-placed | S07 | 🟠 Provisional |
+| Gutter tokenized per (breakpoint × column-count); column count is a per-tier set | S07 | 🟠 Provisional |
+| Gutters/margins draw from the shared spacing scale (grid inherits global rhythm) | S01/S04 (spacing) + S07 (grid) | 🟡 Corroborated |
+| Three independent padding families (device margin / container inset / section spacing) | S04 (section/container) + S07 | 🟡 Corroborated |
+| Container capped + centered on desktop; edge-to-edge (margin→0) on mobile | S07 | 🟠 Provisional |
 
 ### Components
 | Principle | Sources | Tier |
