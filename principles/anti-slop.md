@@ -185,3 +185,25 @@ it is not finished.
 - Never reuse desktop gutters/padding on tablet or mobile; each tier carries its own smaller values — collapsing them flattens the responsive intent.
 - Never conflate the three padding families (device margin ≠ container inset ≠ section spacing); keep them independent so each responds on its own.
 - Never bake a nonzero margin into the column math on small breakpoints — margin legitimately goes to 0 (edge-to-edge) there.
+
+
+---
+
+## Additions from Source 08 (category-color / playful register)
+
+- Mint each catalog category as a {accent, tint} PAIR of the same hue, never a lone accent — bind the tint to backing surfaces and the accent to interactive ones so a category reads as one family across loud and quiet surfaces.
+- Make accent color a function of SCOPE: category-in-scope → that category's pair; nothing-in-scope ('All'/global sheet) → brand-primary fallback — and write the fallback down rather than leaving un-categorized surfaces to guesswork.
+- Bind the accent token at the smallest meaningful unit (the card/item) so mixed lists self-theme into a visual taxonomy, and allow a page-scope override to collapse to one theme when filtered.
+- Tune ONLY the category layer's chroma to the brand register (muted↔high-chroma); keep the neutral ramp, type tokens, and chrome discipline constant so a loud palette never destabilizes structure.
+- Do not default every role to one family — assign typefaces by role-class (structure / reading / action) when the brief wants separation, but cap at ~3 purposeful faces, each owning a clear band.
+- Do not style buttons and links as 'small bold headings' — give interactive roles their own named tokens with their own family + medium weight even where their size overlaps a heading step.
+- Name type (and all) tokens by role/intent, not by resolved value; keep two roles separate even when their current font/size/weight are identical, so they can diverge later without a rename.
+- When a design shows N visually-different cards/sections, do not author N components — find the shared skeleton and externalize the per-instance difference to a single category/data token binding.
+- Model responsive sizing as one semantic role name resolving to breakpoint-specific VALUES; keep component references stable across breakpoints and never fork a component just to change its sizes.
+- Separate sections with intentional seams (angled color-block edges, tilted divider planes, or a full-bleed reset band), not a default horizontal rule or identical margins everywhere.
+- When a focal slot holds a set of peers, consider a fanned/stacked-deck cluster as one object instead of a flat mini-grid — keep rotations subtle and the content grid inside each card clean.
+- Catalogue overlays/drawers/modals as a SEPARATE track from full-page skeletons, tagging each with the breakpoint(s) it appears on and the inline region it replaces — do not conflate an overlay with a page.
+- Treat empty/zero/gate/multi-step states as first-class required skeletons with their own section stacks; never assume only the happy-path populated page needs a template.
+- Collapse structurally-identical sibling frames (per-category PLPs, per-product PDP skins) into ONE parametrized skeleton with a named variable slot; never list each near-duplicate as its own page type.
+- Model checkout as a stepped flow family sharing one persistent order-summary slot (desktop rail / mobile accordion), not as a single checkout page.
+- When enumerating a large multi-frame Figma file, drill page→child-frame IDs before screenshotting — never read a 30000px canvas as one unreadable thumbnail; re-request tall frames at their natural height and split the PNG before reading.

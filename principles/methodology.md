@@ -569,3 +569,64 @@ layout and component spacing stay harmonically aligned.
 - **Container max-width is capped and breakpoint-scoped.** Large screens center a fixed content
   column; small screens go **edge-to-edge** with margin collapsing toward zero and padding doing
   the insetting.
+
+
+---
+
+# Additions from Source 08 (category-color enrichment, playful register)
+
+> Enriches the category-color method (B): paired {accent, tint} category tokens; category as a scope-based theme channel (chrome=brand, content=category, nothing-in-scope=brand fallback); item-scope binding; register-tuned chroma quarantined to the swappable category layer.
+
+## Category color as a {accent, tint} PAIR (not a lone hue)
+Mint each catalog category as a **two-token kit**: a saturated accent AND a matched pale tint of the same hue. Wire the **accent to interactive/active surfaces** (nav pill, price tag, add-to-cart button, badge chips, favorite affordance) and the **tint to calm backing surfaces** (active-pill background, card wash, section band). This turns the flat category method into a mini-ramp-per-category and prevents the common failure where a category tint is eyeballed and drifts off-hue from its accent. One binding themes both foreground and background — no ad-hoc opacity math.
+
+## Accent color as a scope function, with explicit brand fallback
+Accent color is a function of routing/scope, not hardcoded per page. The contract:
+- **chrome = brand constant** (header, footer, persistent/newsletter bands never swap);
+- **content region = category variable** (a category in scope re-themes every accent surface to its pair);
+- **default = brand primary** when NO single category is in scope ('All' view, global filter sheet).
+State the fallback explicitly so un-categorized surfaces are never left to guesswork.
+
+## Dual color-method stacking by composition density
+The same category-token system does two legibility jobs selected by density:
+- **Mixed list (aggregated/home rail):** bind the accent at the **item/card level** so several category pairs coexist in one viewport and the palette self-sorts into an at-a-glance **taxonomy legend**.
+- **Filtered page (single category in scope):** a page-scope override **collapses to a single theme**.
+Rule: bind accent at the smallest meaningful unit; allow a page-scope override to collapse it. One mechanism, two jobs.
+
+## Register-tuned chroma, quarantined to one layer
+Match category-palette chroma to brand register (muted for premium/clinical, high-chroma for playful) **WITHOUT touching the neutral ramp, type tokens, or chrome discipline**. Loudness lives entirely in the one swappable category layer, so the same architecture serves a calm or a loud client by re-chroma-ing category pairs alone.
+
+## Typeface as a third semantic axis (role-class x size x breakpoint x FACE)
+Optionally partition roles across up to **three purposeful faces** by function: one geometric/structural face owns the monotonic heading ramp; one humanist face owns reading body + small support; one face is **reserved for interactive/navigational roles** (links, buttons, footer utility). Typeface becomes a semantic signal of role-class (structure vs reading vs action), composable onto the existing composite-token matrix — separation without relying on color. Cap at ~3 faces, each owning a clear band.
+
+## Interactive roles get their own non-heading size band
+Tokenize action/navigation roles (buttons, links, footer) as **first-class type roles in a mid size band that may overlap the heading ramp numerically** but stays a 'control' token via a separate family + medium weight. Size alone does not determine role. This blocks the slop of styling a button as "small bold heading."
+
+## Duplicate-value distinct-role tokens (intentional anti-DRY)
+Two semantically different roles may share identical family/size/weight yet remain **separate named tokens**. Name by role/intent, not resolved value, so visually-identical roles can diverge later per-context or per-breakpoint without a rename. The token model must allow intentional value-collisions across roles.
+
+## Collapse N looks to ONE themed atom
+When a design shows N visually-distinct cards/sections, do **not** author N components. Find the invariant skeleton and externalize the only per-variant delta to a **single category/data token binding**. A five-look product-card family is one structure whose variant axis is a data-category binding (accent for chips/rating/price-add, paired tint for the card background). Component count stays flat as categories grow.
+
+## New composition primitives (angled + stacked vocabulary)
+Add four section-level primitives to the kit, beyond orthogonal grid splits:
+1. **Diagonal seam** — split a section with a slanted color-block edge; let the focal cluster straddle the slant. A first-class angled divide, distinct from a vertical gutter.
+2. **Stacked-deck fan** — render a set of same-type peer cards as one overlapping, slightly-rotated object so an inherent 'set' reads as a single tactile thing; keep rotations subtle and the grid inside each card clean.
+3. **Tilted divider planes** — separate stacked sections with subtly skewed white sheets so the page reads as overlapping planes; a low-cost 'playful' rhythm device that keeps each section's internal grid clean.
+4. **Interstitial reset band** — a short full-bleed saturated band between two white sections acting as a palette-cleanser that re-sets vertical rhythm; its structural role is independent of its content (it may carry proof, but the role is the reset).
+
+## Page-anatomy as a FOUR-TRACK catalogue
+Split the catalogue so the responsive and state dimensions are expressible:
+- **Track 1 — full-page skeletons:** persistent header → ordered body sections → persistent footer; tag each section required/recommended/optional.
+- **Track 2 — overlay skeletons:** catalogue drawers/modals/sheets *separately*, each tagged with the breakpoint(s) it appears on and the **inline equivalent it replaces** (filter drawer ↔ desktop filter rail, add-to-cart confirmation drawer, auth modals).
+- **Track 3 — state variants:** budget empty/zero-result/error/gate states as their own section stacks, not edge cases.
+- **Track 4 — responsive rule:** section ORDER is breakpoint-invariant; below the breakpoint reflow multi-column→single-column AND promote selected inline regions into overlays; a breakpoint may also own **net-new organisms** the other solves inline.
+
+## Parametrized / stepped / paired / gated skeleton refinements
+- **Checkout is a stepped FLOW family**, not one page: details→shipping→payment→review→confirmation siblings sharing one persistent **order-summary slot** (desktop right rail / mobile top accordion).
+- **PLP is ONE skeleton parametrized by taxonomy** with an active-taxonomy slot — collapse per-category siblings rather than listing each.
+- **Blog is a two-skeleton pair** — index (uniform card grid + pagination) ↔ article (narrow reading column + author/taxonomy/popular/related sidebar + social share + mid-article promo); the sidebar is a distinct reusable organism.
+- **Compliance/age/consent GATE** is a recurring commerce page-type: a chrome-less full-screen binary choice, first in the journey, outside header/footer.
+
+## Enumeration discipline for large multi-frame Figma files
+Drill page→child-frame IDs (get_metadata on the page node) **before** screenshotting — never screenshot a 30000px canvas as one thumbnail. For a tall mobile frame that renders too narrow, re-request at a maxDimension equal to the frame's natural height, then split the PNG into halves before reading.

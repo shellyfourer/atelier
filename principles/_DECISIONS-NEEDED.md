@@ -54,3 +54,13 @@
 - [ ] Density oscillation now has a documented SECOND axis (surface-weight) beyond height. Confirm whether the portable rule becomes 'oscillate on all salient weight axes (height, surface-saturation, content-density)' generally, or stays flagged as expressive-register-only.
 - [ ] Confirm that 'two altitudes of reuse' (atomic library + counted block collections) is adopted as a standing component-architecture requirement, and decide whether the 'Total Blocks: N' count contract is mandated for every block collection atelier ships.
 - [ ] Decide whether the non-standard page families (quiz funnel, RMA state-frames, slide-outs-as-templates) are added to the default storefront skeleton catalogue as always-considered [optional] entries, or only surfaced when a brief implies them.
+
+
+## New taste/scope calls surfaced by Source 08
+
+- [ ] Category-token model: standardize on emitting every catalog category as a {accent, tint} pair kit at mint time? This changes the token schema library-wide (prior sources treated category color as a single accent). Confirm before it becomes the default.
+- [ ] Scope-driven accent with brand fallback: adopt 'chrome = brand constant; content region = category variable; nothing-in-scope = brand primary' as the standing color-routing contract across all future catalog builds?
+- [ ] Typeface budget: ratify the 'up to 3 purposeful faces partitioned by role-class (structure / reading / action)' rule as an allowed pattern — and set whether it is opt-in per brief or a recommended default when separation is wanted.
+- [ ] Intentional anti-DRY tokens: confirm the token model should permit duplicate-value distinct-role tokens (name by intent, never collapse value-identical roles). This is a deliberate reversal of normal DRY instinct and should be explicitly sanctioned.
+- [ ] Page-anatomy catalogue restructure: upgrade the catalogue from a flat page list to the FOUR-TRACK form (full pages / overlays / state variants / responsive rule). Confirm this becomes the canonical catalogue shape going forward.
+- [ ] Composition primitive library: accept diagonal seam, stacked-deck fan, tilted divider planes, and interstitial reset band as named, reusable composition primitives — and decide whether the angled/rotated ones are register-gated (playful only) or allowed in restrained builds too.

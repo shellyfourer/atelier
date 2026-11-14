@@ -455,3 +455,97 @@ Every page skeleton sits inside a breakpoint-scoped container:
 Container width = `device-width − 2 × margin`. Section rhythm, container inset, and device margin
 are three independent responsive knobs. Author section *order* once (breakpoint-invariant); reflow
 by collapsing columns and drawer-izing filters, never by resequencing.
+
+
+---
+
+## Additions from Source 08
+
+## Compliance / Age / Consent Gate (interstitial)
+*Chrome-less full-screen frame that gates entry to the store; first frame in the journey, no global nav. Material addition — not covered by auth or any content page.*
+
+1. Brand mark / minimal lockup — **[required]** — orient the user; this frame has no header, so identity must live inline.
+2. Gate statement (one-line requirement, e.g. age/region/consent) — **[required]** — states the single condition to proceed.
+3. Binary choice control (confirm / deny) — **[required]** — the gate's whole purpose is one decision; keep it to two paths.
+4. Deny-path fallback (redirect or soft-block message) — **[recommended]** — the "no" branch needs a defined destination, not a dead end.
+5. Fine-print / legal line — **[optional]** — regulatory context where the niche demands it.
+
+> No header/footer chrome. Breakpoint-invariant (centers on both). Regulated niches (age, alcohol, region-lock, cookie/consent) require this; omit otherwise.
+
+## Order Confirmation / Success (standalone)
+*Terminal frame of the checkout flow, distinct from checkout steps. Added because checkout here is a step-family, not one page.*
+
+1. Success headline + confirmation glyph — **[required]** — resolves the transaction emotionally and functionally.
+2. Order meta block (order #, email, totals) — **[required]** — the receipt record the user came to see.
+3. Delivery/fulfilment summary — **[recommended]** — restates where/when, closing the loop on the flow's inputs.
+4. Primary next-step CTA (track order / continue shopping) — **[required]** — gives the resolved user one clear onward path.
+5. Cross-sell or account-prompt band — **[optional]** — low-pressure continuation once the goal is met.
+
+## Empty / Zero-State variant (per data-page)
+*A first-class state skeleton, not an edge case. Budget one for cart, search/PLP, and any data-backed page.*
+
+1. Persistent header/footer — **[required]** — the shell stays so the empty state reads as "within the store," not an error.
+2. Illustration / empty glyph — **[required]** — fills the vacated data region and sets a non-alarming tone.
+3. Zero-state message (what's missing + why it's fine) — **[required]** — reframes absence as recoverable.
+4. Single recovery CTA (browse / reset filters) — **[required]** — exactly one path back to a populated state; avoid choice overload here.
+5. Suggestions / popular carousel — **[optional]** — seeds re-engagement without cluttering the recovery intent.
+
+## Checkout = Stepped-Flow Family (refines "Checkout")
+*Treat as an ordered sibling sequence sharing one persistent summary rail, not a single page. Materially refines the standard one-page checkout skeleton.*
+
+Flow order: customer/auth → delivery address → shipping method → payment → review.
+Per step:
+1. Step indicator / progress — **[recommended]** — situates the user in a multi-frame sequence.
+2. Step body (the fields/choices for this step only) — **[required]** — each frame owns one decision cluster.
+3. Shared order-summary slot — **[required]** — desktop = pinned right rail; mobile = top accordion. Identical content across every step.
+4. Back / advance controls — **[required]** — explicit movement between sibling frames.
+
+> The portable unit is `step-sequence + shared-summary slot`, terminating in the Order-Confirmation skeleton above.
+
+## Register-Specific Overlay Track (breakpoint-tagged)
+*A separate track from full-page skeletons. Each overlay tags its breakpoint(s) and the inline region it replaces. Material addition — a page-only catalogue cannot express "promote inline region to overlay below breakpoint."*
+
+- **Filter drawer** (mobile) ↔ inline desktop filter rail — **[required where PLP has filters]** — full-height slide-up; same filter controls as the desktop rail, reflowed vertically.
+- **Add-to-cart confirmation sheet** (mobile) ↔ inline desktop cart feedback — **[recommended]** — bottom-sheet confirming the add + mini-summary + continue/checkout; a net-new mobile organism with no desktop twin.
+- **Auth modal** (login / signup) ↔ inline desktop auth page/region — **[recommended]** — overlay on mobile, inline on desktop.
+- **Persistent floating launcher** (chat/assistant/CTA, pinned corner) — **[optional]** — fixed overlay layer present on *every* frame, both breakpoints; authored once, threaded globally.
+
+> Overlay-track rule: tag each with breakpoint + the inline equivalent it replaces. A breakpoint may OWN net-new organisms (bottom-sheets, slide-up filters) that the other solves inline — responsive method is not purely column reflow.
+
+## PLP / Collection — parametrized-by-taxonomy (refines "Collection")
+*Collapse N per-category frames into ONE skeleton with a taxonomy slot; do not inflate the catalogue with structural duplicates.*
+
+1. Category/taxonomy selector strip (active-taxonomy = the variable slot) — **[required]** — the single parameter that distinguishes otherwise-identical siblings.
+2. Filter region (desktop inline rail / mobile drawer) — **[required]** — same function, two renderings by breakpoint.
+3. Product grid — **[required]** — the data region re-fed per taxonomy.
+4. Sort control — **[recommended]** — orthogonal to taxonomy; shared across variants.
+5. Load-more / pagination — **[required]** — bounds the grid.
+
+> Refinement: one parametrized template, not one page type per category. Restricted-subcategory variants reuse this skeleton behind the gate.
+
+## Blog as INDEX↔ARTICLE pair (refines "Blog index + article")
+*Catalogue as a linked pair; the article's sidebar is a distinct reusable organism. Refines a single "Blog" entry.*
+
+**Index:** uniform card grid **[required]** → pagination **[required]**.
+
+**Article/Detail:**
+1. Article hero (title / meta / cover) — **[required]**.
+2. Narrow reading column — **[required]** — constrained measure for long-form.
+3. Persistent content sidebar (author card + taxonomy list + popular list + CTA) — **[recommended]** — the reusable organism that the index lacks.
+4. Social-share rail — **[recommended]**.
+5. Mid-article promo band — **[optional]** — inline interstitial absent from the index.
+6. Related-articles row — **[recommended]**.
+
+## Long-Form Storefront Home — band-rhythm skeleton (refines "home/landing")
+*Refines the generic home into a density-oscillating band sequence with named compositional seams. Each band keeps identical content/order across breakpoints; only the layout axis flips.*
+
+1. Sticky nav — **[required]**.
+2. Hero statement (oversized headline + one-line body + single CTA, optional playful illustration cluster) — **[required]** — *airy* band opening the rhythm.
+3. Uniform N-up product grid — **[required]** — *dense* band.
+4. Interstitial RESET band (short full-bleed saturated strip; often carries threaded proof/trust badges) — **[recommended]** — *compressed* palette-cleanser whose structural role is the reset, independent of content.
+5. GRID-BREAK feature split — narrows the multi-column grid to ONE focal object — **[recommended]** — *airy*; emphasis signalled by narrowing column count, not by another same-weight grid. May use a DIAGONAL SEAM (slanted color-block edge the focal cluster straddles) or a STACKED-DECK FAN (peer cards overlapped + slightly rotated as one object).
+6. Editorial 3-up cards — **[optional]** — *medium* band.
+7. Secondary CTA / app / cross-channel band — **[optional]** — *airy*.
+8. Dense footer (with threaded ratings/reviews cues) — **[required]**.
+
+> Composition rules baked in: DENSITY OSCILLATION (alternate airy↔dense↔compressed band-to-band); TILTED DIVIDER PLANES (subtly skewed sheet seams between sections instead of straight rules) for a "playful" register; THREADED PROOF (mid-page band + in-card ratings + footer reviews, never concentrated once). Anti-slop: never a uniform stack of equal-weight full-width cards.
