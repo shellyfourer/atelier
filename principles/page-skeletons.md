@@ -271,3 +271,47 @@ Cross-source, portable section-stack library for `atelier`. Synthesized from the
 - **Editorial pages** (About, Blog article, Legal) constrain body to a readable measure and close with **lateral navigation**, not a buy CTA.
 - **Thread social proof** (edge rails, header ratings, inline avatars, badge rows) rather than pooling it all in one section.
 - **Distinguish drawer vs page** variants: mini-cart drawer ≠ cart page; mega-menu ≠ plain nav list.
+
+
+---
+
+## Refinements from Source 05
+
+## Home / Landing — refinement: convince/convert purpose-alternation (storefront register)
+
+Refines the standard home skeleton by adding a *purpose* tag to every in-body band plus an ordering law layered on top of density oscillation. Does not change which sections exist — it governs their sequencing.
+
+Tag each home band as **[discovery]** (sells: product rails, shoppable grids, featured/bestseller, category tiles) or **[trust/story]** (reassures: USP ticker, value-props split, reviews wall, brand/journal, press strip), then interleave them.
+
+Ordered body stack (after global chrome; home has **no** breadcrumb):
+1. Hero — light full-viewport stage, copy composed into the image's negative space, single CTA [required]
+2. Credibility strip — thin trust band handed off immediately below the hero (logos / ratings / one-line proof) [recommended] — *[trust/story]*; separates impression from justification
+3. Primary catalogue entry — category tiles or collection grid [required] — *[discovery]*; first path into the catalogue
+4. Value-props / USP split [recommended] — *[trust/story]*; alternates off the discovery band above
+5. Curated / featured / bestseller rail [recommended] — *[discovery]*
+6. Reviews wall / social-proof band [recommended] — *[trust/story]*
+7. Editorial / brand / journal band [optional] — *[trust/story]*; held to the narrow reading measure
+8. Conversion band — newsletter / primary CTA [recommended]
+9. Footer [required]
+
+Rules specific to this refinement:
+- **Never place two same-purpose bands back-to-back** even when their visual weights already oscillate — two product rails in a row reads as a catalog dump, two story bands in a row stalls the sell. Alternate discovery with trust/story by band intent, independently of the dense/airy weight rhythm.
+- Thread proof at multiple depths (ratings inside cards, a dedicated reviews band, standalone pull-quotes) rather than clustering all social proof into one testimonials block.
+- The sequence is a decision narrative (desire → justify → handle objections → next step) and is **breakpoint-invariant**: reflow only by column-collapse (N → N/2 → 1), never by re-ordering bands.
+
+## Editorial / long-form body (about · article · legal) — refinement: reading register + lateral-nav closer
+
+Refines the standard content/article and about/legal skeletons by binding them to a single interior register for the whole body and forbidding the commerce closer. The section list is conventional; the refinement is the register and the ending.
+
+Ordered body stack (deep page → prepend **breadcrumb [required]** as the first in-body element):
+1. Breadcrumb [required] — signals page depth
+2. Hero / title block — narrow measure, no full-bleed text [required]
+3. Long-form body held to a **constrained reading measure** for its entire length [required] — centered column, capped line-length, images interleaved **between** paragraphs rather than beside them
+4. Proof interludes — pull-quote / inline stat at the same narrow measure [optional]
+5. Lateral-navigation closer — related / next / more-in-this-topic [recommended]
+6. Footer [required]
+
+Rules specific to this refinement:
+- The body stays in the **reading register** throughout — no switch to grid/merchandising logic mid-page; the only grid-break is a *narrowing*, never a widening.
+- **Close on lateral navigation, never a buy-CTA and never a dead-end.** The cross-sell / buy-CTA closer is reserved for commerce pages (PDP/collection); an editorial page that ends on "add to cart" or on nothing is the register error.
+- Section headers and prose are both capped to the narrow measure even though the band is full-width.

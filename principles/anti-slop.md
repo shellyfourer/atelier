@@ -125,3 +125,28 @@ it is not finished.
 - Never give a long-form/editorial page (blog/about/legal) a full-width body or a buy-CTA ending — constrain it to a readable measure and close with lateral navigation (related/next).
 - Never re-order sections per breakpoint — author section order at desktop, keep it breakpoint-invariant, and derive mobile by collapsing columns and drawer-izing filters.
 - Never drop the PLP toolbar (live result count + sort) or a progressive load affordance — they are the irreducible core of a collection page, not decoration.
+
+
+---
+
+## Additions from Source 05 (thin-semantic / app register)
+
+- Do not treat the three color methods as a forced single choice when the register is an app/dashboard — layer a thin-semantic tier on top of a primitive ramp library; a UI that binds ramp steps directly is a missing semantic tier.
+- Do not expose primitive ramp steps to UI or let a component bind family/step directly — UI reads only semantic role tokens. A raw ramp-step reference in a component is the tell.
+- Do not let primitive and semantic tiers share a namespace — encode the tier in the token NAME (library prefix for primitives, bare role for semantics) so no one grabs a primitive by accident.
+- Do not widen the thin semantic layer into a sprawling flat role list — when it must grow, add a bounded SUB-namespace (chart, sidebar/app-shell) with its own closed roles. A long ungrouped role list is slop.
+- Do not model borders/overlays as opaque neutral steps in a mode-switched system — use foreground-at-low-alpha so one token survives every surface shade in both modes.
+- Do not collapse status into a single destructive token when the app surfaces info/success/warning distinctly — promote the full status quartet into the role set.
+- Do not author bespoke contrast-measured primitive ramps when an adopted utility palette suffices for an app register — but never ship the adopted palette as the UI contract; always interpose the semantic tier.
+- Do not reflexively apply negative letter-spacing to large headings — tracking is a register knob; default to 0 for neutral/clinical/technical/B2B brands and only go negative for editorial/luxury.
+- Do not give buttons, nav items, chips/pills, or inline run-in labels the body line-height — single-line centered roles get leading 1.0; only flowing paragraphs get ~1.5.
+- Do not conflate 'has named text styles' with 'has type variables' — audit both substrates separately; variable-binding is not required for centralization.
+- When adding a third typeface, give it a register/job (e.g. mono strictly for status/metadata/micro-text) — never add a third face as decoration or let it leak into headings/body.
+- Do not add a variant axis a sibling doesn't need for cross-sibling symmetry — split into job-scoped siblings the moment two axes stop being orthogonal; each sibling exposes only its real axes.
+- Do not read an intentionally greybox/monochrome kit as unfinished and rush to skin it — its neutrality is the method; preserve structure-decoupled-from-skin.
+- Do not run two same-PURPOSE bands in a row on a homepage (two product rails, or two story bands) even if their visual weights oscillate — alternate discovery with trust/story.
+- Do not re-order sections per breakpoint — hold band sequence invariant; reflow only by column-collapse (N→N/2→1) and drawer-izing filters with a sticky commit bar.
+- Do not model a page as one flat section list — split global chrome (authored once) from the per-template body stack; prepend a breadcrumb on deep/transactional pages only.
+- Do not end an editorial/long-form page with a buy-CTA or a dead-end — hold the narrow reading measure for the whole body and close on lateral navigation; reserve the cross-sell-rail closer for commerce pages.
+- Do not overlay hero copy as a scrimmed text block over a busy image — compose headline + single CTA into the image's pre-planned negative space.
+- Never proceed with a Figma analysis when the fileKey is missing or a literal placeholder ('undefined'/'null'/'{{...}}') — halt and report; do not guess a key, reuse an unrelated project's key, or synthesize plausible findings to fill the schema. An empty new_findings array is the correct honest output when the source can't be read.

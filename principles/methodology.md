@@ -413,3 +413,74 @@ page types without redundancy.
 - **Universal closers.** A cross-sell rail closes nearly every commerce page. Editorial pages (blog/
   about/legal) **constrain the body to a readable measure and end in lateral navigation (related/
   next), never a buy-CTA** — a distinct skeleton family from commerce pages.
+
+
+---
+
+# Additions from Source 05 (app-leaning / thin-semantic register)
+
+> Headline: color methods are composable TIERS (register-selected), not either/or. Plus alpha-ramp tokens, translucent-border convention, sub-namespaced roles, greybox method.
+
+## Color method — LAYERED TIERS (app register)
+
+The three color methods (A tonal-ramp / B category-color / C thin-semantic) are **composable TIERS, not a forced single choice.** The REGISTER decides how many tiers you expose:
+- **Taxonomy storefront →** category-color (base + per-category tint as wayfinding).
+- **Expressive/formal library →** author a tonal-ramp primitive layer.
+- **Rich app / dashboard / admin →** STACK thin-semantic ON TOP of a ramp primitive library.
+
+### The app-register color stack
+1. **Primitive tier (bottom):** a full set of uniform hue-family ramps (11 steps, 50→950). **Author it, or ADOPT a utility palette wholesale** — in the app register the craft budget moves off ramp-authoring and onto semantic selection + mode mapping. Never expose this tier to UI.
+2. **Semantic tier (top):** a small CLOSED role set in fg/bg pairs that SELECTS from primitives. UI binds ONLY this tier.
+3. **Tier encoded in the NAME:** primitives carry a **library prefix** (`library/family/step`); semantics are **bare role names**. A human can never grab a primitive by accident.
+
+### Scaling the thin layer — by SUB-NAMESPACE, not by widening the flat list
+When the role set must grow, add **bounded closed sub-families**, each rethemeable independently:
+- a fixed categorical **chart set** (`chart-1..N`) for data-viz series;
+- a mirrored **app-shell / sidebar sub-theme** (its own foreground/primary/accent/border/ring) so chrome rethemes independently of content.
+
+### Extended status axis
+Promote the **full status quartet — info / success / warning / destructive(error)** — into the semantic role set as first-class tokens (not lone `destructive`), each a direct primitive selection.
+
+### Alpha as an orthogonal token shape
+- **Alpha-ramp family:** step ONE base color through fixed OPACITY levels (lighter/light/main/dark/darker) — orthogonal to the lightness ramp. Use for overlays, scrims, hovers, disabled states, where a translucent wash over arbitrary backgrounds beats a solid lightness step.
+- **Translucent-border convention:** in a mode-switched system, define border/divider roles as **foreground-at-low-alpha**, not an opaque neutral step. One alpha-on-ink border reads correctly over any surface shade in either mode — no per-surface opaque border value needed.
+
+### Mode = value column (reaffirmed, now load-bearing)
+Light/dark are two value columns over ONE identical role vocabulary. Values swap; names never do.
+
+---
+
+## Type — register-tunable laws + a third face register
+
+### Third typeface = a REGISTER marker, not just a size
+Beyond display + body/UI, a **monospace face can be reserved exclusively for a micro/status register** (trust bars, stock/status pills, timestamps, counters). The face signals "system/technical/factual metadata." Give the third face a JOB; never let it leak into headings or reading copy. Especially apt for clinical/B2B/technical brands.
+
+### Second valid naming axis
+Role names may be **semantic-ordinal** (H1/H2, Title 1/2, Body 1/2, Caption 1/2, Button) OR **role × t-shirt-size** — both are valid labellings of the same composite-token system. Ordinal maps more directly onto HTML/CMS heading semantics.
+
+### Line-height law — refined
+Inverse-to-size still holds, but the real deciding variable is **layout job**: pin line-height to **1.0 for single-line, vertically-centered roles** (buttons, nav items, chips/pills, inline run-in labels, same-size bold "Title" labels); keep **~1.5 only for flowing body**. At a shared base size, Button/Title/run-in use 1.0 while Body uses 1.5.
+
+### Letter-spacing law — now REGISTER-TUNABLE (previously stated too universally)
+Tracking's sign and magnitude are a **brand-register knob, not a constant.** **Default to 0** for neutral/clinical/technical/B2B brands — including large display. Reserve negative-on-display for editorial/luxury. Never ship a tracking value you can't justify from the register.
+
+### Two independent centralization substrates
+"Has named text styles" and "is variable-bound" are **separate questions.** A file can fully centralize typography via named text styles while binding zero type to variables (reserving variables for color/number). When reverse-engineering, audit BOTH substrates; when building, decide each on purpose — variable-binding is not required for centralization.
+
+---
+
+## Component architecture — three promotions
+
+1. **Function is the PRIMARY organizing spine** (promoted from a naming footnote). Author editor-pages/groups by UI FUNCTION (actions / form elements / text inputs / cards), orthogonal to any feature, screen, or product. Function-first sorting is the structural reason one "teacher" kit stays reusable across unrelated products.
+2. **Family-split ↔ orthogonal-axes is one causal rule.** You split a component into job-scoped siblings PRECISELY so each sibling's remaining axes stay small and orthogonal (size × state, never × shape × role). The test for "split vs add a variant": **split the moment two axes stop being orthogonal.** An icon-only button has no content-type axis; a filter button has no FAB-elevation axis.
+3. **Greybox/wireframe KIT = a legitimate fifth construction method.** A deliberately un-styled, monochrome component library whose entire value is STRUCTURE (slot layout, variant inventory, naming), tokens intentionally neutral for downstream re-skinning. Low aesthetic commitment is the method, not an unfinished system — it ships the ARCHITECTURE decoupled from any look so one structural library can parent several styled systems.
+
+---
+
+## Page composition — four promotions
+
+1. **Convince/convert PURPOSE alternation** (homepage law, distinct from density oscillation). Tag each home band as **product-discovery** (rails, shoppable grids, bestsellers) or **trust/story** (USP ticker, value-props, reviews wall, journal, press) and refuse two same-PURPOSE bands in a row. Weight-oscillation prevents visual fatigue; purpose-alternation prevents the "catalog dump" semantic failure that weight-oscillation can't catch.
+2. **Section order is breakpoint-INVARIANT.** The decision-narrative order IS the content model. Author the desktop frame as canonical; derive mobile ONLY by column-collapse (N→N/2→1) and drawer-izing filters behind a trigger + sticky commit bar. Re-sequencing per breakpoint silently forks the funnel.
+3. **Chrome/body split as the composition substrate.** Every page = **GLOBAL CHROME** (promo bar [opt] + header/nav [req] + footer [req], authored once, template-invariant) + a **per-template BODY STACK.** Deep/transactional pages prepend a **breadcrumb as the first in-body element**; the homepage does not — breadcrumb presence is a portable signal of page depth.
+4. **Grid-narrowing selects a reading register that dictates the closer.** When a band narrows, its interior shifts from grid/media logic to reading logic (constrained measure, centered column, images interleaved BETWEEN paragraphs). Editorial/long-form pages hold the narrow measure for the whole body and close on **lateral navigation** (related/next); commerce pages close on a **cross-sell rail.** Mixing closers (buy-CTA on a story page, dead-end on a product page) is the register error.
+5. **Hero copy lives in the image's NEGATIVE SPACE** — not a scrimmed overlay or a split column. Compose the headline + single CTA into a pre-planned empty region of the image so the hero stays one authored image, a light stage, while still carrying copy.
