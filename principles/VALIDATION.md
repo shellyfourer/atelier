@@ -5,6 +5,13 @@
 > system auditable, and it is updated every time a source is analyzed. The goal is maximum
 > independent confirmation — confirmation is a first-class output, not repetition.
 
+**Corpus v1: 8 Figma sources analyzed** (7 full/delta + 1 re-run after a read-block). Spanning
+formal token library, commerce configurator, shadcn dashboard, warm storefront, app-leaning
+store, brand-dominant storefront, a reproducibility twin, and a high-chroma catalog. The spine,
+method-pluralism, 4 color postures, composite type tokens, atom→organism, and the four
+composition laws are now **load-bearing** (3–5 independent sources each). A void source (invalid
+key) is **confirmation-neutral** — it never moved a tier (see `analysis/PROCESS-NOTES.md`).
+
 ## Confidence tiers
 
 | Tier | Meaning | Rule of thumb |
@@ -24,8 +31,9 @@
 | S05 | App-leaning store (shadcn admin register) | Thin-semantic stacked on ramp; alpha-ramp tokens; greybox method |
 | S06 | Brand-dominant storefront | 4th color posture (brand hue as surface); color-blocking composition; rich page skeletons |
 | S07 | Formal twin of S01 (delta/validation) | Reproduces S01's method; adds the tokenized grid/layout system |
+| S08 | Playful games/party retail (high-chroma catalog) | Category-color enriched ({accent,tint} pairs, scope-theming); four-track page anatomy |
 
-_(Source 06b — games retail — pending analysis.)_
+_(Corpus v1 complete: 8 sources analyzed. Live-site / WordPress sources are future additions.)_
 
 > **S07 is a reproducibility check:** an independent twin of S01 that confirms S01's spine,
 > composite type tokens, Family→Ramp→Step, and component library are reproducible — strong
@@ -62,7 +70,11 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 | Per-step measured WCAG contrast + pass/fail on every swatch | S01, S04 | 🟡 Corroborated |
 | Semantic/alias layer resolves to ramp steps (no loose hexes) | S01, S03, S04, S05 | 🟢 Load-bearing |
 | Anchor step varies per ramp, encoded in the name | S01, S04 | 🟡 Corroborated |
-| Category-color method (taxonomy as palette) — one option, NOT a storefront default | S02 (S06 contra-indicates as default) | 🟠 Provisional |
+| Category-color method (taxonomy as palette) — one option, NOT a storefront default | S02, S08 (S06 contra-indicates as default) | 🟡 Corroborated |
+| Category = paired {accent, tint} tokens (mini-ramp per category) | S08 | 🟠 Provisional |
+| Category accent is scope-based theme channel (chrome=brand, content=category, else fallback) | S08 | 🟠 Provisional |
+| Item-scope accent binding → mixed lists self-theme into a taxonomy legend | S08 | 🟠 Provisional |
+| Register-tuned chroma quarantined to the category layer (ramp/type/chrome constant) | S08 | 🟠 Provisional |
 | **Brand-dominant color posture (D): brand hue as primary full-bleed surface** | S06 | 🟠 Provisional |
 | Color-blocking as composition lever (color-field boundary = section boundary) | S06 | 🟠 Provisional |
 | Dual-ground foreground PAIRS as first-class peers (on-light / on-brand) | S06 | 🟠 Provisional |
@@ -81,8 +93,10 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 ### Typography
 | Principle | Sources | Tier |
 |---|---|---|
-| Composite type token (size+line-height+tracking+weight+spacing bundled) | S01, S03, S04, S05 | 🟢 Load-bearing |
-| Role × size matrix + independent weight axis | S01, S04, S05 | 🟢 Load-bearing |
+| Composite type token (size+line-height+tracking+weight+spacing bundled) | S01, S03, S04, S05, S08 | 🟢 Load-bearing |
+| Role × size matrix + independent weight axis | S01, S04, S05, S08 | 🟢 Load-bearing |
+| Breakpoint-scoped type variant (swap whole composite, not fluid-scale one property) | S04, S05, S08 | 🟢 Load-bearing |
+| Typeface as a 3rd semantic axis (≤3 faces partitioned structure/reading/action) | S02, S08 | 🟡 Corroborated |
 | Line-height inverse to size (tight display, loose body) | S01, S04, S05 | 🟢 Load-bearing |
 | Letter-spacing — register knob, NOT a fixed law (see Revisions log) | S01/S04 (law) → S05 (reframed) | 🟡 Corroborated (reframed) |
 | Single-family vs role-assigned multi-typeface (method choice) | S01/S04 vs S02, S05 | 🟢 Load-bearing |
@@ -116,7 +130,8 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 | Shared base atom reused across composites | S01, S03, S04, S05 | 🟢 Load-bearing |
 | Function is the PRIMARY organizing spine of a component kit | S05 | 🟠 Provisional |
 | Family-split the moment two axes stop being orthogonal | S05 | 🟠 Provisional |
-| Responsive-component discipline (authored per breakpoint) | S04, S05 | 🟡 Corroborated |
+| Responsive-component discipline (authored per breakpoint) | S04, S05, S08 | 🟢 Load-bearing |
+| Breakpoints may own net-new organisms (bottom-sheet, slide-up) — not pure reflow | S03, S08 | 🟡 Corroborated |
 | State-as-enum wired to tokens (focus→ring, invalid→destructive) | S03 | 🟠 Provisional |
 | Greybox/wireframe kit — architecture decoupled from skin (5th method) | S05 | 🟠 Provisional |
 
