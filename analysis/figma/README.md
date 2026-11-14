@@ -28,6 +28,12 @@
 - **Source 07** — [method notes](./source-07-method.md) (delta/validation twin of Source 01):
   reproduces Source 01's method (strong validation) and adds the tokenized grid/layout system
   (breakpoint-first grid, derived containers, per-tier gutters, three padding families).
+- **Source 08** — [method notes](./source-08-method.md) (playful high-chroma catalog):
+  enriches category-color (5th corroborator) — paired {accent,tint} tokens, scope-based theming
+  with brand fallback, item-scope taxonomy legend, register-tuned chroma; four-track page anatomy.
+
+See also [PROCESS-NOTES.md](../PROCESS-NOTES.md) for analysis-integrity rules (how void/blocked
+runs are handled so the validation ledger stays trustworthy).
 
 ## Source 01 — by layer
 

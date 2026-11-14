@@ -89,9 +89,20 @@ For each project, record:
   first grid, derived container widths, per-tier gutters, three independent padding families).
 - **Extraction status:** done (delta pass) → [analysis/figma/source-07-method.md](./analysis/figma/source-07-method.md)
 
+### 8. Source 08 — playful games/party retail (high-chroma catalog)
+- **Source & type:** Figma — a high-chroma, playful catalog storefront, explicit desktop + mobile (anonymized)
+- **Why it's here:** Enriches the **category-color method** (5th corroborating source): paired
+  {accent, tint} category tokens, category as a scope-based theme channel (chrome=brand,
+  content=category, else brand fallback), item-scope binding for taxonomy-legend lists, and
+  register-tuned chroma quarantined to the swappable category layer. Also a four-track page-
+  anatomy catalogue. (Re-run cleanly after a first-run read-block — see PROCESS-NOTES.)
+- **What to distill:** category-color enrichment, scope-theming contract, register chroma dial,
+  four-track page anatomy, checkout-flow family.
+- **Extraction status:** done → [analysis/figma/source-08-method.md](./analysis/figma/source-08-method.md)
+
 ## Shopify
 
-_Figma-stage storefront designs analyzed above (Sources 02, 04, 06). Live-store analysis TBD._
+_Figma-stage storefront designs analyzed above (Sources 02, 04, 06, 08). Live-store analysis TBD._
 
 ## WordPress
 

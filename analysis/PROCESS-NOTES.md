@@ -29,3 +29,20 @@ design principles; they protect the quality of the design principles.
   when adopting a utility palette; in-grid cell interruption; dark-band punctuation) are held as
   **candidates pending a clean re-run**. The file was confirmed readable afterward, so Source 08
   was re-run fresh.
+
+## Ledger rule: a void/halted source is confirmation-neutral
+
+A source that produced zero observations (invalid key, unreadable frames) must not touch the
+VALIDATION ledger — it neither confirms nor weakens any principle. **Confidence tiers move only on
+independent observation.** Record the void for provenance, with zero ledger weight. This governs
+what the *integrator* does with a compliant-but-empty run (distinct from the agent-side rule
+"never restate prior corpus as freshly observed").
+
+## Orchestration: pass concrete values, not lazy `args` indirection
+
+Two Source-08 runs failed because the workflow's `args.fileKey` arrived as the string
+`"undefined"` — `args` did not propagate on those invocations. Every agent correctly halted. Fix
+applied: for a single high-stakes source, hardcode the fileKey/targets in a dedicated script
+rather than relying on `args`. For parameterized runs, validate the key against
+`^[0-9a-zA-Z]{22,128}$` at the orchestrator before fan-out, so one bad input fails fast instead of
+burning N parallel agents.
