@@ -43,10 +43,16 @@ It works two ways, equally:
 The loop, in one glance:
 
 ```
-brief → DECIDE (method/00-decide.md) → design system (tokens → components)
-      → assemble pages (method/page-skeletons.md) → brand book
+brief → DECIDE (method/00-decide.md)
+      → BRAND BOOK ⟵ hard gate: create it, agree it, sign off (brandbook/)
+      → design system (tokens → components) → assemble pages (method/page-skeletons.md)
       → build in Figma (3 breakpoints) → VERIFY (method/anti-slop.md)
 ```
+
+**The brand book is the gate.** If the client has no brand book, the agent creates one — asking
+the client questions first (logo? colors? fonts?), generating what's missing (a wordmark when
+there's no logo), and rendering a **PDF**. Nothing downstream begins until it's signed off. See
+the [`brandbook/`](./brandbook/) skill.
 
 ---
 
@@ -56,6 +62,11 @@ brief → DECIDE (method/00-decide.md) → design system (tokens → components)
 atelier/
 ├── GENERATE.md            # ▶ the runnable brief → full-design playbook (start here)
 ├── SKILL.md               #   the skill's operating contract
+│
+├── brandbook/             # THE GATE — a standalone skill that creates the brand book (PDF)
+│   ├── SKILL.md           #   intake → generate (wordmark if no logo) → PDF → sign-off gate
+│   ├── intake/questions.md#   the client questionnaire (ask before generating)
+│   └── template/          #   HTML/CSS → PDF chassis, page specs, brand-tokens schema
 │
 ├── method/                # THE METHOD — the tool itself (clean, deduped, validation-tagged)
 │   ├── 00-decide.md       #   the decision engine: register, color posture, type, density

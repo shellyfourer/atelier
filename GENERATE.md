@@ -13,6 +13,10 @@
 ## How to read this document
 
 - The procedure is a **numbered loop, Steps 0 → 6**. Work it top to bottom; do not skip ahead.
+- **The brand book is a hard gate (Step 2).** If the client has no brand book, the agent creates
+  one — asking the client questions first — and **nothing downstream (tokens, components, pages)
+  begins until the brand book is agreed and signed off.** Run the `brandbook/` skill. The brand
+  book is the contract everything else implements.
 - **The dependency stack is non-negotiable** (`SKILL.md` → "The dependency stack"): anti-slop
   rules → tokens (color → type → space/grid) → components → pages → (motion, later). Never
   generate a layer before the one beneath it is solid. A page built before its token system
@@ -143,7 +147,37 @@ its *why*, plus the one-bold-move sentence. Tag any provisional-tier principle y
 
 ---
 
-## Step 2 — BUILD THE DESIGN SYSTEM (bottom-up)
+## Step 2 — BRAND BOOK (the gate — run the `brandbook` skill)
+
+**Goal:** produce a complete, signed-off **brand book PDF** before any token, component, or page
+is built. The brand book is the **contract** everything downstream implements. **This is a hard
+gate: do not proceed to Step 3 until the client has signed off.**
+
+Run the **`brandbook/`** skill (`brandbook/SKILL.md`). Its flow:
+
+1. **Ask first** (`brandbook/intake/questions.md`) — never assume. The branching questions:
+   *do you have a logo? colors? fonts?* Collect what exists; identify what's missing.
+2. **Generate what's missing** using the decisions from Step 1 and the method chapters
+   (`method/01-color.md`, `method/02-typography.md`). **No logo → generate a wordmark direction +
+   candidates** (a styled text logo; honest that it's direction to iterate, not a final mark).
+3. **Build the PDF** — fill the `brandbook/template/` chassis (HTML/CSS → PDF, 16:9), set the
+   brand tokens, render per `brandbook/template/render.md`. Pages per `brandbook/template/pages.md`.
+4. **Present → iterate** — show the client, revise. Loop as many times as needed.
+5. **SIGN-OFF** — explicit client agreement. Only now does the gate open.
+6. **Handoff** — emit `system/<project>/brand-tokens.json` (schema:
+   `brandbook/template/brand-tokens.schema.json`) with `signedOff.status: "signed-off"`. Steps 3–6
+   consume this; they must refuse to build if it isn't signed off.
+
+**Why the gate:** building tokens/components/pages before the brand is agreed means reworking them
+when the brand shifts. The one bold move (Step 1.7) and the color/type decisions get *locked with
+the human* here. If the user tries to jump ahead to the website, stop and point back to sign-off.
+
+**Output:** `system/<project>/brandbook.pdf` + `brand-tokens.json` (signed off). The design-system
+build (Step 3) now *implements* an agreed brand, not a guess.
+
+---
+
+## Step 3 — BUILD THE DESIGN SYSTEM (bottom-up)
 
 **Goal:** mint the token system and components so that **everything binds to tokens, never raw
 values**. Build in strict order; the layer order is the dependency stack.
@@ -224,10 +258,10 @@ and the component inventory. Note which tokens/components lean on provisional pr
 
 ---
 
-## Step 3 — ASSEMBLE PAGES (from `method/page-skeletons.md`)
+## Step 4 — ASSEMBLE PAGES (from `method/page-skeletons.md`)
 
 **Goal:** instantiate the page types the brief needs as ordered section stacks, bound to the
-system from Step 2.
+system from Step 3.
 
 **Open:** `method/page-skeletons.md` and `method/05-composition.md`.
 
@@ -269,37 +303,22 @@ and any skeleton deviations with reasons.
 
 ---
 
-## Step 4 — BRAND BOOK
+## Step 4b — EXTEND THE BRAND BOOK with the built system (optional)
 
-**Goal:** produce the human-facing articulation of the system — adoptable from the doc alone.
+The core brand book was produced and signed off at **Step 2** (the gate). Once the design system
+and pages exist, you may *append* system-documentation pages to that same brand book so it doubles
+as a living design-system reference — using the same `brandbook/template/` chassis:
 
-**Open:** `method/01-color.md`, `method/02-typography.md` (for the usage rules), `SKILL.md`
-("What atelier produces" — logo honesty).
+- **Color system** — the posture(s) + two-tier spine (ramps/role set, semantic aliases, mode
+  columns, contrast verdicts), as **explain → show → apply** cards, never a bare value dump.
+- **Type system** — the composite styles on their role × size × weight matrix, the display/body
+  split, the letter-spacing register decision, and responsive composite-swap behavior.
+- **Component + page usage** — the key components and page skeletons as adoptable references.
 
-1. **Color system** — document the posture(s) and the two-tier spine: primitive ramps / role set,
-   semantic aliases, mode columns where they exist, and the contrast verdicts. Use **explain →
-   show → apply** cards (definition + live per-token specimen + "where to use this" note) —
-   never a bare value dump.
+Keep it consistent with the signed brand book; this *extends*, it does not replace. (The logo
+section already lives in the signed book — don't duplicate it.)
 
-2. **Type system** — the composite styles on their role × size × weight matrix, the display/body
-   split, the letter-spacing register decision, line-height logic, and responsive composite-swap
-   behavior. Same explain-show-apply treatment.
-
-3. **Usage rules** — clearspace, do/don't, scarce-signal color rule, the reserved accent's job,
-   the one-bold-move stated as an identity principle so it's protected downstream.
-
-4. **Logo = DIRECTION, not final artwork** (honest framing per `SKILL.md`):
-   - A written **direction** (what the mark should feel like and why, tied to the register).
-   - **Candidate marks** — several explorations, not one.
-   - **Usage rules** — clearspace, min sizes, color-on-ground pairs, misuse don'ts.
-   - An **explicit honest note** in the deliverable: a client-ready final logotype needs human
-     iteration; this is a strong starting direction, not a finished mark. State this plainly — do
-     not oversell.
-
-**Record (brief record §Brand book):** links to the assembled brand-book artifact and the logo
-direction note.
-
-**Output:** a brand book (color + type + usage + logo direction/candidates/usage).
+**Output:** an extended brand book PDF (optional), same path as Step 2.
 
 ---
 
