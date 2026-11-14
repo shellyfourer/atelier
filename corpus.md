@@ -60,6 +60,16 @@ For each project, record:
   capture), warm-register color nuance, page skeletons.
 - **Extraction status:** done → [analysis/figma/source-04-method.md](./analysis/figma/source-04-method.md)
 
+### 5. Source 05 — app-leaning store (shadcn admin register)
+- **Source & type:** Figma — an app-leaning commerce/admin design on a thin-semantic register (anonymized)
+- **Why it's here:** Reframed a core idea — the three color methods are composable **tiers**, not a
+  forced choice (app = thin-semantic stacked on a ramp primitive library). Added alpha-ramp tokens,
+  translucent borders, sub-namespaced roles, status quartet, and the greybox/wireframe method. Also
+  reframed letter-spacing from a law to a register knob (first revision in the ledger).
+- **What to distill:** tiered color model, alpha/translucent token conventions, sub-namespaced
+  thin-semantic roles, greybox method, purpose-alternation composition.
+- **Extraction status:** done → [analysis/figma/source-05-method.md](./analysis/figma/source-05-method.md)
+
 ## Shopify
 
 _Figma-stage storefront designs analyzed above (Sources 02, 04). Live-store analysis TBD._

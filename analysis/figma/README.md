@@ -18,6 +18,9 @@
 - **Source 04** — [method notes](./source-04-method.md) (a Shopify storefront, warm retail):
   second independent confirmation of the ramp + type architecture, plus responsive-component
   discipline, storefront anatomy, and the page-skeleton library seed.
+- **Source 05** — [method notes](./source-05-method.md) (an app-leaning store, shadcn admin register):
+  reframed the color methods as composable TIERS (not either/or); added alpha-ramp tokens,
+  translucent-border convention, sub-namespaced roles, and the greybox/wireframe method.
 
 ## Source 01 — by layer
 
