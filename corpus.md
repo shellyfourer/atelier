@@ -80,6 +80,15 @@ For each project, record:
   foreground pairs, counted-block-collection reuse, named-slot instance-swap, page skeletons.
 - **Extraction status:** done → [analysis/figma/source-06-method.md](./analysis/figma/source-06-method.md)
 
+### 7. Source 07 — formal twin of Source 01 (delta/validation)
+- **Source & type:** Figma — near-identical twin of Source 01's token library (anonymized)
+- **Why it's here:** A **reproducibility check** — independently confirms Source 01's method is
+  real (same spine, composite type tokens, Family→Ramp→Step, component library). Plus one new
+  axis Source 01 didn't expose: a **tokenized grid/layout system**.
+- **What to distill:** validation of the ramp/type/component method; the grid method (breakpoint-
+  first grid, derived container widths, per-tier gutters, three independent padding families).
+- **Extraction status:** done (delta pass) → [analysis/figma/source-07-method.md](./analysis/figma/source-07-method.md)
+
 ## Shopify
 
 _Figma-stage storefront designs analyzed above (Sources 02, 04, 06). Live-store analysis TBD._

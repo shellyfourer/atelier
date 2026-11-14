@@ -25,6 +25,9 @@
   a 4th color posture (brand hue as primary full-bleed surface); color-blocking composition;
   ground-aware foreground pairs; rich page skeletons (two-phase PDP, order confirmation, quiz
   funnel, slide-out templates, terminal-state frames).
+- **Source 07** — [method notes](./source-07-method.md) (delta/validation twin of Source 01):
+  reproduces Source 01's method (strong validation) and adds the tokenized grid/layout system
+  (breakpoint-first grid, derived containers, per-tier gutters, three padding families).
 
 ## Source 01 — by layer
 
