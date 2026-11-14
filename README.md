@@ -42,7 +42,12 @@ atelier/
 ├── SKILL.md         # the skill's operating contract (its brain)
 ├── README.md        # this file
 ├── corpus.md        # inventory of projects distilled from, and why each qualifies
-├── principles/      # the distilled, human-curated anti-slop design principles
+├── principles/      # the distilled, human-curated design knowledge
+│   ├── methodology.md       # bottom-up construction method (color→type→…→composition)
+│   ├── anti-slop.md         # concrete "never do this" ruleset
+│   ├── page-skeletons.md    # canonical section structure per page type (conversion/SEO/structure)
+│   ├── VALIDATION.md        # confidence ledger — how many sources confirm each principle
+│   └── _DECISIONS-NEEDED.md # taste/scope calls kept for collaborative curation
 ├── analysis/        # METHOD notes per source — what each teaches, abstracted
 │   ├── figma/       # how its tokens/type/components/composition are *constructed*
 │   ├── shopify/     # ecommerce composition method + settings-schema patterns
@@ -50,21 +55,27 @@ atelier/
 └── system/          # atelier's own synthesized design-system method
 ```
 
-## Build plan (phased — proof before scale)
+## Build plan (depth over speed — results take time)
 
-- **Phase 0 — Corpus inventory.** Hand-pick a small best-of set (start with strongest Figma
-  files; add standout Shopify / WordPress projects). Recorded in `corpus.md`.
-- **Phase 1 — Distill the foundation.** Extract tokens + composition patterns from the
-  curated set; collaboratively write the principles + anti-slop ruleset into `principles/`.
-  This is where taste gets encoded.
-- **Phase 2 — Encode + prove.** Package Phase 1 as the working skill; test on one fake
-  brief; judge whether output looks intentional or generic; fix principles before scaling.
-- **Phase 3 — Scale.** More projects, Shopify/WP composition patterns, brand-book + logo-
-  direction generation.
-- **Phase 4 — Motion & live logic.** Distill animation/interaction patterns from real live
-  sites and attach motion specs to the component library.
+This is built to be *worth using*, not shipped fast. Every principle is validated across many
+sources; confirmation is a first-class output tracked in `principles/VALIDATION.md`. Variety of
+sources is the goal — different registers, industries, and platforms make the findings stronger.
 
-**Current status:** v0 scaffold. Starting Phase 0.
+- **Phase 0 — Corpus inventory.** Curate a best-of set across registers and platforms. `corpus.md`.
+- **Phase 1 — Distill + validate the foundation (ongoing).** Study each source for METHOD,
+  separating CONFIRMS (strengthens the ledger) from NEW (extends the method). Write principles,
+  anti-slop rules, and page skeletons. Keep going — more sources = stronger validation.
+- **Phase 1b — SEO / AEO / CRO research pass (planned).** Harden `page-skeletons.md` with
+  dedicated research: conversion funnels, semantic HTML, heading hierarchy, structured data
+  (schema.org), and content depth for AI crawlers. Until done, the skeletons' conversion/SEO
+  notes are provisional.
+- **Phase 2 — Encode + prove.** Package the principles as the working skill; generate from a
+  brief; judge intentional vs generic; fix before scaling.
+- **Phase 3 — Scale deliverables.** Brand-book + logo-direction generation; more sources.
+- **Phase 4 — Motion & live logic.** Distill animation/interaction from real live sites.
+
+**Current status:** Phase 1 ongoing — 4 sources integrated, validation ledger live, page-skeleton
+library started. More sources queued; SEO/CRO research pass to follow.
 
 ## Honest limits
 

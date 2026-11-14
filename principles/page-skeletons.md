@@ -1,0 +1,273 @@
+# atelier — page-skeleton library
+
+> The canonical section structure of each common page type: what sections a page SHOULD
+> have, in what order, and why. Each section tagged **[required] / [recommended] / [optional]**.
+> Portable skeletons — structure and rationale, never a brand's specific content.
+>
+> **Scope note:** currently source-extracted (distilled from real store/app designs). A dedicated
+> SEO / AEO / CRO research pass is planned to harden these for conversion, semantic HTML, heading
+> hierarchy, structured data, and AI-crawl depth. Until then, treat conversion/SEO notes as
+> provisional. See the roadmap in README.md.
+
+# Page-Skeleton Library (`principles/page-skeletons.md`)
+
+Cross-source, portable section-stack library for `atelier`. Synthesized from the page-anatomy findings (warm-retail storefront) plus the collective coverage of four sources: a storefront, a product-configurator commerce project, and a dashboard app. These are **portable skeletons** — the ordered sections a page type should contain and in what order — never brand content. Learn the structure, pour your own copy/tokens/imagery in.
+
+## How to read this
+
+- Every page = **GLOBAL CHROME** (authored once, template-invariant) wrapping a per-template **BODY STACK**. Model them separately or you duplicate the wrapper ~12 times.
+- Tags: **[required]** = page is broken/incomplete without it · **[recommended]** = expected by the register, omit only with a reason · **[optional]** = include when content/campaign warrants.
+- **Section order is breakpoint-invariant.** Author the stack at desktop; derive tablet/mobile by *collapsing columns* and *drawer-izing* sidebars/filters — never by re-ordering.
+- Deep/transactional pages (PLP, PDP, Cart, Checkout, Blog article, Account, Auth, Legal) prepend a **breadcrumb** as the first in-body element. Landing/Home does not.
+- The **product-card molecule** (image+badge / category eyebrow / title / price / swatch row) is the shared atom across Home, Collection, cross-sell rails, and Cart. The **cross-sell rail** closes almost every commerce page.
+
+---
+
+## GLOBAL CHROME (wraps every page; author once)
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Announcement / promo bar (optional marquee) | [optional] | Campaign-swappable band for offers, shipping thresholds, urgency; present on most but not all pages. |
+| 2 | Header: brand + **primary category nav** (carets on parents) | [required] | Center/left category links are the page-to-page wayfinding spine. |
+| 3 | Header **utility cluster** (right-pinned): locale/currency → search → offers/promo (badgeable) → account → cart bag | [required] | Transactional/global affordances kept distinct from nav so locale + cart are reachable everywhere; dashboard/B2B headers lack this cluster. |
+| 4 | Mega/category menu (two-pane: descriptor rail + featured-product carousel) | [recommended] | Retail register turns nav hover into discovery; plain link lists waste the surface. |
+| — | **{BODY STACK}** | — | Per-template, defined below. |
+| 5 | Footer: parallel columns (shop categories · store/company links · opening hours · contacts+social) | [required] | Physical-retail taxonomy signals a legitimate operating business. |
+| 6 | Footer: newsletter **discount-capture** band (incentive headline + email + consent microcopy) | [recommended] | Reframes list capture as a conversion offer; consent line bakes in compliance. |
+| 7 | Footer: locale/currency switcher · legal/copyright row · **payment-badge row** | [recommended] | Closes the trust/compliance contract for a storefront. |
+
+> Anti-slop: do not merge primary nav and utility cluster into one undifferentiated menu; do not ship a thin footer of bare links.
+
+---
+
+## 1. Landing / Home
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Full-bleed lifestyle hero, copy set into the image's negative space + primary CTA | [required] | First conversion moment; lifestyle hero (not 50/50 split, not centered) sets the register. |
+| 2 | Trust / USP ticker strip (icon+label chips: rating, shipping threshold, origin, guarantee) | [recommended] | Front-loads credibility above the fold as one scannable band, not scattered. |
+| 3 | Primary product rail, tab-filterable by category | [required] | Core discovery; in-place tabs expose catalog breadth without spawning a section per category. |
+| 4 | Editorial / lookbook rail | [optional] | Calm full-bleed break between dense product bands (density oscillation). |
+| 5 | Value-props / "why us" split (icon list + image) | [recommended] | Story/trust band that interrupts pure catalog rhythm. |
+| 6 | Reviews / social-proof wall | [recommended] | Pooled proof moment; credibility also threads the page elsewhere. |
+| 7 | Featured / bestseller rail | [recommended] | Second discovery band, re-skinned product-card molecule. |
+| 8 | UGC / shoppable "shop-the-look" rail (creator avatar + price tag) | [optional] | Community browsing mode; varies the shoppable-band format. |
+| 9 | Brand-story / journal (blog) rail | [optional] | Editorial warmth; pulls recent articles into the home scroll. |
+| 10 | Press / logo / badge strip | [optional] | External validation. |
+| 11 | Newsletter discount-capture band | [recommended] | Final conversion offer before footer (may live in chrome). |
+
+> Rule: **alternate PRODUCT-DISCOVERY bands with TRUST/STORY bands** so the page never reads as a catalog dump. Oscillate density; break the grid to narrow the column on emotional moments.
+
+---
+
+## 2. Collection / Category (PLP)
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [recommended] | Orients within taxonomy on a deep page. |
+| 2 | Collection header (title + description) | [required] | Names the set and its context. |
+| 3 | Subcategory / child-collection tile rail | [optional] | Drills into taxonomy before committing to the grid. |
+| 4 | Control toolbar: **live result count + sort** | [required] | Irreducible PLP core; count+sort is the contract. |
+| 5 | Left filter sidebar: collapsible groups (category, **color swatch chips**, price range, attributes) + active-filters/clear row | [recommended] | Faceted filtering; swatch facets are retail-specific. |
+| 6 | Responsive product-card grid (tokenized card width → reflow by column count) | [required] | The merchandise itself; grid reflows by changing columns, not card size. |
+| 7 | Pagination OR "viewed X of Y" + load-more progress | [recommended] | Progressive reveal of a long catalog. |
+| 8 | Cross-sell / related rail | [optional] | Recovery path if the collection didn't convert. |
+
+> Mobile rule: filters **collapse behind a "Filter" trigger** and commit via a sticky bottom "Show results" bar — never an always-open sidebar.
+
+---
+
+## 3. Product / PDP
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [recommended] | Taxonomy orientation + back-path. |
+| 2 | Hero row: media gallery (thumbnail strip + main stage, sticky on desktop) **\|** BUYBOX | [required] | Identify-the-product + the conversion panel side by side. |
+| 3 | Aggregate-rating summary (histogram + customer-media gallery) | [recommended] | Deep social proof below the fold. |
+| 4 | Sortable review list | [recommended] | Detailed proof for considered purchases. |
+| 5 | Editorial / content split (story, materials) | [optional] | Re-grounds specs in warmth; imagery interleaves copy. |
+| 6 | FAQ accordion | [optional] | Handles objections inline. |
+| 7 | Benefits / "why this" split | [optional] | Reinforces value before exit. |
+| 8 | Related / cross-sell rail | [recommended] | Standard closing discovery band. |
+
+### BUYBOX micro-skeleton (ordered — do not reorder)
+
+| Order | Element | Tag | Why |
+|---|---|---|---|
+| 1 | Star rating + review count (+ certification badges) | [recommended] | Trust before price (identify→trust→price funnel). |
+| 2 | Title | [required] | Identity anchor. |
+| 3 | Attribute / spec chips | [optional] | Fast at-a-glance facts. |
+| 4 | Short description | [recommended] | One-line value framing. |
+| 5 | Price (+ discount badge; sale emphasized in accent, original struck) | [required] | The decision number. |
+| 6 | Variant selector (color/material swatches) | [required, if variants] | Configure the SKU. |
+| 7 | Option controls (size dropdown / segmented / kit options) | [recommended, if options] | Configurator surface — critical for product-configurator commerce. |
+| 8 | Quantity stepper | [recommended] | Standard commerce control. |
+| 9 | **Primary add-to-cart** + secondary action | [required] | The commit; keep in view (sticky on long PDPs). |
+| 10 | Payment-method badges | [optional] | Reassurance at point of commit. |
+| 11 | Micro trust strip (secure / shipping / returns) | [recommended] | Reassures right after the CTA. |
+| 12 | Collapsible detail accordions (specs/shipping/care) | [recommended] | Deep detail without pushing the CTA below the fold. |
+| 13 | Inline mini cross-sell | [optional] | Attach/accessory prompt in context. |
+
+> Anti-slop: never flatten the buybox to "title + price + button"; never put price above identity or add-to-cart below the fold without a sticky.
+
+---
+
+## 4. Cart (full page)
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [recommended] | Positions within the checkout path. |
+| 2 | Header + incentive bar (free-shipping **progress** + optional urgency/countdown) | [recommended] | Threshold progress is a storefront upsell primitive. |
+| 3 | **Left:** line-item list (image, title, remove, unit price, badge, qty stepper) | [required] | The order being edited. |
+| 4 | **Left:** in-cart cross-sell rail | [optional] | Attach-rate lift while editing. |
+| 5 | **Right:** order-summary panel (collapsible cost breakdown, grand total, note/gift field, **checkout CTA**, payment badges) — sticky-eligible | [required] | Bundles total + CTA + payment proof as one conversion panel. |
+| 6 | **Right:** reassurance block (privacy / SSL / guarantee) | [recommended] | Calms friction at the money step. |
+| 7 | Cross-sell rail | [optional] | Closing discovery band. |
+
+> Note: the slide-out **mini-cart drawer** is a *different* skeleton — header + item count + threshold progress + line items, and its **empty state cross-sells** with a "view all products" escape (never a dead end).
+
+---
+
+## 5. Checkout
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Minimal header (brand + secure badge; nav/utility stripped) | [required] | Remove exits to protect conversion focus. |
+| 2 | Breadcrumb / step indicator (Information → Shipping → Payment → Review) | [recommended] | Sets expectation and progress on a multi-step flow. |
+| 3 | Contact / email field | [required] | Order identity + receipt destination. |
+| 4 | Shipping address form | [required] | Fulfillment destination. |
+| 5 | Delivery / shipping-method selector | [required] | Cost + speed choice. |
+| 6 | Payment method (+ billing address) | [required] | The transaction. |
+| 7 | Order review + place-order CTA | [required] | Final confirm before charge. |
+| 8 | **Right-rail order summary** (line items, breakdown, total, discount-code field) — sticky | [required] | Keeps what's being bought and its total visible throughout. |
+| 9 | Trust / reassurance strip (secure, returns, support) | [recommended] | Reduces last-step abandonment. |
+| 10 | Minimal footer (legal + support links only) | [recommended] | Compliance without exit-tempting navigation. |
+
+> Rule: checkout strips global chrome down to brand + security; the summary rail is non-negotiable and sticky.
+
+---
+
+## 6. About / Story
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [optional] | Light orientation; editorial pages can skip. |
+| 2 | Full-bleed hero image + mission statement | [required] | Emotional entry; narrative not spec-sheet. |
+| 3 | **Zig-zag** alternating image\|text story bands (image/text swap sides each block) | [required] | Imagery is a co-equal narrative column; alternation prevents a stacked list. |
+| 4 | Inline mini-benefit grids within story blocks | [optional] | Grounds narrative in concrete value. |
+| 5 | Values / benefits split (icon list + image) | [recommended] | Consolidates the "why us" before CTA. |
+| 6 | Team / makers band | [optional] | Humanizes the brand. |
+| 7 | Press / credibility strip | [optional] | External validation. |
+| 8 | Lateral CTA (explore collection / journal) — **not a hard buy** | [recommended] | Editorial pages close with discovery, not a conversion button. |
+
+---
+
+## 7. Contact
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [optional] | Light orientation. |
+| 2 | Page heading + short intro | [required] | Names the page and sets expectation. |
+| 3 | Contact form (name, email, subject, message, consent) | [required] | Primary action. |
+| 4 | Direct-contact block (email, phone, address, **opening hours**) | [required] | Physical-retail legitimacy; alternatives to the form. |
+| 5 | Map / location embed | [optional] | For a store with a physical presence. |
+| 6 | Social links | [optional] | Alternate channels. |
+| 7 | Support/FAQ shortcut or deflection links | [optional] | Reduces inbound volume. |
+
+---
+
+## 8. Blog Index
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [optional] | Orientation. |
+| 2 | Index header (title + description) | [required] | Names the journal. |
+| 3 | Featured / hero post | [recommended] | Anchors the page with the lead story. |
+| 4 | Category / tag filter row | [recommended] | Lets readers narrow by topic. |
+| 5 | Responsive post-card grid (image, category eyebrow, title, excerpt, meta) | [required] | The article listing itself. |
+| 6 | Pagination OR load-more | [recommended] | Progressive reveal of the archive. |
+| 7 | Newsletter / subscribe band | [optional] | Converts readers to subscribers. |
+
+---
+
+## 9. Blog Article
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [recommended] | Orientation back to index/category. |
+| 2 | Hero image | [recommended] | Visual entry to the piece. |
+| 3 | Title + meta (author / date / read-time) | [required] | Identity + context. |
+| 4 | Rich-text body at **constrained measure (~768px)**, lifestyle images interleaved between paragraphs | [required] | Readability; interleaved imagery prevents a text wall. |
+| 5 | Tag chips + share row | [recommended] | Topical connection + distribution. |
+| 6 | Author bio block | [optional] | Credibility + voice. |
+| 7 | Prev/next pager | [recommended] | Lateral navigation close (not a buy CTA). |
+| 8 | Related-posts rail | [recommended] | Keeps readers in the journal. |
+
+---
+
+## 10. Account / Dashboard Overview
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [recommended] | Position within account area. |
+| 2 | Page heading + sign-out | [required] | Identity + exit. |
+| 3 | Account nav (sidebar or tabs: orders, details, addresses, payment, wishlist) | [recommended] | Wayfinding across account sub-pages (dashboard-app pattern). |
+| 4 | Summary / at-a-glance cards (recent order, loyalty, store credit) | [recommended] | Dashboard-overview glance layer before detail. |
+| 5 | Recent orders list (status, date, total, re-order/track) | [recommended] | Most common account task surfaced first. |
+| 6 | Stacked **editable info blocks** (contact details, shipping address) with inline edit affordance | [required] | Labeled editable cards are the core dashboard pattern. |
+| 7 | Secondary actions (payment methods, password, preferences) | [optional] | Less-frequent management tasks. |
+
+---
+
+## 11. Pricing
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [optional] | Orientation. |
+| 2 | Heading + value proposition | [required] | Frames what's being priced. |
+| 3 | Billing toggle (monthly/annual) or currency switcher | [recommended] | Primary pricing control. |
+| 4 | **Plan / tier cards** (name, price, feature list, per-plan CTA, highlighted recommended tier) | [required] | The core pricing decision surface. |
+| 5 | Feature comparison table | [recommended] | Side-by-side for considered buyers. |
+| 6 | Trust / logos / testimonials | [recommended] | De-risks the commitment. |
+| 7 | FAQ accordion (billing, cancellation, refunds) | [recommended] | Clears pricing objections. |
+| 8 | Final CTA / contact-sales band | [recommended] | Captures decided and enterprise buyers. |
+
+---
+
+## 12. Auth (Login / Signup)
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [optional] | Light orientation. |
+| 2 | **Centered form \| brand image split** | [required] | Single focused form flanked by a reassurance/brand panel. |
+| 3 | Heading + sub | [required] | Names the action (sign in / create account). |
+| 4 | Social / SSO buttons (if offered) | [optional] | Lower-friction entry. |
+| 5 | Stacked fields (email, password; + name/confirm on signup) | [required] | The credentials. |
+| 6 | Inline options (remember-me, forgot-password) | [recommended] | Standard auth affordances. |
+| 7 | Inline security-reassurance line | [recommended] | Calms data-entry anxiety. |
+| 8 | Primary submit | [required] | The commit. |
+| 9 | Alt-action link (switch login↔register) | [required] | Routes the wrong-mode user without a dead end. |
+
+---
+
+## 13. Legal (Terms / Privacy / Policy)
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Breadcrumb | [recommended] | Orientation on a deep page. |
+| 2 | Title + last-updated date | [required] | Identifies the document and its version. |
+| 3 | Table of contents / anchor nav | [recommended] | Navigates a long single-column document. |
+| 4 | Long-form rich text at **constrained measure**, sectioned headings | [required] | Readable legal body; editorial-measure rule applies. |
+| 5 | Contact / data-request block | [optional] | Compliance follow-up path (e.g. privacy requests). |
+
+---
+
+## Universal rules (apply across the library)
+
+- **Chrome once, body per-template.** Never model a page as one flat list.
+- **Breakpoint-invariant order.** Author at desktop; collapse columns + drawer-ize filters/sidebars for mobile. Never re-order per breakpoint.
+- **Shared product-card molecule** across Home / PLP / cross-sell / Cart; bind card width to a block-size token so grids reflow by column count (never hardcode px).
+- **Cross-sell rail closes almost every commerce page** (PLP, PDP, Cart).
+- **Editorial pages** (About, Blog article, Legal) constrain body to a readable measure and close with **lateral navigation**, not a buy CTA.
+- **Thread social proof** (edge rails, header ratings, inline avatars, badge rows) rather than pooling it all in one section.
+- **Distinguish drawer vs page** variants: mini-cart drawer ≠ cart page; mega-menu ≠ plain nav list.
