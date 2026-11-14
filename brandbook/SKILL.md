@@ -1,23 +1,29 @@
 ---
 name: brandbook
 description: >-
-  Creates a complete, professional brand book (brand guidelines) as a PDF, from
-  intake to signed-off document. Use at the START of any brand/design project:
-  if the client has no brand book, this skill creates one — asking the client
-  questions first (logo? colors? fonts? direction?), generating what's missing
-  (including a wordmark when there's no logo), and producing a 16:9 PDF built
+  Creates a complete, professional brand book (brand guidelines) as a PDF AND
+  generates the project's real design-system foundation, from intake to signed-off
+  document. Use at the START of any brand/design project: if the client has no
+  brand book, this skill creates one — asking the client questions first (logo?
+  colors? fonts? direction?), then RUNNING the atelier method chapters to generate
+  the actual foundation tokens (color posture + semantic roles, the composite
+  type-scale matrix, spacing/radius/elevation/grid), rendering them into a 16:9 PDF
   from a proven agency structure. Nothing else in a project proceeds until the
-  brand book is agreed and signed off. Output: an HTML/CSS → PDF brand book plus
-  the structured brand tokens other tools consume.
+  brand book is agreed and signed off. Output: an HTML/CSS → PDF brand book PLUS
+  brand-tokens.json — the design system the rest of the cycle builds from.
 ---
 
 # brandbook
 
 Creates a real brand book — the kind an agency ships — as a **PDF document**, and treats it as
-the **gate** for everything downstream. A design system, website, or any branded artifact is
-built *from* an agreed brand book. If the client doesn't have one, this skill makes one; and no
-token, component, or page is produced until the client and the agent **agree on the brand book
-and sign it off.**
+the **gate** for everything downstream. **It is also where the design system is born:** the brand
+book RUNS the atelier `method/` chapters to generate the project's actual foundation tokens, and
+`brand-tokens.json` **is** the design system that components, pages, and the production build
+inherit. Get the brand book right and the whole cycle stands on a real foundation; get it wrong
+and everything downstream inherits the error.
+
+If the client doesn't have one, this skill makes it; and no token, component, or page is produced
+until the client and the agent **agree on the brand book and sign it off.**
 
 It is a standalone skill, and it is the first thing `atelier`'s `GENERATE.md` invokes.
 
@@ -79,20 +85,45 @@ styled text logo, not a pictorial mark):
   limits: a client-ready final mark needs human iteration).
 - Once the client picks one, it becomes the book's logo and all logo pages are built around it.
 
-## Step 3 — Generate missing pieces with the atelier method
+## Step 3 — Generate the REAL design system by running the method chapters
 
-Everything generated obeys the atelier method (don't reinvent it):
-- **Color** → `../method/01-color.md` (pick the posture; produce the palette + the swatch
-  values the Brand-colors page needs: HEX always, RGB, and Pantone/CMYK if print is in scope).
-- **Type** → `../method/02-typography.md` + **`template/fonts.md`** (the font-study method + a
-  starter library of proven free pairings by register). Pick real self-hostable faces, map the
-  role hierarchy (Title / Subtitle / Subheading / Body), and **embed them so they render** — see
-  Quality rule 2. Never ship generic fallbacks.
-- **The one bold move** → the brand's signature, surfaced as a dedicated spread (the reference book
-  spends it on "logo elements in typography" — the italic *u* threaded into words).
-- **Photography** → `template/photography.md`. Use client photos if supplied; otherwise source real,
-  mood + color-matched licensed stock for the placement / on-imagery pages. **Never a placeholder
-  block** (Quality rule). Embed the photos and credit the photographer.
+**This is the most important thing the brand book does.** The brand book is not a standalone PDF —
+it is **where the design system is born.** It generates the project's actual foundation tokens, the
+PDF *renders* that system, and `brand-tokens.json` **IS the design system** that the rest of the
+design cycle (components, pages, the production build) consumes. Get this wrong and everything
+downstream inherits the error.
+
+**Run the atelier `method/` chapters as the generation step — the method is the single source of
+truth; the brand book never invents its own parallel logic.** Produce the full foundation:
+
+- **Color** → run **`../method/01-color.md`**. Choose the posture (A tonal-ramp / B category /
+  C thin-semantic / D brand-dominant) per the decision engine, then generate the **two-tier system**:
+  the primitive ramp(s)/palette AND the **semantic role layer** (text/surface/border/accent…), with
+  per-value contrast verified. The Brand-colors page renders the primitives (HEX always, RGB, +
+  Pantone/CMYK if print); the semantic roles go into the tokens for downstream use.
+- **Typography** → run **`../method/02-typography.md`** + **`template/fonts.md`**. Two parts, both
+  required:
+  1. **Font study** — pick real self-hostable faces for the register (never a reflexive default;
+     serif body for editorial). **Embed them so they render** (Quality rule 2).
+  2. **The real type scale** — compute the **composite-token matrix** (role × size × weight) with
+     actual numbers: a base size × a ratio for the size ramp; **line-height as a function of size**
+     (inverse to size, snapped to a 2/4 rhythm grid; 1.0 for single-line roles); **letter-spacing as
+     the register knob** (negative-on-display only for editorial/luxury, else 0); weights per role;
+     **per-breakpoint values** (swap the whole composite, ~one notch down on mobile). The brand book
+     gets a **Type scale page** that shows these specs with live specimens — not just role names.
+     Eyeballing per-page font sizes is a FAIL; the scale is a studied system.
+- **Spacing / sizing / radius / elevation / grid** → run **`../method/03-space-grid.md`**. Generate
+  the 4-based spacing scale + semantic gaps, radius tiers, elevation, and the breakpoint-first grid
+  (container widths, gutters, margins). These may not all get a dedicated brand-book *page*, but they
+  **must be generated into `brand-tokens.json`** — the design-system build needs them.
+- **The one bold move** → the brand's signature (atelier standing policy), surfaced as a dedicated
+  spread.
+- **Photography** → `template/photography.md`. Client photos if supplied; else real, mood +
+  color-matched licensed stock. **Never a placeholder block** (Quality rule). Embed + credit.
+
+**Output of this step = the complete foundation in `brand-tokens.json`** (color primitives +
+semantic roles, the type-scale matrix, spacing/radius/elevation/grid, logo, signature). The PDF
+renders it for human sign-off; the JSON is the machine-readable system the next stage builds from.
 
 ## Quality bar — non-negotiable execution rules
 
@@ -152,6 +183,7 @@ canonical superset and order. See `template/pages.md` for the detailed spec of e
 | 9 | **Main typeface** | required | Primary font, specimen, source |
 | 10 | **Secondary typeface** | recommended | Secondary font, specimen, source |
 | 11 | **Typographic hierarchy** | required | Title / Subtitle / Subheading / Body roles |
+| 11b | **Type scale** | required | The composite-token matrix: each role with real size / line-height / tracking / weight + a live specimen (per `method/02-typography.md`). Not just role names. |
 | 12 | **Typographic hierarchy — color variations** | optional | Hierarchy across grounds |
 | 13 | **The signature move** | recommended | The brand's one bold move, shown |
 | 14 | **The signature move — guidelines** | optional | How to construct/apply it |

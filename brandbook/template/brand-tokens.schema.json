@@ -45,7 +45,7 @@
         "posture": { "type": "string", "enum": ["tonal-ramp", "category-color", "thin-semantic", "brand-dominant"], "description": "the atelier color posture" },
         "roles": {
           "type": "array",
-          "description": "the named brand colors with their values",
+          "description": "PRIMITIVE named brand colors with their values",
           "items": {
             "type": "object",
             "required": ["name", "hex"],
@@ -56,6 +56,19 @@
               "rgb": { "type": "string" },
               "pantone": { "type": "string" },
               "cmyk": { "type": "string" }
+            }
+          }
+        },
+        "semanticRoles": {
+          "type": "array",
+          "description": "The SEMANTIC layer (method/01-color): role tokens that point at primitives. UI binds to these, never raw values. e.g. text-primary -> Ink, surface -> Cream, accent -> Gold, border -> Fern.",
+          "items": {
+            "type": "object",
+            "required": ["token", "primitive"],
+            "properties": {
+              "token": { "type": "string", "description": "semantic name, e.g. text-primary, surface, accent, border, text-on-dark" },
+              "primitive": { "type": "string", "description": "the primitive it resolves to" },
+              "contrast": { "type": "string", "description": "verified contrast ratio + AA/AAA verdict where it carries text" }
             }
           }
         }
@@ -74,17 +87,63 @@
             "secondary": { "type": "object", "properties": { "name": {"type":"string"}, "source": {"type":"string"} } }
           }
         },
+        "scale": {
+          "type": "object",
+          "description": "The type-scale derivation (method/02-typography). The composite matrix below is generated from these.",
+          "properties": {
+            "base": { "type": "string", "description": "base/body size, e.g. 18px" },
+            "ratio": { "type": "string", "description": "modular ratio, e.g. 1.25 (major third)" },
+            "rhythmGrid": { "type": "string", "description": "line-height snap grid, e.g. 4px" },
+            "lineHeightRule": { "type": "string" },
+            "trackingRule": { "type": "string" },
+            "breakpointRule": { "type": "string" }
+          }
+        },
         "roles": {
           "type": "array",
-          "description": "Title / Subtitle / Subheading / Body etc. mapped to face + weight",
+          "description": "The COMPOSITE type-token matrix: each role carries real size / line-height / tracking / weight (+ per-breakpoint). NOT just face+weight.",
           "items": {
             "type": "object",
-            "required": ["role", "face"],
+            "required": ["role", "face", "size", "lineHeight"],
             "properties": {
               "role": { "type": "string" },
               "face": { "type": "string" },
               "weight": { "type": "string" },
-              "case": { "type": "string" }
+              "size": { "type": "string", "description": "e.g. 44px" },
+              "lineHeight": { "type": "string", "description": "e.g. 48px — a function of size, rhythm-snapped" },
+              "tracking": { "type": "string", "description": "e.g. -0.02em — the register knob" },
+              "case": { "type": "string" },
+              "mobile": { "type": "string", "description": "per-breakpoint size/lineHeight, e.g. 36/40" }
+            }
+          }
+        }
+      }
+    },
+    "space": {
+      "type": "object",
+      "description": "Spacing / sizing / radius / elevation (method/03-space-grid). The design-system build needs these even if the brand book doesn't give each a page.",
+      "properties": {
+        "baseUnit": { "type": "string", "description": "e.g. 4px" },
+        "scale": { "type": "array", "items": { "type": "string" }, "description": "the spacing steps, e.g. 4,8,12,16,24,32,48,64" },
+        "radius": { "type": "array", "items": { "type": "object", "properties": { "name": {"type":"string"}, "value": {"type":"string"} } } },
+        "elevation": { "type": "array", "items": { "type": "object", "properties": { "name": {"type":"string"}, "shadow": {"type":"string"} } } }
+      }
+    },
+    "grid": {
+      "type": "object",
+      "description": "Breakpoint-first layout grid (method/03-space-grid). Per tier: container width, columns, gutter, margin.",
+      "properties": {
+        "breakpoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string", "description": "desktop / tablet / mobile" },
+              "container": { "type": "string" },
+              "columns": { "type": "integer" },
+              "gutter": { "type": "string" },
+              "margin": { "type": "string" }
             }
           }
         }

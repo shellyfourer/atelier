@@ -70,8 +70,16 @@ brief needs (see the required/recommended/optional tags in `../SKILL.md`), in th
 
 ## 11. Typographic hierarchy  *[required]*
 - Tinted ground. Two columns: left = the **role list** (Title, Subtitle, Subheading, Body) each
-  labeled with its face + weight; right = a **live specimen** of each role stacked, showing real
-  size relationships and a paragraph of body text.
+  labeled with its face + weight **+ size / line-height / tracking**; right = a **live specimen** of
+  each role stacked, showing real size relationships and a paragraph of body text.
+
+## 11b. Type scale  *[required]*
+- The **actual composite-token matrix** (per `method/02-typography.md`), not just role names. One
+  row per role: left = the spec (face · weight · **size / line-height · tracking**), right = a
+  **live specimen rendered at that exact size**. Covers Display/H1 → Headline → Title → Subtitle →
+  Subheading → Body → Caption → Button → Tagline. The scale is derived from a base × ratio with
+  line-height as a function of size (rhythm-snapped) and tracking as the register knob — a studied
+  system, never eyeballed per-page sizes. This page proves the type foundation the site inherits.
 
 ## 12. Typographic hierarchy — color variations  *[optional]*
 - White ground with color tiles. The same hierarchy specimen repeated across each brand ground
