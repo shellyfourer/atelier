@@ -15,6 +15,9 @@
 - **Source 03** — [method notes](./source-03-method.md) (a data-dense dashboard on shadcn/Tailwind):
   thin-semantic token method (theme-by-mode), data-density UI, app-shell/state/role method. A
   third distinct construction method; bridges toward shadcn/React output.
+- **Source 04** — [method notes](./source-04-method.md) (a Shopify storefront, warm retail):
+  second independent confirmation of the ramp + type architecture, plus responsive-component
+  discipline, storefront anatomy, and the page-skeleton library seed.
 
 ## Source 01 — by layer
 

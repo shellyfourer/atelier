@@ -49,9 +49,20 @@ For each project, record:
   (one parameterized rail, first-class empty/loading/error states, role-driven nav + guards).
 - **Extraction status:** done → [analysis/figma/source-03-method.md](./analysis/figma/source-03-method.md)
 
+### 4. Source 04 — Shopify storefront (warm retail register)
+- **Source & type:** Figma — a full Shopify storefront in a soft/warm retail register (anonymized)
+- **Why it's here:** (a) a **second independent confirmation** of the ramp + composite-type
+  architecture (strong validation), and (b) new method: responsive-component discipline,
+  Shopify storefront anatomy, and the seed of the page-skeleton library. Warm-retail register
+  adds taste range.
+- **What to distill:** responsive-component method (per-breakpoint authoring), storefront
+  anatomy (utility bar, nav, collection grid, PDP, footer taxonomy, payment badges, newsletter
+  capture), warm-register color nuance, page skeletons.
+- **Extraction status:** done → [analysis/figma/source-04-method.md](./analysis/figma/source-04-method.md)
+
 ## Shopify
 
-_none yet_
+_Figma-stage storefront designs analyzed above (Sources 02, 04). Live-store analysis TBD._
 
 ## WordPress
 
