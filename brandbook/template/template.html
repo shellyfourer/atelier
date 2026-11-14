@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brand Guidelines</title>
+<style>
+  /* ============================================================
+     BRAND TOKENS — set these per project from brand-tokens.json.
+     The whole book re-skins from here.
+     THESE ARE NEUTRAL PLACEHOLDERS — replace every value. Do NOT
+     ship the book with this placeholder palette.
+     ============================================================ */
+  :root{
+    --brand-accent:  #5b6cff;   /* accent — eyebrows, highlights (PLACEHOLDER) */
+    --brand-primary: #1a1c22;   /* primary dark / brand ground   (PLACEHOLDER) */
+    --brand-tint:    #eceef4;   /* pale tint — section grounds    (PLACEHOLDER) */
+    --brand-ink:     #1a1c22;   /* text on light                 (PLACEHOLDER) */
+    --brand-on-dark: #f4f5f8;   /* text / logo on dark ground    (PLACEHOLDER) */
+    --brand-mid:     #8a90a6;   /* a mid neutral for swatches/dividers         */
+    --font-display:  "Display Face", system-ui, sans-serif;
+    --font-body:     "Body Face", system-ui, sans-serif;
+    --font-secondary:"Secondary Face", Georgia, serif;
+    --margin: 72px;
+  }
+
+  /* Self-host brand fonts so the PDF embeds them (example):
+  @font-face{ font-family:"Display Face"; src:url("fonts/display.woff2") format("woff2"); font-weight:400 700; }
+  @font-face{ font-family:"Body Face";    src:url("fonts/body.woff2")    format("woff2"); font-weight:400 700; }
+  @font-face{ font-family:"Secondary Face"; src:url("fonts/secondary.woff2") format("woff2"); font-style:italic; }
+  */
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  @page{ size:1280px 720px; margin:0; }
+  html,body{ background:#888; }
+
+  /* Each page is a FLEX COLUMN that fits within the 720px box — renders the
+     same in a browser (continuous scroll) as in print (one page per section).
+     Content flows: header, then a body region that fills remaining height. */
+  .page{
+    position:relative; width:1280px; height:720px; overflow:hidden;
+    background:#fff; color:var(--brand-ink);
+    font-family:var(--font-body); break-after:page; padding:var(--margin);
+    display:flex; flex-direction:column;
+  }
+  .page:last-child{ break-after:auto; }
+
+  /* shared chrome — normal flow header (not absolute) */
+  .chrome{ flex:0 0 auto; margin-bottom:28px; }
+  .eyebrow{ font-family:var(--font-body); font-size:22px; color:var(--brand-accent); line-height:1.1; }
+  .title{ font-family:var(--font-display); font-size:34px; font-weight:500; color:var(--brand-ink); line-height:1.1; margin-top:2px; }
+  .source{ position:absolute; top:var(--margin); right:var(--margin); font-size:18px; border-bottom:2px solid var(--brand-accent); }
+
+  .ground-brand{ background:var(--brand-primary); color:var(--brand-on-dark); }
+  .ground-tint{ background:var(--brand-tint); }
+  .center{ display:flex; align-items:center; justify-content:center; height:100%; }
+  .wm{ font-family:var(--font-display); font-weight:700; }
+
+  /* cover (no chrome; uses absolute foot) */
+  .cover{ justify-content:center; }
+  .cover .wm{ font-size:200px; color:var(--brand-on-dark); line-height:.9; }
+  .cover .cover-title{ position:absolute; left:var(--margin); bottom:150px; font-family:var(--font-display); font-size:60px; color:var(--brand-on-dark); }
+  .cover .cover-foot{ position:absolute; left:var(--margin); right:var(--margin); bottom:var(--margin); display:flex; justify-content:space-between; font-size:20px; color:var(--brand-on-dark); opacity:.9; }
+
+  /* content region — fills remaining height and never overflows the page box */
+  .body{ flex:1 1 auto; min-height:0; overflow:hidden; }
+
+  /* exclusion zone + construction */
+  .clearbox{ outline:2px solid var(--brand-mid); padding:48px; display:inline-block; position:relative; }
+  .xmark{ position:absolute; width:26px; height:26px; border:1px solid var(--brand-ink); }
+  .guideline{ border-top:1px solid var(--brand-ink); position:relative; }
+  .guideline span{ position:absolute; left:-110px; top:-10px; font-size:14px; }
+
+  /* color versions tiles — grid fills body height; tiles flex, no fixed aspect */
+  .versions{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:24px; height:100%; }
+  .vgroup{ display:flex; flex-direction:column; min-height:0; }
+  .vgroup .lbl{ font-size:16px; text-align:center; margin-bottom:8px; flex:0 0 auto; }
+  .vrow{ display:flex; flex:1 1 auto; min-height:0; }
+  .vtile{ flex:1; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:40px; }
+
+  /* brand colors */
+  .swatches{ display:flex; height:100%; }
+  .swatch{ flex:1; position:relative; min-width:0; }
+  .swatch .vals{ position:absolute; left:16px; right:12px; bottom:20px; font-size:15px; line-height:1.5; }
+  .swatch .vals .row{ display:flex; gap:12px; }
+  .swatch .vals .k{ width:58px; opacity:.8; flex:0 0 auto; }
+
+  /* logo icon */
+  .icons{ display:flex; align-items:center; gap:64px; height:100%; }
+  .icon-circle,.icon-sq{ width:280px; height:280px; background:var(--brand-tint); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:54px; color:var(--brand-primary); }
+  .icon-circle{ border-radius:50%; }
+  .icon-sq{ border-radius:56px; }
+  .icon-tiny{ width:70px; height:70px; border-radius:16px; background:var(--brand-tint); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--brand-primary); }
+
+  /* minimum size */
+  .minsize{ display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:12px; }
+  .dimline{ width:180px; border-top:1px solid var(--brand-ink); position:relative; }
+  .dimline::before,.dimline::after{ content:""; position:absolute; top:-5px; width:1px; height:10px; background:var(--brand-ink); }
+  .dimline::before{ left:0; } .dimline::after{ right:0; }
+
+  /* typeface specimen */
+  .specimen{ font-family:var(--font-display); font-size:130px; color:var(--brand-ink); line-height:1; margin-top:20px; }
+  .specimen.secondary{ font-family:var(--font-secondary); font-style:italic; }
+  .spec-para{ display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:40px; font-size:20px; line-height:1.5; }
+
+  /* hierarchy */
+  .hier{ display:grid; grid-template-columns:260px 1fr; gap:48px; padding:48px; height:100%; }
+  .hier .role{ margin-bottom:28px; font-size:16px; } .hier .role b{ display:block; }
+  .h-title{ font-family:var(--font-display); font-size:70px; }
+  .h-sub{ font-family:var(--font-secondary); font-style:italic; font-size:48px; }
+  .h-subhead{ font-family:var(--font-display); letter-spacing:.1em; font-size:22px; }
+  .h-body{ font-size:22px; max-width:520px; margin-top:14px; line-height:1.5; }
+  .hier-colorvar{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; height:100%; }
+  .hcv{ padding:36px; } .hcv h4{ font-family:var(--font-display); font-size:40px; } .hcv p{ font-size:13px; line-height:1.5; margin-top:12px; }
+
+  /* signature move grid */
+  .sig{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:0; height:100%; }
+  .sig div{ display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:64px; }
+
+  /* interactive / UI text elements */
+  .ui{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; height:100%; }
+  .uicol{ padding:32px; } .uicol p{ font-size:14px; line-height:1.5; }
+  .btn{ display:block; text-align:center; padding:14px; margin-top:16px; font-family:var(--font-display); font-size:22px; }
+  .btn.pri{ background:var(--brand-accent); color:#fff; }
+  .btn.sec{ background:var(--brand-primary); color:var(--brand-on-dark); }
+  .btn.ter{ border:1px solid var(--brand-accent); color:var(--brand-accent); }
+
+  /* logo composition / placement blocks — heights relative to body; captions inside */
+  .formats{ display:flex; gap:40px; align-items:flex-end; height:100%; justify-content:center; padding-bottom:30px; }
+  .fmt{ position:relative; background:var(--brand-tint); }
+  .fmt.h{ width:420px; height:62%; } .fmt.sq{ width:260px; height:62%; aspect-ratio:1; } .fmt.v{ width:230px; height:92%; }
+  .fmt .mark{ position:absolute; right:18px; bottom:14px; font-family:var(--font-display); font-weight:700; font-size:28px; color:var(--brand-primary); }
+  .fmt .cap{ position:absolute; left:0; bottom:-26px; font-size:13px; white-space:nowrap; }
+  .photo{ background:var(--brand-mid); display:flex; align-items:flex-end; }
+  .photo .bar{ width:100%; background:var(--brand-primary); color:var(--brand-on-dark); padding:16px; font-family:var(--font-display); font-weight:700; font-size:28px; text-align:right; }
+
+  /* misuse — explicit 2 rows that fit the body height */
+  .misuse{ display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:1fr 1fr; gap:18px; height:100%; }
+  .misuse .cell{ position:relative; border:1px solid #e3e3e3; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:30px; color:var(--brand-primary); overflow:hidden; }
+  .misuse .cell::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top right, transparent 49%, #d33 49.5%, #d33 50.5%, transparent 51%); opacity:.5; }
+  .misuse .cap{ position:absolute; left:8px; bottom:6px; font-size:12px; color:#777; font-weight:400; font-family:var(--font-body); background:rgba(255,255,255,.85); padding:1px 4px; }
+
+  /* co-branding */
+  .cobrand{ display:flex; flex-direction:column; gap:60px; align-items:center; justify-content:center; height:100%; }
+  .lockup{ display:flex; align-items:center; gap:28px; font-family:var(--font-display); font-weight:700; font-size:48px; color:var(--brand-primary); }
+  .lockup .div{ width:2px; height:52px; background:var(--brand-mid); }
+  .partner{ font-weight:500; color:var(--brand-mid); }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="page cover ground-brand">
+  <div class="center"><div class="wm">BRAND</div></div>
+  <div class="cover-title">Brand Guidelines</div>
+  <div class="cover-foot"><span>YYYY / v.1</span><span>Agency / url</span></div>
+</section>
+
+<!-- 2. LOGO -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Logo</div></div>
+  <div class="center"><div class="wm" style="font-size:140px;color:var(--brand-primary)">BRAND</div></div>
+</section>
+
+<!-- 3. EXCLUSION ZONE -->
+<section class="page ground-tint">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Exclusion zone</div></div>
+  <div class="center">
+    <div class="clearbox">
+      <span class="xmark" style="top:-13px;left:-13px"></span>
+      <span class="xmark" style="bottom:-13px;right:-13px"></span>
+      <div class="wm" style="font-size:90px;color:var(--brand-accent)">BRAND</div>
+    </div>
+  </div>
+  <!-- Rule: minimum clear space = X on all sides, where X = <logo-derived unit>. -->
+</section>
+
+<!-- 4. LOGO GUIDELINES / CONSTRUCTION -->
+<section class="page ground-tint">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Logo guidelines</div></div>
+  <div class="body" style="display:flex;align-items:center">
+    <div style="width:100%">
+      <div class="guideline"><span>Cap height</span></div>
+      <div class="wm" style="font-size:120px;color:var(--brand-accent);margin:0 0 0 140px">BRAND</div>
+      <div class="guideline"><span>Baseline</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. COLOR VERSIONS -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Color versions</div></div>
+  <div class="body versions">
+    <div class="vgroup" style="grid-column:1 / span 2"><div class="lbl">Primary versions</div>
+      <div class="vrow">
+        <div class="vtile" style="background:var(--brand-tint);color:var(--brand-primary)">BRAND</div>
+        <div class="vtile" style="background:var(--brand-primary);color:var(--brand-on-dark)">BRAND</div>
+      </div>
+    </div>
+    <div class="vgroup"><div class="lbl">Secondary versions</div>
+      <div class="vrow">
+        <div class="vtile" style="background:var(--brand-accent);color:#fff">BRAND</div>
+        <div class="vtile" style="background:#111;color:var(--brand-on-dark)">BRAND</div>
+      </div>
+    </div>
+    <div class="vgroup"><div class="lbl">Achromatic versions</div>
+      <div class="vrow">
+        <div class="vtile" style="background:#fff;color:#000;border:1px solid #eee">BRAND</div>
+        <div class="vtile" style="background:#000;color:#fff">BRAND</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. BRAND COLORS -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Brand colors</div></div>
+  <div class="body swatches">
+    <div class="swatch" style="background:var(--brand-tint)">
+      <div class="vals"><div class="row"><span class="k">RGB</span><span>— / — / —</span></div><div class="row"><span class="k">#</span><span>——————</span></div><div class="row"><span class="k">Pantone</span><span>— C</span></div><div class="row"><span class="k">CMYK</span><span>— / — / — / —</span></div></div>
+    </div>
+    <div class="swatch" style="background:var(--brand-accent);color:#fff">
+      <div class="vals"><div class="row"><span class="k">RGB</span><span>— / — / —</span></div><div class="row"><span class="k">#</span><span>——————</span></div></div>
+    </div>
+    <div class="swatch" style="background:var(--brand-primary);color:var(--brand-on-dark)">
+      <div class="vals"><div class="row"><span class="k">RGB</span><span>— / — / —</span></div><div class="row"><span class="k">#</span><span>——————</span></div></div>
+    </div>
+    <div class="swatch" style="background:#101216;color:#fff">
+      <div class="vals"><div class="row"><span class="k">RGB</span><span>— / — / —</span></div><div class="row"><span class="k">#</span><span>——————</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. LOGO ICON -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Logo icon</div></div>
+  <div class="body icons">
+    <div class="icon-circle">BR</div>
+    <div class="icon-sq">BR</div>
+    <div class="icon-tiny">BR</div>
+    <div class="icon-tiny">BR</div>
+  </div>
+</section>
+
+<!-- 8. MINIMUM SIZE -->
+<section class="page ground-tint">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Minimum size</div></div>
+  <div class="body minsize">
+    <div class="wm" style="font-size:52px;color:var(--brand-accent)">BRAND</div>
+    <div class="dimline"></div>
+    <div style="font-size:15px">— mm / — px</div>
+  </div>
+</section>
+
+<!-- 9. MAIN TYPEFACE -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Main typeface</div></div>
+  <a class="source">source: foundry-url</a>
+  <div class="body">
+    <div class="specimen">Display Face</div>
+    <div class="spec-para">
+      <div class="wm" style="font-size:36px">A short styled line in the display face.</div>
+      <p>A paragraph of body copy showing the face at reading size — enough text to judge rhythm, color on the page, and legibility across a few lines.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. SECONDARY TYPEFACE -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Secondary typeface</div></div>
+  <a class="source">source: foundry-url</a>
+  <div class="body">
+    <div class="specimen secondary">Secondary</div>
+    <div class="spec-para" style="grid-template-columns:1fr">
+      <p style="font-family:var(--font-secondary);font-style:italic;max-width:640px">A paragraph in the secondary face — typically a contrasting serif or italic used for subtitles, pull-quotes, or editorial accents.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11. TYPOGRAPHIC HIERARCHY -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Typographic hierarchy</div></div>
+  <div class="body hier ground-tint">
+    <div>
+      <div class="role"><b>Title</b>Display · Medium</div>
+      <div class="role"><b>Subtitle</b>Secondary · Italic</div>
+      <div class="role"><b>Subheading</b>Display · ALL CAPS</div>
+      <div class="role"><b>Body</b>Body · Regular / Medium</div>
+    </div>
+    <div>
+      <div class="h-title">Display Face</div>
+      <div class="h-sub">Secondary Italic</div>
+      <div class="h-subhead">SUBHEADING</div>
+      <p class="h-body">Body copy sets the reading voice of the brand. Keep measure comfortable and line-height generous so long passages stay legible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12. TYPOGRAPHIC HIERARCHY — COLOR VARIATIONS -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Typographic hierarchy. Color variations</div></div>
+  <div class="body hier-colorvar">
+    <div class="hcv" style="background:#fff;color:var(--brand-ink)"><h4>Display</h4><p>Harness the hierarchy on a white ground. Body text stays legible.</p></div>
+    <div class="hcv" style="background:var(--brand-tint);color:var(--brand-ink)"><h4>Display</h4><p>The same hierarchy on the pale tint ground.</p></div>
+    <div class="hcv" style="background:var(--brand-accent);color:#fff"><h4>Display</h4><p>On the accent ground, with inverse foreground.</p></div>
+    <div class="hcv" style="background:var(--brand-primary);color:var(--brand-on-dark)"><h4>Display</h4><p>On the dark brand ground, with on-dark foreground.</p></div>
+  </div>
+</section>
+
+<!-- 13. THE SIGNATURE MOVE -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">The signature move</div></div>
+  <div class="body sig">
+    <div style="background:var(--brand-mid);color:#fff">SIGNATURE</div>
+    <div style="background:var(--brand-tint);color:var(--brand-primary)">SIGNATURE</div>
+    <div style="background:var(--brand-accent);color:#fff">SIGNATURE</div>
+    <div style="background:var(--brand-primary);color:var(--brand-on-dark)">SIGNATURE</div>
+  </div>
+  <!-- Replace "SIGNATURE" + treatment with the brand's ONE bold move (atelier standing policy). -->
+</section>
+
+<!-- 14. THE SIGNATURE MOVE — GUIDELINES -->
+<section class="page ground-tint">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">The signature move. Guidelines</div></div>
+  <div class="body" style="display:flex;flex-direction:column;justify-content:space-around">
+    <div><span style="font-size:14px">01 Base ›</span> <span class="wm" style="font-size:54px;color:var(--brand-mid)">SIGNATURE</span></div>
+    <div><span style="font-size:14px">02 The move ›</span> <span class="wm" style="font-size:54px;color:var(--brand-accent)">SIGNATURE</span></div>
+    <div><span style="font-size:14px">03 Result ›</span> <span class="wm" style="font-size:54px;color:var(--brand-primary)">SIGNATURE</span></div>
+  </div>
+</section>
+
+<!-- 15. INTERACTIVE / UI TEXT ELEMENTS (web brands) -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Interactive text elements</div></div>
+  <div class="body ui">
+    <div class="uicol" style="background:#fff"><p>Body text with a <u>link</u> on white.</p><a class="btn pri">Primary</a><a class="btn sec">Secondary</a><a class="btn ter">Tertiary</a></div>
+    <div class="uicol" style="background:var(--brand-tint)"><p>Body text with a <u>link</u> on tint.</p><a class="btn pri">Primary</a><a class="btn sec">Secondary</a><a class="btn ter">Tertiary</a></div>
+    <div class="uicol" style="background:var(--brand-accent);color:#fff"><p>Body text with a <u>link</u> on accent.</p><a class="btn sec">Primary</a><a class="btn pri">Secondary</a><a class="btn ter" style="color:#fff;border-color:#fff">Tertiary</a></div>
+    <div class="uicol" style="background:var(--brand-primary);color:var(--brand-on-dark)"><p>Body text with a <u>link</u> on dark.</p><a class="btn pri">Primary</a><a class="btn ter" style="color:var(--brand-on-dark);border-color:var(--brand-on-dark)">Secondary</a><a class="btn ter" style="color:var(--brand-accent);border-color:var(--brand-accent)">Tertiary</a></div>
+  </div>
+</section>
+
+<!-- 16. LOGO COMPOSITION RULES -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Basic rules for logo composition</div></div>
+  <div class="body formats">
+    <div class="fmt h"><span class="mark">BRAND</span><span class="cap">01 Horizontal ›</span></div>
+    <div class="fmt sq"><span class="mark">BRAND</span><span class="cap">02 Square ›</span></div>
+    <div class="fmt v"><span class="mark">BRAND</span><span class="cap">03 Vertical ›</span></div>
+  </div>
+</section>
+
+<!-- 17. LOGO COMPOSITION — GUIDELINES -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Basic rules for logo composition. Guidelines</div></div>
+  <div class="body formats">
+    <div class="fmt h" style="outline:1px solid var(--brand-mid)"><span class="mark" style="color:var(--brand-accent)">BRAND</span><span class="cap">01 Horizontal ›</span></div>
+    <div class="fmt sq" style="outline:1px solid var(--brand-mid)"><span class="mark" style="color:var(--brand-accent)">BRAND</span><span class="cap">02 Square ›</span></div>
+    <div class="fmt v" style="outline:1px solid var(--brand-mid)"><span class="mark" style="color:var(--brand-accent)">BRAND</span><span class="cap">03 Vertical ›</span></div>
+  </div>
+</section>
+
+<!-- 18. LOGO PLACEMENT (on photography) -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Logo placement</div></div>
+  <div class="body formats">
+    <div class="fmt v photo" style="background:#3a3f4a"><div class="bar"><span style="color:var(--brand-accent)">BRAND</span></div><span class="cap">01 Vertical</span></div>
+    <div class="fmt h photo" style="width:620px;background:#3a3f4a"><div class="bar"><span style="color:var(--brand-accent)">BRAND</span></div><span class="cap">02 Horizontal</span></div>
+  </div>
+  <!-- Replace solid #3a3f4a blocks with real brand photography. -->
+</section>
+
+<!-- 19. LOGO PLACEMENT — GUIDELINES -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Logo placement. Guidelines</div></div>
+  <div class="body formats">
+    <div class="fmt v" style="background:var(--brand-tint)"><span class="mark" style="color:var(--brand-accent)">BRAND</span><span class="cap">01 Vertical — safe-area inset</span></div>
+    <div class="fmt h" style="width:620px;background:var(--brand-tint)"><span class="mark" style="color:var(--brand-accent)">BRAND</span><span class="cap">02 Horizontal — safe-area inset</span></div>
+  </div>
+</section>
+
+<!-- 20. LOGO ON BACKGROUND IMAGE -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Use of the logo on a background image</div></div>
+  <div class="body formats">
+    <div class="fmt v" style="background:#2b2f38;display:flex;align-items:center;justify-content:center"><span class="wm" style="color:var(--brand-on-dark);font-size:30px">BRAND</span><span class="cap">01 Vertical</span></div>
+    <div class="fmt h" style="width:620px;background:#4a4030;display:flex;align-items:center;justify-content:center"><span class="wm" style="color:var(--brand-on-dark);font-size:46px">BRAND</span><span class="cap">02 Horizontal</span></div>
+  </div>
+  <!-- Rule: pick the on-image logo color (tint vs dark) for maximum contrast with the photo. -->
+</section>
+
+<!-- 21. LOGO MISUSE -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Logo misuse</div></div>
+  <div class="body misuse">
+    <div class="cell" style="color:#c33">BRAND<span class="cap">Don't recolor</span></div>
+    <div class="cell"><span style="display:inline-block;transform:scaleX(1.5)">BRAND</span><span class="cap">Don't stretch</span></div>
+    <div class="cell"><span style="display:inline-block;transform:rotate(-12deg)">BRAND</span><span class="cap">Don't rotate</span></div>
+    <div class="cell"><span style="text-shadow:3px 3px 0 #bbb">BRAND</span><span class="cap">Don't add effects</span></div>
+    <div class="cell" style="background:#8a90a6;color:#7d8296">BRAND<span class="cap">Don't low-contrast</span></div>
+    <div class="cell"><span style="letter-spacing:.35em">BRAND</span><span class="cap">Don't respace</span></div>
+    <div class="cell" style="font-family:var(--font-secondary)">BRAND<span class="cap">Don't change font</span></div>
+    <div class="cell"><span style="filter:blur(1.2px)">BRAND</span><span class="cap">Don't distort</span></div>
+  </div>
+</section>
+
+<!-- 22. CO-BRANDING -->
+<section class="page">
+  <div class="chrome"><div class="eyebrow">Brand</div><div class="title">Co-branding</div></div>
+  <div class="body cobrand">
+    <div class="lockup">BRAND <span class="div"></span> <span class="partner">Partner</span></div>
+    <div class="lockup" style="flex-direction:column;gap:14px"><span>BRAND</span><span class="partner" style="font-size:32px">Partner</span></div>
+  </div>
+</section>
+
+</body>
+</html>

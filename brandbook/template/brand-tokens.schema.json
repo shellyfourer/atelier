@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "brand-tokens",
+  "description": "The machine-readable output of the brandbook skill. Produced at sign-off; consumed by the design-system / page build. The PDF is for humans; this is for the next tool.",
+  "type": "object",
+  "required": ["brand", "signedOff", "logo", "colors", "type", "signatureMove"],
+  "additionalProperties": false,
+  "properties": {
+    "brand": {
+      "type": "object",
+      "required": ["name", "register"],
+      "properties": {
+        "name": { "type": "string" },
+        "oneLiner": { "type": "string" },
+        "register": { "type": "string", "description": "the named register (drives the atelier method choices)" },
+        "tone": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "signedOff": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "string", "enum": ["draft", "in-review", "signed-off"] },
+        "approver": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "description": "Downstream tools MUST refuse to build unless status is 'signed-off'."
+    },
+    "logo": {
+      "type": "object",
+      "required": ["source", "primaryPath"],
+      "properties": {
+        "source": { "type": "string", "enum": ["client-supplied", "generated-wordmark"] },
+        "final": { "type": "boolean", "description": "false for a generated wordmark direction" },
+        "primaryPath": { "type": "string" },
+        "variants": { "type": "object", "description": "paths keyed by lockup (on-light, on-dark, on-accent, achromatic, icon)" },
+        "clearspaceUnit": { "type": "string" },
+        "minSize": { "type": "string" }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "required": ["posture", "roles"],
+      "properties": {
+        "posture": { "type": "string", "enum": ["tonal-ramp", "category-color", "thin-semantic", "brand-dominant"], "description": "the atelier color posture" },
+        "roles": {
+          "type": "array",
+          "description": "the named brand colors with their values",
+          "items": {
+            "type": "object",
+            "required": ["name", "hex"],
+            "properties": {
+              "name": { "type": "string" },
+              "role": { "type": "string", "description": "e.g. accent, primary, tint, ink" },
+              "hex": { "type": "string" },
+              "rgb": { "type": "string" },
+              "pantone": { "type": "string" },
+              "cmyk": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "type": {
+      "type": "object",
+      "required": ["strategy", "faces", "roles"],
+      "properties": {
+        "strategy": { "type": "string", "enum": ["single-family", "role-assigned-multi"] },
+        "faces": {
+          "type": "object",
+          "properties": {
+            "display": { "type": "object", "properties": { "name": {"type":"string"}, "source": {"type":"string"} } },
+            "body": { "type": "object", "properties": { "name": {"type":"string"}, "source": {"type":"string"} } },
+            "secondary": { "type": "object", "properties": { "name": {"type":"string"}, "source": {"type":"string"} } }
+          }
+        },
+        "roles": {
+          "type": "array",
+          "description": "Title / Subtitle / Subheading / Body etc. mapped to face + weight",
+          "items": {
+            "type": "object",
+            "required": ["role", "face"],
+            "properties": {
+              "role": { "type": "string" },
+              "face": { "type": "string" },
+              "weight": { "type": "string" },
+              "case": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "signatureMove": {
+      "type": "object",
+      "required": ["description"],
+      "properties": {
+        "description": { "type": "string", "description": "the brand's one deliberate bold move (atelier standing policy)" },
+        "where": { "type": "string", "description": "where it is spent" }
+      }
+    }
+  }
+}
