@@ -10,6 +10,9 @@ tmp/
 scratch/
 *.log
 
+# Workflow orchestration scripts (scratch; may hold source node refs)
+.claude-workflow-*.js
+
 # Large raw asset dumps (keep distilled data in git, not raw exports)
 extraction/**/raw/
 *.fig

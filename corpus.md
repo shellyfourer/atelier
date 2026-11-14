@@ -37,6 +37,18 @@ For each project, record:
   old-and-new-layers-coexist meta-lesson.
 - **Extraction status:** done → [analysis/figma/source-02-method.md](./analysis/figma/source-02-method.md)
 
+### 3. Source 03 — data-dense product dashboard on shadcn/ui + Tailwind
+- **Source & type:** Figma — a real product dashboard built on a shadcn/Tailwind atom system (anonymized)
+- **Why it's here:** A *third*, distinct method — and it covers dimensions the commerce/marketing
+  sources never did: **data-density UI**, **app-shell/state/role-adaptation**, and the
+  **thin-semantic (shadcn/Tailwind) token method** (theme-by-mode on one name). Also the bridge
+  toward emitting real shadcn/React, not just Figma.
+- **What to distill:** thin-semantic token architecture (fg/bg pairs, single radius knob, HSL
+  channel-split rings, state-as-enum, own-the-code atoms), data-density principles (tabular
+  figures, weight-not-size emphasis, hairline dividers over whitespace), app-shell method
+  (one parameterized rail, first-class empty/loading/error states, role-driven nav + guards).
+- **Extraction status:** done → [analysis/figma/source-03-method.md](./analysis/figma/source-03-method.md)
+
 ## Shopify
 
 _none yet_

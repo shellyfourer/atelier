@@ -12,6 +12,9 @@
 - **Source 02** — [method notes](./source-02-method.md) (a lean, pragmatic agency project):
   category-color method, role-assigned multi-typeface, one-accent composition, section padding
   system. Deliberately contrasts Source 01.
+- **Source 03** — [method notes](./source-03-method.md) (a data-dense dashboard on shadcn/Tailwind):
+  thin-semantic token method (theme-by-mode), data-density UI, app-shell/state/role method. A
+  third distinct construction method; bridges toward shadcn/React output.
 
 ## Source 01 — by layer
 
