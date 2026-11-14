@@ -4,22 +4,33 @@ The per-page content + layout contract. Abstracted from a real agency brand book
 rules only, no source brand's specifics. Each page is a 16:9 landscape box. Build the pages the
 brief needs (see the required/recommended/optional tags in `../SKILL.md`), in this order.
 
+**Two rules that override everything on these pages (see `QUALITY.md`):**
+- **Wherever "the logo" appears, use the REAL supplied logo file as an image — never reconstruct,
+  redraw, or recolor it.** If it doesn't contrast with a ground, change the ground or frame it in a
+  light tile; never alter the mark.
+- **Specimens use the REAL embedded fonts** (from the font study, see `fonts.md`) — never fallbacks.
+
 **Shared chrome (every inner page):**
-- Top-left eyebrow: the brand name in the **accent color**, small.
-- Below it: the page title, in the primary heading face, dark/neutral.
-- Generous outer margin (≈ 1 module). One idea per page. No page number required.
-- Spec pages sit on **white**; cover and divider pages may use a **full brand-color ground**.
+- Top-left eyebrow: the brand name in the **accent color**, small, **uppercase and letter-spaced**.
+- Below it (tight stack): the page title, **in the display face**, dark/neutral.
+- **Generous, consistent** outer margin; everything hangs off the same left-margin line.
+- **Confident scale + whitespace** — specimens large, pages breathing. One idea per page.
+- Spec pages sit on the **page ground (white/cream)**; cover and divider pages may use a **full
+  brand-color ground**.
 
 ---
 
 ## 1. Cover  *[required]*
-- Full brand-color ground (the primary dark or brand hue).
-- The **logo/wordmark**, large, centered-ish or upper area, in the on-brand foreground color.
-- "Brand Guidelines" (or "<Brand> Brand Guidelines") as the title.
+- A brand-color ground — but **choose a ground the real logo reads against.** If the logo is a dark
+  mark, do NOT put it on a dark ground where it vanishes; use a light/cream or accent ground (or
+  frame the real logo in a light tile). Never recolor the mark to fix contrast.
+- The **real logo**, large, centered-ish or upper area.
+- "Brand Guidelines" (or "<Brand> Brand Guidelines") as the title, in the display face.
+- Optional: the tagline in the script/accent face, if the brand has one.
 - Footer row: `year / v.N` on the left; author / agency + URL on the right, small.
 
 ## 2. Logo  *[required]*
-- White ground. The primary logo, clean, centered, at comfortable size. Nothing else.
+- Clean ground. **The real primary logo**, centered, at comfortable size. Nothing else.
 
 ## 3. Exclusion zone (clearspace)  *[required]*
 - Tinted ground. Logo centered with a **clearspace box** drawn around it, the margin derived from

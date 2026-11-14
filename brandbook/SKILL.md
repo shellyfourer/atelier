@@ -81,10 +81,52 @@ styled text logo, not a pictorial mark):
 Everything generated obeys the atelier method (don't reinvent it):
 - **Color** → `../method/01-color.md` (pick the posture; produce the palette + the swatch
   values the Brand-colors page needs: HEX always, RGB, and Pantone/CMYK if print is in scope).
-- **Type** → `../method/02-typography.md` (typeface strategy + the role hierarchy the
-  Typographic-hierarchy page needs: Title / Subtitle / Subheading / Body mapped to faces).
+- **Type** → `../method/02-typography.md` + **`template/fonts.md`** (the font-study method + a
+  starter library of proven free pairings by register). Pick real self-hostable faces, map the
+  role hierarchy (Title / Subtitle / Subheading / Body), and **embed them so they render** — see
+  Quality rule 2. Never ship generic fallbacks.
 - **The one bold move** → the brand's signature, surfaced as a dedicated spread (the reference book
   spends it on "logo elements in typography" — the italic *u* threaded into words).
+
+## Quality bar — non-negotiable execution rules
+
+These are hard-won from real runs: a first pass that violated them read as weak/templated; fixing
+them made the output genuinely premium. **Run `template/QUALITY.md` as a pre-ship checklist every
+time.** The load-bearing rules:
+
+1. **Render the client's REAL logo — never reconstruct, redraw, or recolor it.** Place the actual
+   supplied logo file (SVG/PNG) directly, as an image, on every page the logo appears. Do **not**
+   rebuild the mark in HTML/CSS/SVG by hand — it will change letterforms, script, proportions, and
+   that is the exact "don't alter the logo" sin the book itself preaches.
+   - If the logo doesn't contrast with a ground (e.g. a dark logo on a dark cover), **change the
+     ground or frame the logo** (e.g. place it in a light circular tile) — never recolor the mark.
+     A legitimate inverted/mono "color version" is allowed *only* as an explicit, labelled color
+     version, generated from the real asset, never as a silent substitute.
+   - Embed the logo (data URI or local file) so the PDF is self-contained.
+
+2. **Use REAL fonts that actually render — never generic fallbacks, never a reflexive default.**
+   - Do a genuine **font study** for the register (see `template/fonts.md` for the starter library
+     + method). Pick real, self-hostable faces (Fontshare / Google Fonts, OFL/free for commercial).
+   - **EMBED the font files** (`@font-face` with base64 or local woff2/ttf) so they render in the
+     PDF — a system/serif fallback is a fail. Verify the specimen is the actual face, not Georgia.
+   - **Match the face to the register.** For editorial / long-form / warm-premium brands, prefer a
+     **serif reading body** — a UI sans (Inter/Roboto-class) under long essays reads "SaaS
+     dashboard," the opposite of the intended warmth. Reach past the overused defaults.
+   - The chosen faces must be production-real: record the exact `next/font` / `@font-face` setup in
+     `brand-tokens.json` so the same faces drop into the client's site.
+
+3. **Hold the measured layout standard (match the reference book's discipline).**
+   - Chrome: a small **tracked eyebrow** (brand name, accent color, uppercase, letter-spaced) + the
+     page **title in the display face**, tight top-left stack, on a strict left margin line.
+   - **Generous, consistent outer margins**; content/tint panels inset equally; everything hangs
+     off the same grid lines. No drifting insets.
+   - **Confident scale + whitespace.** Typeface specimens are *huge*; spec pages breathe. Timid,
+     cramped pages read as templated. Source URLs top-right on the typeface pages (accent-underlined).
+   - One idea per page.
+
+4. **Verify by rendering, then critically review every page before calling it done.** Render to
+   PDF/image and actually look. "Looks fine in my head" is not verification — the first run passed
+   that bar and was still weak. Check against `template/QUALITY.md`.
 
 ## The page structure (extracted from a reference agency brand book)
 
@@ -133,9 +175,13 @@ ground; spec pages are on white.
 - Each page is an HTML section sized to a 16:9 page box; print CSS gives one page per section.
 - A single stylesheet carries the brand tokens as CSS variables, so the book is *itself* on-brand.
 - Render with a headless-browser print-to-PDF step (see `template/render.md` for the exact
-  pipeline and the page/@media-print setup). Fonts are embedded; images are local.
+  pipeline, the page setup, **font embedding**, and **real-logo embedding**).
+- **Fonts must be embedded** (base64 `@font-face` or local woff2/ttf) and **the real logo embedded**
+  (data URI / local file) so the PDF renders self-contained with the true faces and mark — not
+  fallbacks or a reconstruction. See Quality rules 1–2 and `template/QUALITY.md`.
 - The template is in `template/` — adapt it per project by setting the token variables and
   filling each page's content; don't rebuild the chassis each time.
+- **Then verify by rendering** and run `template/QUALITY.md` before presenting (Quality rule 4).
 
 ## Honest limits
 
