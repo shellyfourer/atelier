@@ -85,6 +85,14 @@ brief needs (see the required/recommended/optional tags in `../SKILL.md`), in th
 - White ground with color tiles. The same hierarchy specimen repeated across each brand ground
   (white, tint, accent, dark) to prove legibility of each role on each surface.
 
+## 12b. Design foundations  *[required]*
+- Renders the **rest of the generated design system** (the part beyond logo/color/type pages), so
+  the brand book visibly *is* the foundation. A two-column page showing: the **semantic color roles**
+  (role → primitive, with contrast/AA notes; "UI binds to roles, never raw hex"), the **spacing
+  cadence** (the 4-base scale as a stepped bar), the **radius** ramp, and the **layout grid**
+  (per-breakpoint column counts + container widths). Editorial, airy — not a dense data table.
+- These values all live in `brand-tokens.json`; this page is the human-readable view of them.
+
 ## 13. The signature move  *[recommended]*
 - The brand's **one bold move**, shown large across a 2×2 or banded grid on different grounds
   (incl. one over a photo). This is the page that makes the brand feel *authored* — e.g. a
