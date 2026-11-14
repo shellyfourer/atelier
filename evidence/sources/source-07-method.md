@@ -18,7 +18,7 @@
 
 Reproducibility across a twin is strong evidence the method is real, not an artifact of one file.
 
-## Grid / layout method (new — see methodology.md §Grid for the integrated version)
+## Grid / layout method (new — see method/03-space-grid.md for the integrated version)
 
 The grid is tokenized, breakpoint-first, and inherits the global spacing cadence. See the
 methodology for the full portable principles; in brief: breakpoint is the top grid axis, each tier

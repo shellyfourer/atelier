@@ -10,7 +10,7 @@ formal token library, commerce configurator, shadcn dashboard, warm storefront, 
 store, brand-dominant storefront, a reproducibility twin, and a high-chroma catalog. The spine,
 method-pluralism, 4 color postures, composite type tokens, atom→organism, and the four
 composition laws are now **load-bearing** (3–5 independent sources each). A void source (invalid
-key) is **confirmation-neutral** — it never moved a tier (see `analysis/PROCESS-NOTES.md`).
+key) is **confirmation-neutral** — it never moved a tier (see `evidence/PROCESS-NOTES.md`).
 
 ## Confidence tiers
 

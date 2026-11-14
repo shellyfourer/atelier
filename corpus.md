@@ -24,7 +24,7 @@ For each project, record:
 - **What to distill:** two-tier primitive/semantic model, Family→Ramp→Step color, composite
   type tokens, 4-based spacing + semantic gaps, component atom→organism architecture, page
   composition rhythm.
-- **Extraction status:** done → analyzed by layer in [analysis/figma/](./analysis/figma/)
+- **Extraction status:** done → analyzed by layer in [evidence/sources/](./evidence/sources/)
 
 ### 2. Source 02 — product-configurator e-shop style guide + components
 - **Source & type:** Figma — lean agency-built real-project system (anonymized)
@@ -35,7 +35,7 @@ For each project, record:
 - **What to distill:** category-color method, multi-typeface-by-role, signature-detail
   discipline (tactile button, pill geometry), section/container padding system,
   old-and-new-layers-coexist meta-lesson.
-- **Extraction status:** done → [analysis/figma/source-02-method.md](./analysis/figma/source-02-method.md)
+- **Extraction status:** done → [evidence/sources/source-02-method.md](./evidence/sources/source-02-method.md)
 
 ### 3. Source 03 — data-dense product dashboard on shadcn/ui + Tailwind
 - **Source & type:** Figma — a real product dashboard built on a shadcn/Tailwind atom system (anonymized)
@@ -47,7 +47,7 @@ For each project, record:
   channel-split rings, state-as-enum, own-the-code atoms), data-density principles (tabular
   figures, weight-not-size emphasis, hairline dividers over whitespace), app-shell method
   (one parameterized rail, first-class empty/loading/error states, role-driven nav + guards).
-- **Extraction status:** done → [analysis/figma/source-03-method.md](./analysis/figma/source-03-method.md)
+- **Extraction status:** done → [evidence/sources/source-03-method.md](./evidence/sources/source-03-method.md)
 
 ### 4. Source 04 — Shopify storefront (warm retail register)
 - **Source & type:** Figma — a full Shopify storefront in a soft/warm retail register (anonymized)
@@ -58,7 +58,7 @@ For each project, record:
 - **What to distill:** responsive-component method (per-breakpoint authoring), storefront
   anatomy (utility bar, nav, collection grid, PDP, footer taxonomy, payment badges, newsletter
   capture), warm-register color nuance, page skeletons.
-- **Extraction status:** done → [analysis/figma/source-04-method.md](./analysis/figma/source-04-method.md)
+- **Extraction status:** done → [evidence/sources/source-04-method.md](./evidence/sources/source-04-method.md)
 
 ### 5. Source 05 — app-leaning store (shadcn admin register)
 - **Source & type:** Figma — an app-leaning commerce/admin design on a thin-semantic register (anonymized)
@@ -68,7 +68,7 @@ For each project, record:
   reframed letter-spacing from a law to a register knob (first revision in the ledger).
 - **What to distill:** tiered color model, alpha/translucent token conventions, sub-namespaced
   thin-semantic roles, greybox method, purpose-alternation composition.
-- **Extraction status:** done → [analysis/figma/source-05-method.md](./analysis/figma/source-05-method.md)
+- **Extraction status:** done → [evidence/sources/source-05-method.md](./evidence/sources/source-05-method.md)
 
 ### 6. Source 06 — brand-dominant storefront
 - **Source & type:** Figma — a storefront whose primary surface is a bold brand hue (anonymized)
@@ -78,7 +78,7 @@ For each project, record:
   PDP, order-confirmation receipt, quiz funnel, slide-out templates, terminal-state frames).
 - **What to distill:** brand-dominant color posture, color-blocking composition, dual-ground
   foreground pairs, counted-block-collection reuse, named-slot instance-swap, page skeletons.
-- **Extraction status:** done → [analysis/figma/source-06-method.md](./analysis/figma/source-06-method.md)
+- **Extraction status:** done → [evidence/sources/source-06-method.md](./evidence/sources/source-06-method.md)
 
 ### 7. Source 07 — formal twin of Source 01 (delta/validation)
 - **Source & type:** Figma — near-identical twin of Source 01's token library (anonymized)
@@ -87,7 +87,7 @@ For each project, record:
   axis Source 01 didn't expose: a **tokenized grid/layout system**.
 - **What to distill:** validation of the ramp/type/component method; the grid method (breakpoint-
   first grid, derived container widths, per-tier gutters, three independent padding families).
-- **Extraction status:** done (delta pass) → [analysis/figma/source-07-method.md](./analysis/figma/source-07-method.md)
+- **Extraction status:** done (delta pass) → [evidence/sources/source-07-method.md](./evidence/sources/source-07-method.md)
 
 ### 8. Source 08 — playful games/party retail (high-chroma catalog)
 - **Source & type:** Figma — a high-chroma, playful catalog storefront, explicit desktop + mobile (anonymized)
@@ -98,7 +98,7 @@ For each project, record:
   anatomy catalogue. (Re-run cleanly after a first-run read-block — see PROCESS-NOTES.)
 - **What to distill:** category-color enrichment, scope-theming contract, register chroma dial,
   four-track page anatomy, checkout-flow family.
-- **Extraction status:** done → [analysis/figma/source-08-method.md](./analysis/figma/source-08-method.md)
+- **Extraction status:** done → [evidence/sources/source-08-method.md](./evidence/sources/source-08-method.md)
 
 ## Shopify
 

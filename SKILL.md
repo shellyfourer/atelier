@@ -22,7 +22,7 @@ generic priors.
 
 Generic AI design is the *average of the internet*. Atelier wins by refusing to average.
 Every output traces to:
-1. A **distilled principle library** (`principles/`) — the explicit, written-down rules of
+1. A **validated method library** (`method/`) — the explicit, written-down rules of
    how good design decisions get made, including an anti-slop ruleset of what to never do.
 2. A **design-system model** (`system/`) — real tokens, type/color systems, composition
    patterns, and component specs distilled from the corpus.
@@ -45,7 +45,7 @@ a new design.
 
 If atelier ever reproduces a source's concrete palette or layout, it has failed exactly the
 way generic AI fails — by copying instead of understanding. This also keeps client work from
-leaking between projects. `analysis/` holds **abstracted method and notes, never a mirror of
+leaking between projects. `evidence/sources/` holds **abstracted method notes, never a mirror of
 the source file.**
 
 ## The dependency stack (build and generate bottom-up)
@@ -72,41 +72,41 @@ token system exists will regress to generic. This ordering is non-negotiable.
   tablet / mobile, using real tokens and components (not hardcoded values).
 - **Specs** — structured notes that can feed downstream builds (WordPress/Shopify/React).
 
-## How atelier is built (the corpus pipeline)
+## How atelier is organized
 
-Atelier is only as good as what it distills from. The corpus is **curated best-of work**,
-not everything — distilling from an entire archive regresses to the mean, which is the exact
-failure mode we are escaping.
+The method is the tool; the sources are its evidence.
 
-- `corpus.md` — inventory of the specific projects distilled from, and why each earned its place.
-- `analysis/figma|shopify|wordpress/` — **method notes** per source: what the source teaches
-  about *how* its system is built, in abstract terms. NOT a dump of the source's values or
-  screens. A few reference screenshots are allowed for our own study; concrete tokens/layouts
-  are not copied here.
-  - **Figma** is highest fidelity: real variables/tokens, components, variants, grids,
-    auto-layout rules (via Figma MCP: `get_variable_defs`, `get_design_context`,
-    `get_metadata`, `get_screenshot`).
-  - **Shopify** gives ecommerce composition + theme-settings schemas (design decisions
-    exposed as settings) + live screenshots.
-  - **WordPress/Elementor** gives layout trees (`_elementor_data`) + live screenshots;
-    noisiest, extract carefully.
-- `principles/` — the distilled human-curated rules. This is written collaboratively with
-  the user and is where their taste gets encoded. **Curation is required**, not optional.
-- `system/` — the generated design-system model built up from the principles + extraction.
+- **`GENERATE.md`** — the runnable brief→full-design playbook. **Start every project here.**
+- **`method/`** — the consolidated, validation-tagged method (the tool itself):
+  `00-decide.md` (the decision engine) → `01-color` · `02-typography` · `03-space-grid` ·
+  `04-components` · `05-composition` → `anti-slop.md` (verify checklist) ·
+  `page-skeletons.md` (section stacks per page type).
+- **`evidence/`** — why the method is trustworthy: `VALIDATION.md` (confidence ledger:
+  principle → confirming sources → tier), `sources/` (per-source method notes, anonymized),
+  `PROCESS-NOTES.md` (analysis-integrity rules).
+- **`decisions/open-questions.md`** — per-project taste/scope calls kept for human curation.
+- **`corpus.md`** — inventory of the curated best-of sources distilled from.
+- **`system/`** — per-project generated output.
 
-## Generation procedure (once the foundation exists)
+The corpus is **curated best-of work**, not everything — distilling from an entire archive
+regresses to the mean, the exact failure mode atelier escapes. Sources are **teachers, not
+templates** (see the rule above): method only, never a mirror of any source's values or screens.
 
-1. **Intake the brief** → industry, direction, brand inputs, color/reference material,
-   target breakpoints, deliverables wanted.
-2. **Derive the system** → from `principles/` + brief, produce the token set, type/color
-   systems, and the component selection. Record in `system/`.
-3. **Check against the anti-slop ruleset** before building anything. If the direction is
-   drifting toward generic, fix it here, cheaply, before it's in pixels.
-4. **Build in Figma bottom-up** → tokens/variables first, then components with variants,
-   then assemble pages section by section, all breakpoints, bound to variables (never
-   hardcoded values). Use the Figma MCP write path (load `figma-use` first).
-5. **Produce the brand book** → color/type systems, usage rules, logo direction + candidates.
-6. **Verify** → every frame traces to tokens + principles; present candidates, iterate.
+## Generation procedure
+
+Follow **[`GENERATE.md`](./GENERATE.md)** — the full runnable playbook. In brief:
+
+1. **Intake the brief** → industry, register/direction, brand inputs, references, breakpoints,
+   deliverables.
+2. **Decide** (`method/00-decide.md`) → name the register; run "what does color DO?" to pick the
+   color posture(s)/tiers; pick the type strategy and density; choose the **one bold move**.
+3. **Build the system bottom-up** → tokens color→type→space/grid (the `method/` chapters), then
+   components. Bind to tokens, never raw values.
+4. **Assemble pages** (`method/page-skeletons.md`) → instantiate the section stacks; apply the
+   container contract; keep section order breakpoint-invariant.
+5. **Brand book** → color/type systems, usage rules, logo direction + candidates.
+6. **Verify** (`method/anti-slop.md`) → every frame traces to tokens + a validated principle,
+   and the one bold move is nameable. If you can't name it, it's not finished.
 
 ## Honest limits (state these; do not oversell)
 
@@ -120,5 +120,7 @@ failure mode we are escaping.
 
 ## Status
 
-v0 — scaffold. Phase 0 (corpus inventory) and Phase 1 (principle distillation) in progress.
-See `README.md` for the phased build plan and current state.
+**Method v1.** Corpus v1 complete (8 Figma sources); the method is consolidated into `method/`
+and validated in `evidence/VALIDATION.md` (core principles load-bearing across 3–5 sources). Next:
+an SEO/CRO research pass to harden the page skeletons, then end-to-end generation tests. See
+`README.md` for the map and `GENERATE.md` for the runnable playbook.

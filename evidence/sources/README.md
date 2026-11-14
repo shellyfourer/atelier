@@ -1,4 +1,4 @@
-# Analysis — method notes from Figma sources
+# Analysis — method notes from Figma sources (evidence/provenance)
 
 > Abstracted construction method learned from each source. **Teacher, not template** — method
 > only, no copied values/fonts/layouts. Diversity across sources is the goal: each new source

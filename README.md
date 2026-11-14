@@ -1,84 +1,106 @@
 # atelier
 
-A Claude skill that generates **intentional, non-generic frontend design** — brand books,
-design systems, and full Figma designs — from a distilled corpus of real work.
+**A tool for making web development high-quality and easier — by designing from validated
+method instead of generic defaults.**
 
-Most AI design looks the same because models design from the *average of the internet*.
-Atelier refuses to average: every output traces back to a curated corpus of strong real
-work and an explicit, written-down design decision framework (including an anti-slop
-ruleset). The result is design that looks *intentional*, not templated.
+Most AI-generated (and a lot of human-generated) web design looks the same because it's built
+from the *average of the internet*. atelier refuses to average. It takes a brief and produces
+**intentional, non-generic design** — a brand book, a design system, and full Figma pages across
+breakpoints — by following a method distilled from real, strong work and **validated across many
+independent sources**.
 
-**Source projects are teachers, not templates.** Atelier studies real work to learn *how good
-design systems are built* — then discards the specifics. It never copies a source's palette,
-fonts, or layouts into a new design. It learns method; it produces a system. (See the
-teacher/template rule in `SKILL.md`.)
+It works two ways, equally:
 
-## What it produces
+- **As a Claude skill** — an agent runs `atelier` to go from *"build me a store for X"* to a
+  complete design system + pages, following [`GENERATE.md`](./GENERATE.md).
+- **As a human handbook** — your team reads the [`method/`](./method/) chapters and
+  [`page-skeletons`](./method/page-skeletons.md) as a design-system playbook and quality checklist
+  while building by hand.
 
-- **Brand book** — color system, type system, usage rules; logo *direction + candidates*
-  (not one-shot final artwork).
-- **Design system** — tokens, type/color systems, component specs with variants and states.
-- **Full Figma designs** — assembled from the system, across desktop / tablet / mobile.
-- **Build-ready specs** — structured notes that can feed WordPress / Shopify / React builds.
+---
 
-See [`SKILL.md`](./SKILL.md) for the full operating contract.
+## What makes it different
 
-## How it works: the dependency stack
+1. **Method, not templates.** atelier learns *how* good design systems are constructed and
+   discards the specifics. It never reproduces a source's palette, fonts, or layouts. It carries
+   recipes, not dishes. (See the teacher/template rule in [`SKILL.md`](./SKILL.md).)
+2. **Validated, not asserted.** Every principle carries a confidence tier based on how many
+   independent sources confirm it — see the ledger in [`evidence/VALIDATION.md`](./evidence/VALIDATION.md).
+   Load-bearing principles are confirmed by 3–5 sources; provisional ones are flagged honestly.
+3. **One deliberate bold move, always.** A design with no point of view is slop no matter how
+   clean its tokens are. atelier mandates exactly one signature risk per project — its core
+   anti-slop guarantee.
+4. **Conversion- and structure-aware pages.** The [page-skeleton library](./method/page-skeletons.md)
+   encodes what sections each page type should have, in what order, and why — built toward
+   converting, well-structured, SEO-sound first drafts.
 
-Built and generated **bottom-up** — never a layer before the one beneath it is solid:
+---
+
+## How to use it
+
+**Start here:** [`GENERATE.md`](./GENERATE.md) — the runnable brief→full-design playbook.
+
+The loop, in one glance:
 
 ```
-  Motion / interaction / live logic   ← later phase
-  Full page designs (Figma)
-  Components + variants + states
-  Design system: tokens + brand
-  The anti-slop principle library     ← the foundation, the moat
+brief → DECIDE (method/00-decide.md) → design system (tokens → components)
+      → assemble pages (method/page-skeletons.md) → brand book
+      → build in Figma (3 breakpoints) → VERIFY (method/anti-slop.md)
 ```
 
-## Repository layout
+---
+
+## Repository map
 
 ```
 atelier/
-├── SKILL.md         # the skill's operating contract (its brain)
-├── README.md        # this file
-├── corpus.md        # inventory of projects distilled from, and why each qualifies
-├── principles/      # the distilled, human-curated design knowledge
-│   ├── methodology.md       # bottom-up construction method (color→type→…→composition)
-│   ├── anti-slop.md         # concrete "never do this" ruleset
-│   ├── page-skeletons.md    # canonical section structure per page type (conversion/SEO/structure)
-│   ├── VALIDATION.md        # confidence ledger — how many sources confirm each principle
-│   └── _DECISIONS-NEEDED.md # taste/scope calls kept for collaborative curation
-├── analysis/        # METHOD notes per source — what each teaches, abstracted
-│   ├── figma/       # how its tokens/type/components/composition are *constructed*
-│   ├── shopify/     # ecommerce composition method + settings-schema patterns
-│   └── wordpress/   # layout-system method from Elementor builds
-└── system/          # atelier's own synthesized design-system method
+├── GENERATE.md            # ▶ the runnable brief → full-design playbook (start here)
+├── SKILL.md               #   the skill's operating contract
+│
+├── method/                # THE METHOD — the tool itself (clean, deduped, validation-tagged)
+│   ├── 00-decide.md       #   the decision engine: register, color posture, type, density
+│   ├── 01-color.md        #   four color postures (A/B/C/D) + the two-tier spine
+│   ├── 02-typography.md    #   composite type tokens, role×size, typeface strategy
+│   ├── 03-space-grid.md    #   spacing/radius/elevation + the tokenized grid system
+│   ├── 04-components.md     #   atom→organism, states, app-shell, data-density
+│   ├── 05-composition.md    #   band chassis, density oscillation, the composition laws
+│   ├── anti-slop.md         #   the never-do-this ruleset (run as a verify checklist)
+│   └── page-skeletons.md    #   canonical section stacks per page type
+│
+├── evidence/               # THE PROOF — why the method is trustworthy
+│   ├── VALIDATION.md        #   confidence ledger (principle → confirming sources → tier)
+│   ├── sources/             #   per-source method notes (anonymized provenance)
+│   └── PROCESS-NOTES.md     #   analysis-integrity rules (how void runs are handled)
+│
+├── decisions/
+│   └── open-questions.md    #   per-project taste/scope calls kept for human curation
+│
+├── corpus.md               #   inventory of the sources distilled from
+└── system/                 #   per-project generated output lives here
 ```
 
-## Build plan (depth over speed — results take time)
+**Reading order:** `GENERATE.md` to use it → `method/00-decide.md` for how choices are made →
+the topic chapters for depth → `evidence/VALIDATION.md` to see how strongly each claim is backed.
 
-This is built to be *worth using*, not shipped fast. Every principle is validated across many
-sources; confirmation is a first-class output tracked in `principles/VALIDATION.md`. Variety of
-sources is the goal — different registers, industries, and platforms make the findings stronger.
+---
 
-- **Phase 0 — Corpus inventory.** Curate a best-of set across registers and platforms. `corpus.md`.
-- **Phase 1 — Distill + validate the foundation (ongoing).** Study each source for METHOD,
-  separating CONFIRMS (strengthens the ledger) from NEW (extends the method). Write principles,
-  anti-slop rules, and page skeletons. Keep going — more sources = stronger validation.
-- **Phase 1b — SEO / AEO / CRO research pass (planned).** Harden `page-skeletons.md` with
-  dedicated research: conversion funnels, semantic HTML, heading hierarchy, structured data
-  (schema.org), and content depth for AI crawlers. Until done, the skeletons' conversion/SEO
-  notes are provisional.
-- **Phase 2 — Encode + prove.** Package the principles as the working skill; generate from a
-  brief; judge intentional vs generic; fix before scaling.
-- **Phase 3 — Scale deliverables.** Brand-book + logo-direction generation; more sources.
-- **Phase 4 — Motion & live logic.** Distill animation/interaction from real live sites.
+## Status
 
-**Current status:** Phase 1 ongoing — 4 sources integrated, validation ledger live, page-skeleton
-library started. More sources queued; SEO/CRO research pass to follow.
+**Corpus v1 complete — 8 Figma sources** spanning a formal token library, a commerce
+configurator, a shadcn dashboard, a warm storefront, an app-leaning store, a brand-dominant
+storefront, a reproducibility twin, and a high-chroma catalog. The spine, method pluralism, four
+color postures, composite type tokens, atom→organism, the grid system, and the four composition
+laws are **load-bearing** (3–5 independent sources each).
+
+**Next:** a dedicated SEO/AEO/CRO research pass to harden the page skeletons for conversion,
+semantic HTML, structured data, and AI-crawl depth; then end-to-end generation tests.
 
 ## Honest limits
 
-- Logos: AI's weakest link — direction + candidates, not final artwork.
-- "One-shot" = strong first draft, not zero-edit final.
-- Output quality is capped by corpus quality — distill from the best work only.
+- **Logos** are AI's weakest link — atelier delivers direction + candidates + usage rules, not a
+  final logotype.
+- **"One-shot" means a strong first draft**, not a zero-edit final. Promising zero-edit full
+  designs is how you ship confident slop.
+- **Motion / interaction** is a later phase, layered onto the component system.
+- **Output quality is capped by the brief** — how well the register and direction are named up
+  front determines how non-generic the result can be.

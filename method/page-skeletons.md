@@ -9,7 +9,7 @@
 > hierarchy, structured data, and AI-crawl depth. Until then, treat conversion/SEO notes as
 > provisional. See the roadmap in README.md.
 
-# Page-Skeleton Library (`principles/page-skeletons.md`)
+# Page-Skeleton Library (`method/page-skeletons.md`)
 
 Cross-source, portable section-stack library for `atelier`. Synthesized from the page-anatomy findings (warm-retail storefront) plus the collective coverage of four sources: a storefront, a product-configurator commerce project, and a dashboard app. These are **portable skeletons** — the ordered sections a page type should contain and in what order — never brand content. Learn the structure, pour your own copy/tokens/imagery in.
 

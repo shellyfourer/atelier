@@ -9,7 +9,7 @@ Concrete things to never do. Deduped across all layers.
 ### Rule 0 — the one that overrides all others
 
 **A design with no point of view is slop, no matter how clean its tokens are.** Every project
-must make exactly one deliberate bold move (see Standing Policy in `methodology.md`). Zero bold
+must make exactly one deliberate bold move (see Standing Policy in `method/00-decide.md`). Zero bold
 moves = templated and safe = slop. If you cannot name the one bold move in a finished design,
 it is not finished.
 
