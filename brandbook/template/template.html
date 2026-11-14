@@ -46,11 +46,12 @@ html,body{background:#9a9a96;}
 .body{flex:1 1 auto;min-height:0;display:flex;margin-top:44px;}
 .center{align-items:center;justify-content:center;}
 
-/* cover — light ground, real logo, display title */
-.cover{padding:0;align-items:stretch;}
-.cover .inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;}
-.cover .ct{position:absolute;left:var(--m);bottom:150px;font-family:var(--display);font-size:60px;font-weight:500;color:var(--primary);letter-spacing:-.02em;}
-.cover .cs{position:absolute;left:var(--m);bottom:118px;font-family:var(--body);font-size:22px;color:var(--secondary);} /* OPTIONAL tagline — plain by default; use --script only if the brand has a script face */
+/* cover — single left-aligned editorial column: logo → title → tagline, all on the same
+   left-margin line; footer pinned to the bottom edge. One axis, not two. */
+.cover{justify-content:flex-start;}
+.cover .logo-ph{width:220px;height:220px;}
+.cover .ct{font-family:var(--display);font-size:62px;font-weight:500;color:var(--primary);letter-spacing:-.02em;line-height:1.0;margin-top:64px;}
+.cover .cs{font-family:var(--body);font-size:22px;color:var(--secondary);margin-top:18px;} /* OPTIONAL tagline — plain by default; use --script only if the brand has a script face */
 .cover .cf{position:absolute;left:var(--m);right:var(--m);bottom:var(--m);display:flex;justify-content:space-between;font-size:16px;color:var(--secondary);}
 
 /* logo placeholder — SHAPE-NEUTRAL tile. Replace each with the real logo <img> (see comment at top). */
@@ -63,7 +64,7 @@ html,body{background:#9a9a96;}
 /* color versions */
 .versions{flex-direction:column;gap:22px;width:100%;}
 .vrow{display:flex;gap:22px;flex:1;min-height:0;}
-.vcell{flex:1;position:relative;display:flex;align-items:center;justify-content:center;}
+.vcell{flex:1;position:relative;display:flex;align-items:center;justify-content:center;border:1px solid rgba(107,107,112,.14);}
 .vcell img{width:62%;height:62%;object-fit:contain;}
 .vcell .logo-ph{width:52%;height:52%;}
 .vlbl{position:absolute;top:14px;left:16px;font-size:13px;color:var(--secondary);letter-spacing:.12em;text-transform:uppercase;}
@@ -184,12 +185,10 @@ html,body{background:#9a9a96;}
 
 <!-- 1. COVER -->
 <section class="page cover">
-  <div class="inner">
-    <div class="logo-ph" style="width:280px;height:280px">LOGO</div>
-    <div class="ct">Brand Guidelines</div>
-    <div class="cs">Optional tagline</div>
-    <div class="cf"><span>2026 — v.1</span><span>Brand</span></div>
-  </div>
+  <div class="logo-ph">LOGO</div>
+  <div class="ct">Brand Guidelines</div>
+  <div class="cs">Optional tagline</div>
+  <div class="cf"><span>2026 — v.1</span><span>Brand</span></div>
 </section>
 
 <!-- 2. LOGO -->
