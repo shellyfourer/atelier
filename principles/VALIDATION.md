@@ -22,8 +22,9 @@
 | S03 | Product dashboard (shadcn/Tailwind) | Thin-semantic tokens, data-density, app-shell |
 | S04 | Shopify storefront (warm retail) | Tonal-ramp (warm), responsive-component, storefront anatomy |
 | S05 | App-leaning store (shadcn admin register) | Thin-semantic stacked on ramp; alpha-ramp tokens; greybox method |
+| S06 | Brand-dominant storefront | 4th color posture (brand hue as surface); color-blocking composition; rich page skeletons |
 
-_(Sources B/C/06 pending analysis — ledger will grow as each lands.)_
+_(Sources C/06b pending analysis — ledger will grow as each lands.)_
 
 ### Revisions log
 Principles that a later source downgraded, upgraded, or reframed (not just confirmed):
@@ -39,7 +40,9 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 ### Spine (cross-layer)
 | Principle | Sources | Tier |
 |---|---|---|
-| Two hard tiers: primitive (value) → semantic (intent); components bind to semantic only | S01, S03, S04 | 🟢 Load-bearing |
+| Two hard tiers: primitive (value) → semantic (intent); components bind to semantic only | S01, S03, S04, S05, S06 | 🟢 Load-bearing |
+| Method pluralism — color posture is register-selected (4 postures now evidenced) | S01⟂S02⟂S03⟂S06 | 🟢 Load-bearing |
+| Color is a scarce signal — ration saturated hue (holds on neutral AND high-chroma grounds) | S02, S06 | 🟡 Corroborated |
 | One mental model / naming grammar across all token domains | S01, S04 | 🟡 Corroborated |
 | Name by intent at semantic tier, by value at primitive tier | S01, S03, S04 | 🟢 Load-bearing |
 | Document to teach (explain → show → apply) | S01, S04 | 🟡 Corroborated |
@@ -54,7 +57,11 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 | Per-step measured WCAG contrast + pass/fail on every swatch | S01, S04 | 🟡 Corroborated |
 | Semantic/alias layer resolves to ramp steps (no loose hexes) | S01, S03, S04, S05 | 🟢 Load-bearing |
 | Anchor step varies per ramp, encoded in the name | S01, S04 | 🟡 Corroborated |
-| Category-color method (taxonomy as palette) | S02 | 🟠 Provisional |
+| Category-color method (taxonomy as palette) — one option, NOT a storefront default | S02 (S06 contra-indicates as default) | 🟠 Provisional |
+| **Brand-dominant color posture (D): brand hue as primary full-bleed surface** | S06 | 🟠 Provisional |
+| Color-blocking as composition lever (color-field boundary = section boundary) | S06 | 🟠 Provisional |
+| Dual-ground foreground PAIRS as first-class peers (on-light / on-brand) | S06 | 🟠 Provisional |
+| Accent chosen for chromatic distance FROM the brand hue (high-chroma register) | S06 | 🟠 Provisional |
 | Thin-semantic token method (theme-by-mode on one name) | S03, S05 | 🟡 Corroborated |
 | Foreground/background pairing (on-solid certified) | S03, S04, S05 | 🟢 Load-bearing |
 | Warm register: drift dark end warm, surfaces from 25/50 steps | S04 | 🟠 Provisional |
@@ -101,10 +108,14 @@ Principles that a later source downgraded, upgraded, or reframed (not just confi
 ### Page composition
 | Principle | Sources | Tier |
 |---|---|---|
-| Density oscillation (alternate tall/dense with short/calm bands) | S01, S04, S05 | 🟢 Load-bearing |
-| Grid-break-as-narrowing (break grid by narrowing, not widening) | S01, S04, S05 | 🟢 Load-bearing |
-| Threaded social proof (distribute, don't clump) | S01, S04, S05 | 🟢 Load-bearing |
-| Repeating section-header grammar | S01, S04, S05 | 🟢 Load-bearing |
+| Density oscillation (alternate tall/dense with short/calm bands) | S01, S04, S05, S06 | 🟢 Load-bearing |
+| Grid-break-as-narrowing (break grid by narrowing, not widening) | S01, S04, S05, S06 | 🟢 Load-bearing |
+| Threaded social proof (distribute; rides the reserved accent in colorful registers) | S01, S04, S05, S06 | 🟢 Load-bearing |
+| Repeating section-header grammar (standardized Section-Header organism) | S01, S04, S05, S06 | 🟢 Load-bearing |
+| Surface-weight as a 2nd density axis (never stack two saturated full-bleed bands) | S06 | 🟠 Provisional |
+| Parameterized app-shell from a view×role access matrix (not N sidebars) | S06 | 🟠 Provisional |
+| Two altitudes of reuse: atomic library + named COUNTED block collections | S06 | 🟠 Provisional |
+| Named SLOTS filled by instance-swap (avoid container variant explosion) | S06 | 🟠 Provisional |
 | Decision-ordered section sequence; hero-as-stage; flip-the-split | S01, S04, S05 | 🟢 Load-bearing |
 | Data-density composition (weight-not-size, tabular figures) | S03 | 🟠 Provisional |
 | Convince/convert PURPOSE alternation (distinct from density oscillation) | S05 | 🟠 Provisional |
