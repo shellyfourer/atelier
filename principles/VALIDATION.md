@@ -21,8 +21,16 @@
 | S02 | Lean commerce configurator | Category-color, multi-typeface, pragmatic |
 | S03 | Product dashboard (shadcn/Tailwind) | Thin-semantic tokens, data-density, app-shell |
 | S04 | Shopify storefront (warm retail) | Tonal-ramp (warm), responsive-component, storefront anatomy |
+| S05 | App-leaning store (shadcn admin register) | Thin-semantic stacked on ramp; alpha-ramp tokens; greybox method |
 
-_(Sources A/B/C/06 pending analysis — ledger will grow as each lands.)_
+_(Sources B/C/06 pending analysis — ledger will grow as each lands.)_
+
+### Revisions log
+Principles that a later source downgraded, upgraded, or reframed (not just confirmed):
+- **Letter-spacing on display** — *reframed* by S05 from a law ("strongly negative on large display")
+  to a **register knob**: default 0 for neutral/technical brands; negative only for editorial/luxury.
+- **Color methods (A/B/C)** — *reframed* by S05 from a mutually-exclusive **choice** to composable
+  **tiers**: an app register stacks thin-semantic (C) on top of a ramp primitive library (A).
 
 ---
 
@@ -44,20 +52,30 @@ _(Sources A/B/C/06 pending analysis — ledger will grow as each lands.)_
 | One fixed step ladder shared across all ramps (e.g. 25…950) | S01, S04 | 🟡 Corroborated |
 | Multiple named sibling ramps per family (not one ramp per hue) | S01, S04 | 🟡 Corroborated |
 | Per-step measured WCAG contrast + pass/fail on every swatch | S01, S04 | 🟡 Corroborated |
-| Semantic/alias layer resolves to ramp steps (no loose hexes) | S01, S03, S04 | 🟢 Load-bearing |
+| Semantic/alias layer resolves to ramp steps (no loose hexes) | S01, S03, S04, S05 | 🟢 Load-bearing |
 | Anchor step varies per ramp, encoded in the name | S01, S04 | 🟡 Corroborated |
 | Category-color method (taxonomy as palette) | S02 | 🟠 Provisional |
-| Thin-semantic token method (theme-by-mode on one name) | S03 | 🟠 Provisional |
-| Foreground/background pairing (on-solid certified) | S03, S04 | 🟡 Corroborated |
+| Thin-semantic token method (theme-by-mode on one name) | S03, S05 | 🟡 Corroborated |
+| Foreground/background pairing (on-solid certified) | S03, S04, S05 | 🟢 Load-bearing |
 | Warm register: drift dark end warm, surfaces from 25/50 steps | S04 | 🟠 Provisional |
+| **Color methods are composable TIERS, not either/or (app = C-on-A)** | S05 | 🟠 Provisional |
+| Tier encoded in token name (library prefix vs bare role) | S05 | 🟠 Provisional |
+| Thin layer scales by bounded SUB-namespaces (chart, sidebar) not a flat list | S05 | 🟠 Provisional |
+| Full status quartet (info/success/warning/destructive) as roles | S05 | 🟠 Provisional |
+| Alpha-ramp token family (one base × opacity), orthogonal to lightness | S05 | 🟠 Provisional |
+| Translucent border = foreground-at-low-alpha (survives any surface/mode) | S05 | 🟠 Provisional |
+| Adopt-don't-author primitives in app register (craft → semantic tier) | S05 | 🟠 Provisional |
 
 ### Typography
 | Principle | Sources | Tier |
 |---|---|---|
-| Composite type token (size+line-height+tracking+weight+spacing bundled) | S01, S03, S04 | 🟢 Load-bearing |
-| Role × size matrix + independent weight axis | S01, S04 | 🟡 Corroborated |
-| Optical laws as functions (tracking ∝ size; line-height inverse) | S01, S04 | 🟡 Corroborated |
-| Single-family vs role-assigned multi-typeface (method choice) | S01/S04 vs S02 | 🟡 Corroborated |
+| Composite type token (size+line-height+tracking+weight+spacing bundled) | S01, S03, S04, S05 | 🟢 Load-bearing |
+| Role × size matrix + independent weight axis | S01, S04, S05 | 🟢 Load-bearing |
+| Line-height inverse to size (tight display, loose body) | S01, S04, S05 | 🟢 Load-bearing |
+| Letter-spacing — register knob, NOT a fixed law (see Revisions log) | S01/S04 (law) → S05 (reframed) | 🟡 Corroborated (reframed) |
+| Single-family vs role-assigned multi-typeface (method choice) | S01/S04 vs S02, S05 | 🟢 Load-bearing |
+| Semantic-ordinal role naming (H1/H2, Title 1/2…) as valid second axis label | S05 | 🟠 Provisional |
+| Line-height 1.0 for single-line centered roles (buttons/nav/chips) | S05 | 🟠 Provisional |
 
 ### Space / Radius / Elevation
 | Principle | Sources | Tier |
@@ -71,20 +89,27 @@ _(Sources A/B/C/06 pending analysis — ledger will grow as each lands.)_
 ### Components
 | Principle | Sources | Tier |
 |---|---|---|
-| Atom → molecule → organism decomposition | S01, S03 | 🟡 Corroborated |
-| States as variant axes, not separate components | S01, S03 | 🟡 Corroborated |
-| Shared base atom reused across composites | S01, S03, S04 | 🟢 Load-bearing |
-| Responsive-component discipline (authored per breakpoint) | S04 | 🟠 Provisional |
+| Atom → molecule → organism decomposition | S01, S03, S05 | 🟢 Load-bearing |
+| States as variant axes, not separate components | S01, S03, S05 | 🟢 Load-bearing |
+| Shared base atom reused across composites | S01, S03, S04, S05 | 🟢 Load-bearing |
+| Function is the PRIMARY organizing spine of a component kit | S05 | 🟠 Provisional |
+| Family-split the moment two axes stop being orthogonal | S05 | 🟠 Provisional |
+| Responsive-component discipline (authored per breakpoint) | S04, S05 | 🟡 Corroborated |
 | State-as-enum wired to tokens (focus→ring, invalid→destructive) | S03 | 🟠 Provisional |
+| Greybox/wireframe kit — architecture decoupled from skin (5th method) | S05 | 🟠 Provisional |
 
 ### Page composition
 | Principle | Sources | Tier |
 |---|---|---|
-| Density oscillation (alternate tall/dense with short/calm bands) | S01, S04 | 🟡 Corroborated |
-| Grid-break-as-narrowing (break grid by narrowing, not widening) | S01, S04 | 🟡 Corroborated |
-| Threaded social proof (distribute, don't clump) | S01, S04 | 🟡 Corroborated |
-| Repeating section-header grammar | S01, S04 | 🟡 Corroborated |
+| Density oscillation (alternate tall/dense with short/calm bands) | S01, S04, S05 | 🟢 Load-bearing |
+| Grid-break-as-narrowing (break grid by narrowing, not widening) | S01, S04, S05 | 🟢 Load-bearing |
+| Threaded social proof (distribute, don't clump) | S01, S04, S05 | 🟢 Load-bearing |
+| Repeating section-header grammar | S01, S04, S05 | 🟢 Load-bearing |
+| Decision-ordered section sequence; hero-as-stage; flip-the-split | S01, S04, S05 | 🟢 Load-bearing |
 | Data-density composition (weight-not-size, tabular figures) | S03 | 🟠 Provisional |
+| Convince/convert PURPOSE alternation (distinct from density oscillation) | S05 | 🟠 Provisional |
+| Section order is breakpoint-invariant (reflow by column-collapse only) | S05 | 🟠 Provisional |
+| Hero copy composed into image negative space (not scrimmed overlay) | S05 | 🟠 Provisional |
 
 ---
 
