@@ -315,3 +315,129 @@ Rules specific to this refinement:
 - The body stays in the **reading register** throughout — no switch to grid/merchandising logic mid-page; the only grid-break is a *narrowing*, never a widening.
 - **Close on lateral navigation, never a buy-CTA and never a dead-end.** The cross-sell / buy-CTA closer is reserved for commerce pages (PDP/collection); an editorial page that ends on "add to cart" or on nothing is the register error.
 - Section headers and prose are both capped to the narrow measure even though the band is full-width.
+
+
+---
+
+## Additions from Source 06
+
+# Page-Skeleton Additions
+
+Only page types this source **adds** or **materially refines** vs the standard catalogue. Standard pages (home, collection, PDP-basic, cart, checkout, about, contact, blog index/article, account, pricing, auth, legal) are omitted unless the refinement is load-bearing. All skeletons are breakpoint-invariant in order (author desktop → reflow by column-collapse + drawer-izing); every section opens with the standardized **Section-Header organism** {eyebrow [opt] / heading [req] / support line [opt] / trailing action [opt]}.
+
+---
+
+## PDP — two-phase: Decision Band → Evidence Narrative (REFINES standard PDP)
+Replaces the bare "gallery + buybox + tabs" model with a conversion-ordered long page.
+
+**Phase 1 — Decision band (2-col):**
+1. Sticky gallery column `[required]` — pinned media while buybox stays in view.
+2. Buybox column `[required]` — price / variants / primary CTA, in this order.
+3. Conversion-ribbon inside buybox `[recommended]` — 3–4 icon+title trust props; repeats the hero trust band at decision point.
+4. Accordion (details/shipping/ingredients) `[recommended]` — defers depth without pushing CTA below fold.
+
+**Phase 2 — Evidence narrative (full-width stack, each section independently optional + reorderable):**
+5. Science / mechanism explainer `[recommended]` — justifies the claim before asking for commitment.
+6. Before/after or proof demonstration `[recommended]` — shows the result, not just describes it.
+7. How-to-use / onboarding `[recommended]` — handles the "will I use it right" objection.
+8. Social proof — reviews + aggregate rating `[recommended]` — threaded proof concentrated at decision depth.
+9. FAQ `[optional]` — final objection handling.
+10. Cross-sell / related `[recommended]` — next step once convinced.
+
+*Why:* the evidence narrative is the conversion engine; model it as an ordered desire→justify→objection→next-step arc, not collapsed into tabs. Buybox is the only required organism.
+
+---
+
+## Order Confirmation — post-purchase receipt (ADDS; split out from checkout)
+A separate template, **not** "checkout minus the form."
+
+1. Success headline `[required]` — confirms the transaction completed.
+2. Customer / shipping info recap (left col) `[required]` — reassurance the details are correct.
+3. Primary "continue/home" + secondary "download invoice" actions `[required]` — clear next step + record-keeping.
+4. Support block `[recommended]` — pre-empts "something's wrong" anxiety.
+5. Order summary + money math (right col) `[required]` — item recap + totals.
+6. Loyalty / points-earned callout `[recommended]` — distinct post-purchase reward slot that drives return visits.
+
+*Why:* confirmation has its own required slots (headline, recap, loyalty callout, support) that a generic catalogue wrongly folds into checkout.
+
+---
+
+## Cart — transaction skeleton with incentive mechanics (REFINES standard cart)
+2-col: left editable line-items | right sticky summary.
+
+1. Editable line-items (left) `[required]`.
+2. Free-shipping / gift **stepper** — progress-to-threshold bar `[recommended]` — turns "add more" into a visible goal (e.g. tier-1 free ship, tier-2 gift).
+3. Bought-together cross-sell carousel (above summary) `[optional]`.
+4. Sticky order-summary + money math (right) `[required]`.
+5. Discount-code block with suggested-coupon tiles `[recommended]` — surfaces available offers instead of hiding behind a blank field.
+6. Primary checkout CTA `[required]`.
+
+*Why:* the stepper and coupon tiles are concrete reusable incentive mechanics worth cataloguing as named cart sub-sections.
+
+---
+
+## Guided Quiz Funnel — page-type family (ADDS; `[optional]`, but full skeleton when present)
+
+**A. Start / intro:**
+1. Value-prop headline + what-you'll-get `[required]`.
+2. Start CTA + time/length reassurance `[recommended]`.
+
+**B. Question step (repeated frame; two layouts):**
+1. Progress indicator `[recommended]` — orients the user in the funnel.
+2. Single question `[required]`.
+3. Answer field — **option-card** layout OR **tag/chip multi-select** layout `[required]` — enumerate both as sibling variants.
+4. Advance / back controls `[required]`.
+
+**C. Recommendations / personalized results (its own reusable personalized-merch skeleton):**
+1. Diagnostic headline `[required]` — "here's what we found" reflects the inputs back.
+2. Recommended-product set `[required]` — the personalized payload.
+3. Comparison / "why these" `[recommended]` — justifies the recommendation.
+4. Social proof — press logos + customer count `[recommended]`.
+5. UGC grid `[optional]`.
+
+*Why:* quiz→result is not in a standard storefront catalogue; the result page is a distinct personalized-merchandising template.
+
+---
+
+## Self-Service Return / RMA — 3 terminal-state frames (ADDS; `[optional]`)
+Model each outcome as its **own named frame**, never one page with runtime conditionals.
+
+- **Enabled (eligible / input):** header `[req]` → eligibility/intro `[req]` → return form (order ref, items, reason) `[req]` → submit `[req]`.
+- **Disabled (ineligible / window closed):** header `[req]` → explanation of why ineligible `[req]` → alternative action / support link `[recommended]`.
+- **Success (submitted):** header `[req]` → confirmation headline `[req]` → next-steps / tracking `[recommended]` → return-home action `[req]`.
+
+*Why:* extends the "draw every terminal state as a canonical frame" discipline to transactional non-commerce pages.
+
+---
+
+## Slide-Out / Overlay — first-class template family (ADDS)
+Cart drawer, search, product-finder/attribute-filter — each a full artifact, not a loose page state. Shared skeleton:
+
+1. Header — title + close `[required]`.
+2. Scrollable body `[required]` — the overlay's content stack (line-items, results, or facet groups).
+3. Pinned footer action `[required]` — the one commit CTA stays reachable without scrolling.
+
+*Why:* overlays deserve the same {header / body / pinned-action} anatomy discipline as full pages; author at all 3 breakpoints.
+
+---
+
+## Shared "content tail" (REFINES Blog index + Article)
+A reusable tail spanning both content page types:
+- Email-capture / newsletter band `[recommended]`.
+- Related-items grid `[recommended]`.
+
+Blog index adds a **featured/lead post** `[recommended]` above the card grid; Article adds **breadcrumb → title/hero → body → tag chips → author box** before the shared tail.
+
+*Why:* the capture band + related grid recur across content pages as one portable slot pattern.
+
+---
+
+## Cross-cutting composition rules (apply to ALL skeletons above)
+
+- **Conversion-ribbon** (3–4 equal-width icon+title+subtitle trust props, one line each) is a canonical `[recommended]` thin band directly under the hero and inside the PDP buybox.
+- **Section-Header organism** opens every content section; toggle unused slots via hidden flags — never delete-and-redraw, never leave a section headerless.
+- **Density oscillation on two axes** in expressive/high-chroma registers: alternate tall/short **and** light-surface/saturated-surface bands. Never place two full-bleed saturated bands back-to-back; intersperse a light/neutral band for recovery.
+- **Grid-break = narrowing** to a centered readable measure for editorial/quote/capture moments — never a full-bleed widening of text. In a high-contrast register the break may be doubly marked by inverting the surface behind the narrowed column; the narrowing (not the color) is still the load-bearing act.
+- **Threaded proof** distributes ratings/badges/counts/quotes across depths (in cards, a proof band, standalone strips) AND, in a high-chroma register, binds them to the single reserved accent so "saturated" reliably reads as "credible/commit." Don't spend that accent on decoration.
+- **One token ramp** drives every gap/padding/width even when the palette is loud; variety comes from surface color + content, not ad-hoc pixels.
+- **Breakpoint-invariant order:** author desktop as canonical; derive mobile by column-collapse + drawer-izing only — never re-order sections per breakpoint.

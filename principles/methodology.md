@@ -66,9 +66,17 @@ These two calls are resolved at the skill level, not per project:
   -foreground`, `muted`, `accent`, `destructive`, `border`, `ring`…), theme-switched by **mode
   on the same names** (light/dark are value columns, not new palettes). See the Source 03
   additions at the end of this doc for the full method.
-- All three obey the spine: a semantic tier names roles; nothing in UI binds a raw value.
+- **(D) Brand-dominant** — for brand-led storefronts where a single strong identity (not a
+  product taxonomy, not neutral app chrome) is the organizing idea. One saturated **brand hue is
+  the primary surface**, deployed as large full-bleed color blocks; color-field switching *is*
+  the section rhythm. Tiny palette: brand-hue + near-black + paper-white + ONE accent chosen for
+  chromatic distance from the brand hue. Semantic tier authors ground-aware foreground **pairs**
+  (on-light / on-brand) as first-class peers. See Source 06 additions at the end of this doc.
+- **Methods are composable TIERS, not a forced single choice** (per Source 05): e.g. an app
+  stacks (C) on top of an (A) primitive ramp library. Pick posture(s) by register. All obey the
+  spine: a semantic tier names roles; nothing in UI binds a raw value.
 
-The rest of this section details method (A); methods (B) and (C) are detailed in their sections.
+The rest of this section details method (A); methods (B), (C), (D) are detailed in their sections/additions.
 
 **Primitive ramps.** Organize as **Family → Ramp → Step**, three namespace levels. A family groups perceptually-adjacent ramps; allow **multiple ramps per hue family** (a warm variant, a muted variant, a tinted variant) rather than forcing one compromise ramp per hue.
 
@@ -484,3 +492,52 @@ Tracking's sign and magnitude are a **brand-register knob, not a constant.** **D
 3. **Chrome/body split as the composition substrate.** Every page = **GLOBAL CHROME** (promo bar [opt] + header/nav [req] + footer [req], authored once, template-invariant) + a **per-template BODY STACK.** Deep/transactional pages prepend a **breadcrumb as the first in-body element**; the homepage does not — breadcrumb presence is a portable signal of page depth.
 4. **Grid-narrowing selects a reading register that dictates the closer.** When a band narrows, its interior shifts from grid/media logic to reading logic (constrained measure, centered column, images interleaved BETWEEN paragraphs). Editorial/long-form pages hold the narrow measure for the whole body and close on **lateral navigation** (related/next); commerce pages close on a **cross-sell rail.** Mixing closers (buy-CTA on a story page, dead-end on a product page) is the register error.
 5. **Hero copy lives in the image's NEGATIVE SPACE** — not a scrimmed overlay or a split column. Compose the headline + single CTA into a pre-planned empty region of the image so the hero stays one authored image, a light stage, while still carrying copy.
+
+
+---
+
+# Additions from Source 06 (brand-dominant register)
+
+> Headline: a 4th color posture (D) brand-dominant — one saturated brand hue as the primary full-bleed surface; color-field boundary = section boundary; ground-aware foreground pairs as first-class peers.
+
+## Color method — the BRAND-DOMINANT register (D)
+
+Add a fourth, register-defining color posture alongside (A) tonal-ramp, (B) category-color, (C) thin-semantic:
+
+**(D) BRAND-DOMINANT.** One saturated brand hue is the *primary surface*, deployed as large full-bleed color BLOCKS, not as a thin ribbon of trim. Choose this register when a single strong brand identity — not a product taxonomy, not neutral app chrome — is the organizing idea.
+
+- **Tiny palette, by design:** brand-hue + near-black (photographic/product panels) + paper-white (content) + ONE high-contrast accent (action). Adding more chroma collapses the hierarchy that makes the single accent read as "action."
+- **Color-blocking = section rhythm:** the color-field boundary IS the section boundary. In this register color method and page-composition method FUSE; alternating fields do the dividing/whitespace work.
+- **Dual-ground foreground PAIRS are first-class:** author ground-aware semantic pairs (text-on-light / text-on-brand, accent-on-light / accent-on-brand) up front. The on-dark/on-brand column is a peer of the on-light column, not a `-on-solid` edge suffix, because inverse fields cover ~half the page.
+- **Accent chosen for chromatic distance:** when the field is itself an intense hue, the action color must be near-complementary / high-contrast to ESCAPE the field. Selection rule shifts from "the lone saturated thing" (neutral ground) to "separation from the brand hue."
+
+The two-tier primitive→semantic spine and "color is a scarce signal" hold unchanged — only the *spending* of hue changes (dominant structure vs trim).
+
+## Page composition — surface-weight as a second oscillation axis
+
+In an expressive/high-chroma register, density oscillation runs on TWO axes, not one:
+- the familiar **height** rhythm (tall info band ↔ short calm band), AND
+- a **surface-weight** rhythm (light/neutral surface ↔ saturated/inverted surface).
+
+A full-bleed saturated (or near-black) band reads as heavy *even when short*. Rule: **never place two full-saturation full-bleed bands back-to-back** — intersperse a light/neutral band for recovery, exactly as you never stack two tall bands.
+
+Two register-specific amplifiers (not replacements of the core moves):
+- **Proof rides the reserved accent** — in a colorful page, threaded proof must be color-coded to the single reserved accent so "saturated = credible/commit" still reads; distribution across depths alone is insufficient.
+- **Grid-break-narrowing may be doubly marked by surface inversion** — a dark/saturated full-bleed behind the narrowed column amplifies the reading-register switch. The *narrowing* stays load-bearing; the inversion is an optional register amplifier and must never be misread as a full-bleed *widening* break.
+
+## Component architecture — entitlement axes + two altitudes of reuse
+
+- **Parameterize one app-shell by ROLE, and document coverage as an explicit view×role access MATRIX.** Nav items appear/hide per role from data; a companion sheet marks every view ID against each role allow/deny. One permission-driven shell, not N hand-built sidebars — the component-architecture analog of the token coverage matrix.
+- **Treat PLAN/SUBSCRIPTION TIER as a second, orthogonal content axis** on the same shell (role × tier), with the upsell/tier affordance as a first-class, consistently-placed component.
+- **Maintain TWO altitudes of reuse:** the atomic component library AND **named, counted BLOCK COLLECTIONS** (contact sheets of pre-composed whole sections, e.g. "Data Tables — 8"). The explicit count is a coverage checklist and a maintenance contract; don't dump finished blocks into the primitives namespace.
+- **Compose containers from NAMED SLOTS filled by instance-swap** (placeholders mark fill points) so one frame hosts many payloads without a variant explosion — the structural complement to the sibling-family rule.
+- **Path+category-namespace reused primitives and let them serve DOUBLE DUTY** as both documentation chip and live UI primitive, so docs can't drift from the token (the system eats its own dog food).
+
+## Page anatomy — catalogue additions
+
+- **Section-Header organism** prefixes most content sections: slotted {eyebrow? / heading / supporting? } + optional trailing action, slots toggled via hidden-layer flags, never redrawn.
+- **Conversion-ribbon** micro-section: a thin band of 3–4 equal-width icon+title+subtitle value props, recurring under the hero and inside the PDP buybox.
+- **Two-phase PDP:** PHASE 1 decision band (sticky gallery | buybox: price/variants/CTA/trust-ribbon/accordion) [required]; PHASE 2 evidence narrative (science → before/after → how-to-use → social proof → FAQ → cross-sell), each section independently [opt]/[rec] and reorderable.
+- **Order Confirmation = its own receipt template**, not "checkout minus the form": success headline + info recap + actions + support | summary + **loyalty-points-earned callout** + item recap.
+- **Enumerate terminal states as named sibling frames**, not runtime conditionals: self-service RMA as Enabled / Disabled / Success.
+- **Non-standard page families to add to any storefront catalogue:** guided QUIZ FUNNEL (Start → repeated question steps, card & tag-chip layouts → personalized RESULTS skeleton: diagnostic headline → recommended set → comparison → social proof → UGC); SLIDE-OUT overlays (cart/search/finder) as first-class templates with {header / scrollable body / pinned footer-action}.

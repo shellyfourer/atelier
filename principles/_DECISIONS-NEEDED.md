@@ -45,3 +45,12 @@
 - [ ] DECISION — Letter-spacing law downgrade: this source DISCONFIRMS 'strongly negative tracking on large display' as universal and reframes it as a register knob defaulting to 0. Confirm you want the type doc's tracking rule rewritten from a law to a register-tunable coefficient (editorial/luxury = negative; neutral/technical = 0).
 - [ ] DECISION — Register taxonomy now has (at least) five construction methods: ramp library, category-color commerce, thin-semantic app, warm-retail storefront, and greybox/wireframe kit. Confirm you want the greybox kit added to the method-pluralism list as a peer register rather than a variant.
 - [ ] NOTE (no decision needed): one of five layers (page-anatomy skeletons) was BLOCKED by a placeholder 'undefined' fileKey and contributed zero evidence. The skeleton catalogue is unchanged by this source. If you expected skeleton findings, the source must be re-run with a valid key.
+
+
+## New taste/scope calls surfaced by Source 06
+
+- [ ] Color-register taxonomy now has FOUR members (tonal-ramp, category-color, thin-semantic, brand-dominant). Confirm the atelier ledger should treat these as a closed enumerated set with an explicit selection heuristic (taxonomy? → category-color; neutral app chrome? → thin-semantic; single strong brand identity? → brand-dominant; role-tinted neutral UI? → tonal-ramp), or keep it open for a possible 5th.
+- [ ] Decide the canonical name for the dual-ground foreground discipline (e.g. ground-aware semantic PAIRS: text-on-light / text-on-brand) and whether it is promoted to a universal semantic-tier requirement or kept register-scoped to brand-dominant/high-contrast registers only.
+- [ ] Density oscillation now has a documented SECOND axis (surface-weight) beyond height. Confirm whether the portable rule becomes 'oscillate on all salient weight axes (height, surface-saturation, content-density)' generally, or stays flagged as expressive-register-only.
+- [ ] Confirm that 'two altitudes of reuse' (atomic library + counted block collections) is adopted as a standing component-architecture requirement, and decide whether the 'Total Blocks: N' count contract is mandated for every block collection atelier ships.
+- [ ] Decide whether the non-standard page families (quiz funnel, RMA state-frames, slide-outs-as-templates) are added to the default storefront skeleton catalogue as always-considered [optional] entries, or only surfaced when a brief implies them.

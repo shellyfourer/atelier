@@ -150,3 +150,26 @@ it is not finished.
 - Do not end an editorial/long-form page with a buy-CTA or a dead-end — hold the narrow reading measure for the whole body and close on lateral navigation; reserve the cross-sell-rail closer for commerce pages.
 - Do not overlay hero copy as a scrimmed text block over a busy image — compose headline + single CTA into the image's pre-planned negative space.
 - Never proceed with a Figma analysis when the fileKey is missing or a literal placeholder ('undefined'/'null'/'{{...}}') — halt and report; do not guess a key, reuse an unrelated project's key, or synthesize plausible findings to fill the schema. An empty new_findings array is the correct honest output when the source can't be read.
+
+
+---
+
+## Additions from Source 06 (brand-dominant register)
+
+- Don't default every storefront to a neutral ground with a timid accent. When the brief has a strong single-brand identity, a bold brand hue can BE the dominant surface; reaching for white-page-plus-small-accent every time is a template tell.
+- Don't force a per-category hue system onto a shop that has a strong master brand hue; multiple category hues fight a dominant brand hue and read as unresolved. One brand hue owning the field is a legitimate, often stronger, choice.
+- When the dominant field is a saturated brand hue, never pick the CTA/action color from the same hue family; it disappears. The accent must be chromatically distant (near-complementary, high-contrast) so action escapes the field.
+- Don't treat on-dark/on-brand foregrounds as an afterthought suffix when inverse fields cover large areas; author the ground-aware foreground pair up front or legibility breaks on half the page.
+- Don't let a bold brand hue tempt you into many saturated colors; a brand-dominant register still rations hue to brand-hue + black + white + ONE accent.
+- Don't treat density oscillation as height-only in an expressive register; a short band on a full-saturation surface is HEAVY. Alternate surface-weight as well, and never place two full-bleed saturated bands back-to-back.
+- Don't let proof dissolve into a colorful page; bind it to the single reserved accent so 'saturated' reliably reads as 'credible/commit', and don't spend that accent on decoration.
+- Don't read a full-bleed dark/saturated band as a WIDENING break; the editorial break is still a NARROWING to a readable measure that the inverted surface merely amplifies.
+- Don't hand-build one sidebar per role or per plan tier; build ONE shell whose nav is driven by a role×tier permission matrix. N near-identical copies drift and leak access the moment requirements change.
+- Don't leave role/entitlement coverage implicit; publish the explicit view×role(×tier) access matrix so every cell is decided and auditable (unlisted = undecided = a bug).
+- Don't conflate the atomic component library with block collections; keep curated, counted contact-sheets of pre-composed sections as a separate higher-altitude layer, and don't let the 'Total Blocks: N' count go stale.
+- Don't hard-embed content inside a container organism when the payload varies; expose named slots (shown as placeholders) and fill by instance-swap.
+- Don't maintain documentation chips separately from the live UI primitive they describe; make the docs USE the real component so the spec can't drift from the token.
+- Don't model post-action outcomes (return submitted, eligible vs closed, order placed) as one page with runtime conditionals; enumerate each terminal state as its own named frame.
+- Don't treat Order Confirmation as 'checkout minus the form'; it is a separate receipt template with its own required slots including the loyalty/points-earned callout.
+- Don't collapse a PDP to 'gallery + buybox + tabs'; the evidence narrative (science → proof → usage → social proof → FAQ → cross-sell) is the conversion engine, modeled as an ordered, individually-optional stack.
+- Don't treat drawers/slide-outs as loose states; give each its own {header / body / pinned-action} skeleton so overlays get the same anatomy discipline as full pages.
