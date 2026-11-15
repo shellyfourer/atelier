@@ -1,0 +1,11 @@
+{
+  "name": "atelier",
+  "owner": { "name": "shellyfourer" },
+  "plugins": [
+    {
+      "name": "atelier",
+      "source": "./",
+      "description": "Intentional design system generation. Anti-slop brand books, tokens, and Figma layouts."
+    }
+  ]
+}
