@@ -212,17 +212,18 @@
 
 ## B3 · Decoration / typographic
 
-- [ ] An **arrow (→ / ↗) appended to link/button text** as default identity? [S09 · Kristina build]
+- [ ] An **arrow (→ / ↗) appended to link/button text** as default identity? [S09]
 - [ ] An **eyebrow / kicker / pill above a heading** that fails either test — **(a) it restates
   what the heading already says** (`WEEKLY LETTERS` over "Get the Sunday Letter", `ABOUT KRISTINA`
-  over "Hi, I'm Kristina."), or **(b) one appears over *every* section** rather than a purposeful
+  or **(b) one appears over *every* section** rather than a purposeful
   few? Catch it regardless of case — a tracked sentence-case kicker over every band is the same tell
   as the ALL-CAPS version. **Audit this per page** (a fix on one page does not clear the others; the
   eyebrow often lives in a shared component — e.g. a newsletter band — and recurs sitewide).
-  [S09 · Kristina build]
-- [ ] **Middle-dot-joined meta** (`Author · 8 min read · Date`, `A · B · C`) as a reflex? [S09 · Kristina build]
-- [ ] A **`WORD — fragment` spaced-em-dash label**, **monospace for small data labels**, or
-  **large-mono / extreme-tracked-uppercase** "AI typography"? [S09]
+  [S09]
+- [ ] **Middle-dot-joined meta** (`Author · 8 min read · Date`, `A · B · C`) as a reflex? [S09]
+- [ ] A **`WORD — fragment` spaced-em-dash label**, **monospace for small data labels**,
+  **large-mono / extreme-tracked-uppercase** "AI typography", or **em dashes in running copy**
+  used as a connective reflex rather than a deliberate pause? [S09]
 - [ ] **One word accented in a headline** (italic/colored/bold for pop) instead of the line set
   whole? [S09]
 - [ ] **Generic AI glyph icons** (sparkle, star, magic, lightning, diamond, cube, robot, orb), or an
@@ -256,7 +257,23 @@
 
 ---
 
+## Figma build discipline (personal brand / editorial blog register)
+
+Specific tells encountered when building a personal-brand blog in Figma. These layer on top of Pass B; run them when the product archetype is **editorial / personal brand**.
+
+- [ ] **No real images anywhere:** image slots filled with placeholder color blocks? The editorial register lives or dies on photography. Fetch Unsplash photos (or equivalent) for every image slot before shipping any page. Grey rectangles = instant slop. After uploading, trigger the Unsplash download endpoint for each image used (license compliance).
+- [ ] **Testimonial/review section on a personal blog with no products:** a "What Readers Say" wall is fine; a star-rating widget implies a product being reviewed. Ensure the social-proof format matches the register (pull-quotes with names are editorial; star histograms are commerce).
+- [ ] **No images of the person the brand is built around:** a personal brand blog without photos of that person is a missed identity moment. At minimum: the About hero, the Home About-split, and the article author band should feature them.
+- [ ] **Hero with no wayfinding CTAs:** a personal blog hero is a stage-setter AND a nav shortcut. It needs at least 3 lateral CTAs: Blog/Journal, About, Contact/Work-with-me. A hero that only has one CTA ("Start Reading") leaves the About and Contact pages orphaned from the entry point.
+- [ ] **Signature identity element present but not registered as a component:** if the design has a recurring motif (a ring emblem, a monogram, a custom badge) it MUST be a named Figma component so it is traceable and swappable. Floating image fills that "look like" the motif are not the motif.
+- [ ] **Hero text in dark ink on a photo background:** if a hero frame has an image fill, the text nodes must be cream/white with a dark gradient scrim on the image. Dark ink on a mid-toned photo is unreadable. The scrim is not optional.
+- [ ] **About intro band missing from Home:** a personal brand home page without a brief intro of the person (photo + 2 sentences + CTA to About) leaves the visitor with no anchor. This band belongs at index 3-4 on the home stack (after the article grid), not at the bottom.
+- [ ] **Register mismatch: storefront skeleton on a blog:** product rails, trust-strips, testimonial widgets, and payment badges are storefront patterns. A personal editorial blog uses the blog skeleton (§8 Blog Index, §9 Blog Article, §6 About). Check every section against the page type before shipping.
+
+---
+
 ## Figma-read discipline (when auditing an existing file)
+
 
 - [ ] Did you **halt on a missing/placeholder fileKey** (`undefined`/`null`/`{{…}}`) rather than
   guess one, reuse another project's, or synthesize findings? An empty findings list is the honest

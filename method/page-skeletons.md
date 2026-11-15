@@ -275,6 +275,44 @@ Cross-source, portable section-stack library for `atelier`. Synthesized from the
 
 ---
 
+## 14. Personal Brand / Editorial Blog — Home
+
+A personal brand's home page is not a storefront and not a plain blog index. Its job is to introduce the person, hand the reader to the journal, and open lateral paths to About and Contact. The register is editorial; there are no product rails.
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Full-bleed editorial hero: person or lifestyle photo + headline statement + 3 lateral CTAs (Journal / About / Contact-or-Work-with-me) | [required] | First impression and wayfinding; editorial hero is a stage-setter, not a sale. Three CTAs because the top-level IA has three arms. |
+| 2 | Featured article or recent articles grid (2-3 cards, equal height, real images) | [required] | Shows the journal is live and gives an immediate read path. |
+| 3 | About/intro split band: person photo + 2-sentence bio + CTA to About | [recommended] | Anchors the person behind the brand mid-scroll; positions the About page. |
+| 4 | Value-props or "why this space" band | [optional] | Grounds the editorial voice in a concrete promise; skip if the hero headline already does it. |
+| 5 | Testimonial pull-quotes (2-3, editorial format, no star ratings) | [optional] | Social proof in register; use reader pull-quotes, not commerce-style reviews. |
+| 6 | Newsletter capture band | [recommended] | The primary conversion action on a personal brand site. |
+| 7 | Footer | [required] | Author name, nav, social. |
+
+Rules:
+- The hero MUST have lateral CTAs to all major sections (Journal, About, Contact). A hero with one CTA leaves the visitor without a map.
+- Include real photos of the person at minimum in: the hero (or just below it), the About-split band, and the article author band.
+- No product rails, trust-strips, payment badges, or commerce patterns.
+- The about-split band image shows the person — not a lifestyle stock photo without a face.
+
+---
+
+## 15. Personal Brand / Editorial Blog — About
+
+| Order | Section | Tag | Why |
+|---|---|---|---|
+| 1 | Full-bleed hero: person photo + name/headline statement + signature identity element | [required] | Emotional entry; this is literally about the person. |
+| 2 | Zig-zag alternating story bands (image swap sides each block) | [required] | Imagery co-equal with narrative; alternation prevents a wall of text. |
+| 3 | Values or "how I work" summary | [recommended] | Concise beliefs that give a potential reader/client a quick read. |
+| 4 | Lateral CTA to Journal | [recommended] | Editorial pages close with discovery, never a buy CTA. |
+
+Rules:
+- The hero image is the person. Not landscape, not flat color — the person.
+- The zig-zag story bands must both show real photos (not the same photo twice).
+- Text on a photo hero must be cream/white with a dark gradient scrim on the image; never dark ink on a mid-toned photo.
+
+---
+
 ## Refinements from Source 05
 
 ## Home / Landing — refinement: convince/convert purpose-alternation (storefront register)
