@@ -1,0 +1,8 @@
+{
+  "name": "atelier",
+  "version": "1.0.0",
+  "description": "Intentional design system generation. Anti-slop brand books, tokens, and Figma layouts.",
+  "author": { "name": "shellyfourer" },
+  "license": "proprietary",
+  "skills": ["./skills/atelier"]
+}
