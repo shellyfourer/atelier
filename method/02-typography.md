@@ -144,6 +144,6 @@ scale *correct*; these make it read as *set by a typographer*.
   memorable thing, not a neutral delivery vehicle. [anti-slop S09]
 - **Spend the eyebrow sparingly.** A tracked-caps kicker over *every* heading is template chrome;
   use it on a few genuine section openers and let other sections open on the heading alone. When an
-  eyebrow just restates the heading, cut it. [anti-slop S09 · from the Kristina build]
+  eyebrow just restates the heading, cut it. [anti-slop S09]
 - **Document each family with a usage line + a live specimen**, so the right style is the easy style
   to reach for. An unlabeled token dump gets misused. [S01 · 🟠]
