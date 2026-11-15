@@ -100,6 +100,17 @@ For each project, record:
   four-track page anatomy, checkout-flow family.
 - **Extraction status:** done → [evidence/sources/source-08-method.md](./evidence/sources/source-08-method.md)
 
+### 9. Source 09 — aesthetic-slop ruleset study (not a design corpus source)
+- **Source & type:** An external anti-slop *ruleset* studied as a **teacher** (method only, our
+  own words, nothing copied, no outside names in the repo) — not a Figma design and not a client.
+- **Why it's here:** atelier's `method/anti-slop.md` policed construction *method* only and had no
+  visual/aesthetic tells; a real build shipped slop (arrow-on-links, dot-meta, eyebrow-over-every-
+  heading) that passed clean. This study closed that gap.
+- **What to distill:** the visual/color, layout/section, decoration/typographic, and copy tell
+  families, plus the purpose-test + liveliness-dials mechanism — all now in `anti-slop.md`'s
+  "Visual / aesthetic anti-slop" section, tagged `[S09]`.
+- **Extraction status:** done → [evidence/sources/source-09-aesthetic-slop.md](./evidence/sources/source-09-aesthetic-slop.md)
+
 ## Shopify
 
 _Figma-stage storefront designs analyzed above (Sources 02, 04, 06, 08). Live-store analysis TBD._

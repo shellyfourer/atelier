@@ -395,10 +395,25 @@ All three values come from the spacing scale (Step 3d), never hardcoded.
 
 ---
 
-## Step 6 — Verify
+## Step 6 — Verify (two separate passes — do not conflate them)
 
-**Open `method/anti-slop.md`.** Run the full checklist. Fix any hit at the cheapest layer it
-lives on, then re-check. Only a clean pass means the file is deliverable.
+**Open `method/anti-slop.md`.** It has two halves and they catch different failures. A real build
+passed the first and shipped slop the second would have caught. Run **both** as distinct passes;
+"I verified it" must mean both ran, not one. Fix any hit at the cheapest layer it lives on, re-check.
+
+> **Pass A — Method conformance** (checks 1–7 below + the method-architecture rules in
+> `anti-slop.md`): is the *system* built correctly — tokens, type scale, components, composition
+> laws, skeleton completeness. This is also where you run the design against **`page-skeletons.md`**
+> (every required section present, in order, per page), **`05-composition.md`** (density
+> oscillation, grid-break-as-narrowing, threaded proof, section grammar), and **`brand-tokens.json`**
+> (every value traces to a signed-off token).
+>
+> **Pass B — Aesthetic-slop** (the `anti-slop.md` "Visual / aesthetic anti-slop" `[S09]` section):
+> does the *output look* machine-made even though the system is clean. Run the swap test and the
+> void test, then scan the visual/layout/decoration/copy tell families. The method pass **cannot**
+> see these — arrows on links, dot-joined meta, an eyebrow over every heading, a palette that
+> drifts to the generated default, generic CTAs/buzzwords, a sterile over-filtered result. If you
+> only run Pass A, you will pass slop. (This is exactly what happened on the first Kristina build.)
 
 **Required checks:**
 
@@ -428,12 +443,33 @@ lives on, then re-check. Only a clean pass means the file is deliverable.
    Confirm there is **no absolute-positioned layout** (only decorative art may be absolute, R1)
    and **no emoji iconography** (R6).
 
-7. **Provisional-principle flags.** Any component or composition decision that traces to a
+7. **Skeleton + composition conformance (Pass A).** For **every page**, open its skeleton in
+   `page-skeletons.md` and confirm each **[required]** section is present and each **[recommended]**
+   section is present or consciously omitted with a reason — in the prescribed order. Then check the
+   composition laws (`05-composition.md`): density/surface oscillation, grid-break-as-narrowing,
+   **threaded proof at multiple depths** (not one block, not zero), section-opening grammar, and the
+   correct closer for the register (editorial → lateral nav; commerce → cross-sell). A missing
+   recommended section is a finding, not a pass. *(The first Kristina build silently dropped the
+   blog featured post, pagination, article tag/share/related, and the contact direct-contact block —
+   because this check wasn't run.)*
+
+8. **Aesthetic-slop scan (Pass B).** Run the **"Visual / aesthetic anti-slop" `[S09]`** section of
+   `anti-slop.md` against the rendered screenshots. Apply the **swap test** (would it still feel like
+   a specific brand if the logo were swapped?) and the **void test** (is it alive and specific, not
+   just clean?). Scan the tell families and record each hit with its location: arrows on link/button
+   text, dot-joined meta strings, an eyebrow/label above every heading, one accent on everything,
+   gradient/glow/glass defaults, generic CTAs, buzzwords, fabricated proof, a palette that drifts to
+   the generated default, a sterile over-filtered result. For any tell you keep, write the one-line
+   purpose. This pass is **independent of Pass A** — a file can pass all method checks and fail here.
+
+9. **Provisional-principle flags.** Any component or composition decision that traces to a
    provisional-tier principle in `evidence/VALIDATION.md` must be noted in the frame's
    annotation so the human reviewer knows it is a bet, not a proven law.
 
 **Record (brief record §Figma):** the file key, variable collections created, component list,
-and the page frames built per breakpoint, plus the named bold move and the traceability verdict.
+the page frames built per breakpoint, the named bold move, the traceability verdict, **the Pass-A
+skeleton/composition findings, and the Pass-B aesthetic-slop findings** (both as explicit lists,
+not "looks good").
 
 ---
 

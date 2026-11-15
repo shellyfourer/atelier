@@ -32,8 +32,11 @@ key) is **confirmation-neutral** — it never moved a tier (see `evidence/PROCES
 | S06 | Brand-dominant storefront | 4th color posture (brand hue as surface); color-blocking composition; rich page skeletons |
 | S07 | Formal twin of S01 (delta/validation) | Reproduces S01's method; adds the tokenized grid/layout system |
 | S08 | Playful games/party retail (high-chroma catalog) | Category-color enriched ({accent,tint} pairs, scope-theming); four-track page anatomy |
+| S09 | Aesthetic-slop ruleset study (not a design) | Visual/aesthetic anti-slop tells + purpose-test/liveliness; `anti-slop.md` "Visual / aesthetic" section |
 
-_(Corpus v1 complete: 8 sources analyzed. Live-site / WordPress sources are future additions.)_
+_(Corpus v1 complete: 8 design sources analyzed. S09 is a ruleset study, not a design source —
+it does not move method tiers; its aesthetic rules are 🟡 where a real build independently hit the
+tell, 🟠 otherwise. Live-site / WordPress sources are future additions.)_
 
 > **S07 is a reproducibility check:** an independent twin of S01 that confirms S01's spine,
 > composite type tokens, Family→Ramp→Step, and component library are reproducible — strong

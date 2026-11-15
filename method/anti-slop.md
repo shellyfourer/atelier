@@ -207,3 +207,121 @@ it is not finished.
 - Collapse structurally-identical sibling frames (per-category PLPs, per-product PDP skins) into ONE parametrized skeleton with a named variable slot; never list each near-duplicate as its own page type.
 - Model checkout as a stepped flow family sharing one persistent order-summary slot (desktop rail / mobile accordion), not as a single checkout page.
 - When enumerating a large multi-frame Figma file, drill page→child-frame IDs before screenshotting — never read a 30000px canvas as one unreadable thumbnail; re-request tall frames at their natural height and split the PNG before reading.
+
+
+---
+
+## Visual / aesthetic anti-slop  `[S09]`
+
+> **Everything above polices how the system is *built*. This section polices how the output
+> *looks*.** A design can pass every architecture/color/type/space/component/composition rule
+> above and still read as machine-made, because the tells below live in appearance, not method.
+> This gap shipped real slop on a first build (arrows on links, dot-joined meta, an all-caps
+> eyebrow over every heading) that the method-only ruleset passed clean. Run this as a **distinct
+> pass** from the method checks.
+>
+> **These are not bans — they are a diagnostic scan plus a purpose test.** One pattern that
+> serves a stated purpose is fine. Slop is many of them stacked with no reason. For each one you
+> use, you must be able to write the one-line reason it serves (hierarchy, identity, readability).
+> If the only reason is "it looks modern" / "it looks AI-safe," cut it or rework it.
+
+### The two questions that gate the whole section
+
+1. **The swap test.** If you swapped out the logo and brand name, would this still feel like a
+   specific brand with its own character — or could it belong to any product? If *any product*,
+   it's too generic; the identity isn't doing any work.
+2. **The void test.** Removing slop does not create good design; it leaves a void the model
+   refills with its most generic output. After cutting tells, confirm the page is *alive and
+   specific* (a real palette, a face chosen for a reason, one repeated identity motif, one
+   deliberate accent) — not merely *clean*. A sterile, flat-white, thin-grey-border, no-identity
+   result is its own slop (the over-filtered default).
+
+### Visual / color tells
+
+- Don't reach for the generated-palette defaults: blue→purple / blue→cyan / purple→pink
+  gradients, full-page colored glow, neon accents, pastel blocks, radial orbs, purple-and-black
+  "tech" schemes. A gradient that separates one level of hierarchy is craft; the same gradient as
+  page wallpaper is slop.
+- Don't stack trend effects (glassmorphism + mesh gradient + glow + grid + mono + pill-everything)
+  — each needs its own purpose, and three at once with none stated is the tell.
+- Don't blur (backdrop-filter) the navbar, cards, modal, and sidebar all at once — glassmorphism
+  is a 1–2-element accent, not the character of the UI.
+- Don't put a soft drop shadow / a glow on every element so the whole page floats — elevation is
+  a selective hierarchy marker; most surfaces sit flat.
+- Don't spend one accent color on buttons AND icons AND badges AND links AND rules AND backgrounds
+  — ration it (one deliberate accent at the key moment; the brand/anti-slop color rule above).
+- Don't wallpaper the background with a grid / dot / blueprint / graph-paper pattern for "texture"
+  with no identity reason.
+- Don't default to dark mode because it "looks tech" — theme follows brand/product/users, not vibe.
+- Don't use grey skeleton bars as the hero/product shot. Show the real thing or an honest
+  placeholder, never a disguised one.
+
+### Layout / section tells
+
+- Don't ship the template stack on autopilot: Hero → subtitle → 2 CTAs → screenshot → feature
+  grid → testimonials → FAQ → CTA → footer. Section order follows the *product's* narrative, not
+  the generated default (this is the composition "decision narrative" law, restated as a tell).
+- Don't make every section the same composition — centered title + subtitle + identical card grid,
+  repeated down the page. Uniform section rhythm, and "the only variation is the background flips
+  every other section," both read as template. (Pairs with density/surface oscillation above.)
+- Don't render feature cards as N identical boxes (same size, icon, padding, height) when the
+  content has a hierarchy; vary to reflect it, and not every point needs to be a card.
+- Don't reach for the default "app-like" bento mosaic, a fake terminal window as the hero visual,
+  or "How It Works" as exactly 3 round-icon numbered steps — unless the content genuinely is a
+  3-step sequence (numbered markers are only honest when order carries real information).
+- Don't bolt on the stock trust/pricing/footer furniture by reflex: a "Trusted By" logo bar
+  directly under the hero, a "Most Popular" highlighted middle tier, exactly 3 pricing columns,
+  a 4-column Product/Company/Resources/Legal footer — each must match the real content or go.
+
+### Decoration / typographic tells
+
+- Don't append an arrow (`→` / `↗`) to link and button text as a default identity. Not every CTA
+  needs an arrow; if one earns it, say why. *(This shipped in the first Kristina build as
+  `Read article →`.)*
+- Don't park a tracked-out ALL-CAPS eyebrow / pill label above every heading, especially when it
+  just restates what the heading already says. An eyebrow is a scarce wayfinding device — spend it
+  on a few sections, not all of them. *(First Kristina build put one over every band.)*
+- Don't join meta with middle dots as a reflex (`Author · 8 min read · Date`, `A · B · C`); it's
+  a template-chrome signature. Use it only where it genuinely reads best. *(Shipped in Kristina.)*
+- Don't build labels as `WORD — fragment` with a spaced em dash, or reach for monospace for small
+  data labels, or large-monospace headings / extreme-tracked uppercase "AI typography."
+- Don't accent a single word in a headline (one word italic / colored / bold for pop) — set the
+  line whole; let the whole type treatment carry it.
+- Don't use generic AI glyphs (sparkle, star, magic wand, lightning, diamond, cube, robot, orb)
+  as feature icons, and don't pick an icon set for its recognizable library look rather than
+  relevance. If no icon is genuinely relevant, use none.
+- Don't put a colored left-stripe on cards/rows as decoration, or ship AI capsule badges
+  ("AI Powered" / "Beta" / "New" as pill + thin border + glow + dot + uppercase) without a real
+  status to show.
+- Don't choose a typeface because it's the safe default (Inter / Geist / Space Grotesk for sans,
+  the usual monos) — choose for brand character and write the reason. A popular face is still fine
+  *with* a reason.
+
+### Copy tells (design-adjacent — the words are design material)
+
+- Don't use the em dash (`—`) as a reflex connective in UI copy — it's a strong AI tell; a comma,
+  period, colon, or parentheses usually reads more human. (A brand voice the owner supplies that
+  uses it is direction, not agent copy — honor it; flag, don't silently strip.)
+- Don't ship generic CTAs ("Get Started," "Learn More," "Try Now," "Explore," "Discover") — name
+  the actual action ("Start reading," "Book a session").
+- Don't use AI marketing buzzwords (AI-powered, seamless, revolutionary, next-generation,
+  cutting-edge, unlock, elevate, empower, game-changing). Say the specific real benefit instead.
+- Don't invent what you can't verify: no fabricated statistics, testimonials, logos, names, job
+  titles, or trust/compliance claims (SOC 2, "300% faster"). No real data → show no number.
+  Empty beats fabricated. (This also guards against a reviews/trust strip stuffed with invented
+  proof — if the proof isn't real, the section shouldn't exist.)
+
+### Liveliness (what to add after the cuts — the void test, operational)
+
+Set and hold three dials for the whole design, derived from the brand book / register:
+
+- **ENERGY** — how hard the design says hello (calm/public-service → balanced/SaaS → bold/agency).
+- **RHYTHM** — how much sections vary from each other (uniform → consistent-with-breaks → mixed).
+- **MOTION** — how much non-interaction motion, and why (hover-only → scroll-reveal → choreography).
+
+Then hit them with levers, not decoration: **one focal point per screen**; **hierarchical
+contrast** on purpose (size/weight/color), not randomly; **whitespace as structure**, not
+leftover; **one deliberate accent** (zero = sterile, everywhere = slop); **one identity motif** —
+a pattern, gesture, or typographic voice that is specific and repeated so the design belongs to
+*this* brand. (atelier's "one bold move" / signature move is this motif; this just makes the rest
+of the page carry its weight too.)
