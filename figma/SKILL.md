@@ -413,7 +413,7 @@ passed the first and shipped slop the second would have caught. Run **both** as 
 > B1–B4 tell scan, and confirm B5 liveliness (those must be YES). The method pass **cannot** see
 > these — arrows on links, dot-joined meta, an eyebrow over every heading, a palette that drifts to
 > the generated default, generic CTAs/buzzwords, a sterile over-filtered result. If you only run
-> Pass A, you will pass slop. (This is exactly what happened on the first Kristina build.) The
+> Pass A, you will pass slop. (A design can pass all method checks and still ship tells.) The
 > positive "what to do instead" lives in the chapters' "Premium craft signals" + the `00-decide`
 > premium bar — build from those, verify against this.
 
@@ -451,9 +451,9 @@ passed the first and shipped slop the second would have caught. Run **both** as 
 > the others — and because tells often live in a *shared component* (a newsletter eyebrow, a card
 > arrow), fixing one instance can miss the component source *or* the other instances. **Scan every
 > page even after a component-level fix, to confirm it propagated and nothing page-local survives.**
-> *(This is the exact failure that kept recurring on Kristina: a tell fixed on Home, declared
-> "fixed," still live on About / Blog Index / Contact because those pages were never scanned. An
-> em dash sat on all 5 pages; an eyebrow restated its heading on 3 — both passed a one-page QA.)*
+> *(A tell fixed on Home can remain live on About / Blog Index / Contact if those pages are never
+> scanned. An em dash can sit on all 5 pages; an eyebrow can restate its heading on 3 — both pass
+> a one-page QA. Full-matrix scanning is the only defense.)*
 
 7. **Skeleton + composition conformance (Pass A) — per page.** For **every page**, open its skeleton
    in `page-skeletons.md` and confirm each **[required]** section is present and each **[recommended]**
