@@ -25,3 +25,6 @@ extraction/**/raw/
 *.png
 *.jpg
 *.jpeg
+
+# Per-project output: client work, fonts, brand assets — local only
+system/
