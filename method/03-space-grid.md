@@ -147,3 +147,31 @@ radius (size-keyed vs single-knob), elevation (two-layer vs 1px-ring) — the po
 project by register and stated in the brief, never defaulted into. That single shared cadence,
 applied with deliberate posture choices rather than ad-hoc numbers, is what makes a layout read as
 one authoring hand.
+
+---
+
+## Premium craft signals (what makes space/depth read as *authored*, not generated)
+
+- **Composed whitespace comes from a system of nested paddings, not generous margins everywhere.**
+  Two altitudes — a generous section-level padding and a tighter container-level inset — are what make
+  a page breathe like it was spaced by hand. Uniform padding on every section is the template tell.
+  [S02 · 🟠] (Pairs with density oscillation in `05-composition.md`.)
+- **Radius must read correctly *relative to element size*.** A single global radius looks heavy on a
+  chip and timid on a modal. Size-keyed per-component radius (chip < button < card) encodes the
+  proportion rule into the token. The flat single-knob idiom is the deliberate exception for uniform
+  app UI — choose it on purpose, don't default into either. [S01,S04 · 🟡 / tension S03,S05]
+- **Real depth is two stacked shadow layers** (a soft ambient + a tight contact), scaling together
+  across an ordered ramp, each level mapped to a UI role (resting card → menu → modal). One flat
+  `0 2px 4px rgba(0,0,0,.1)` on everything is the floating-page generated look. The flat 1px-ring is
+  the deliberate exception for dense tiling UI. [S01,S04 · 🟡 / tension S03]
+- **Centralize shadow tint as a couple of alpha-only tokens** so the whole elevation system
+  re-themes (and dark-inverts) from two values — and tint the shadow toward the brand/ground, not
+  pure black, so depth reads warm/considered rather than default. [S01,S03 · 🟡]
+- **Make "intentionally square / flush" a real token** (`radius-none`, `space-none`), not an absent
+  value — a deliberate zero reads as a decision; a missing one reads as an oversight. [S01 · 🟠]
+- **The grid is breakpoint-first and arithmetic:** `margin = (device − container) / 2`, gutters drawn
+  from the shared spacing scale, mobile going edge-to-edge (margin → 0). A hardcoded content width or
+  reused desktop gutters on mobile flattens the responsive intent. [S07,S04 · 🟡]
+- **At density, separation is *drawn*, not spaced** — hairline dividers, zebra striping, card edges,
+  and a micro-spacing ramp (sub-rungs like 2/6/10) replace the section-gap whitespace you can't
+  afford. This is the premium move specifically for data-dense surfaces. [S03 · 🟠]

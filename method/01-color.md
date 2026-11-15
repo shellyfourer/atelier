@@ -254,3 +254,43 @@ Match palette chroma to the brand register (muted for premium/clinical, high-chr
 **without touching the neutral ramp, type tokens, or chrome discipline.** Loudness lives entirely
 in the one swappable category/accent layer, so the same architecture serves a calm *or* a loud
 client by re-chroma-ing that layer alone. [S08 · provisional]
+
+---
+
+## Premium craft signals (what makes color read as *authored*, not generated)
+
+The rules above build a *correct* system. These are the moves that make it read as *expensive*.
+Reach for them deliberately; each is drawn from real premium work, with its source and tier.
+
+- **Restraint reads as expensive; a rainbow reads as cheap.** A near-monochrome field with **one**
+  small, deliberate accent is the single most reliable "this was designed" signal — confident, not
+  timid; expensive, not busy. More than one "look-at-me" color per view dilutes all of them.
+  [S02,S06 · 🟡] This is the color face of the one-bold-move discipline.
+- **Color is a scarce signal — spend hue only where it carries meaning.** Status, a signed delta, the
+  single active control, a wayfinding category. Decorative color scattered "to add interest" is the
+  loudest generated tell. When in doubt, spend less. [S01,S03,S06 · 🟢]
+- **Pick the accent for chromatic DISTANCE from the dominant ground, not just "the one saturated
+  thing."** On a bold brand-hue field a same-family button vanishes; the action color must escape the
+  field by near-complementary separation. On a neutral ground the accent still wants real distance
+  from the neutrals' slight hue bias. [S06 · 🟠]
+- **Author dual-ground foreground PAIRS up front**, not as an afterthought `-on-solid` suffix: every
+  `text`/`accent`/`border` ships a light-ground value and a dark/brand-ground value from day one.
+  Legibility then travels with the token across any surface. [S03,S06 · 🟡]
+- **Register-tune the neutrals — don't default to pure black/white.** A warm near-charcoal primary
+  text on a warm cream reads softer and more crafted than `#000` on `#fff`; a cool near-black suits a
+  clinical brand. A pure mid-grey reads as unconsidered; bias the neutral slightly toward the brand
+  hue so it reads as *chosen*. [S04 · 🟠]
+- **Make per-step contrast a usable lookup, not decoration.** When you publish a ramp, every step
+  carries its measured ratio + AA/AAA verdict so a designer picks a text color by reading the table,
+  not guessing. The accessibility lives on the value. [S01,S07 · 🟡]
+- **Let the ramp anchor float to the tone that *is* the color**, and name it there — a pale tint
+  anchors light, a near-black neutral anchors dark. Forcing every ramp to a symmetric mid-500 is a
+  generator default. [S01,S07 · 🟡]
+- **Channel-split color so one token yields solid + translucent** (a focus ring and its invalid
+  variant are the same hue at different alpha). Frozen hex can't spawn a ring without a new token.
+  [S03,S05 · 🟡]
+- **Give each hue family an editorial header** — a one-line note on its psychological role and
+  intended use — so the palette communicates intent, not just values, and misuse (an alert-red used
+  decoratively) is self-evidently wrong. [S01 · 🟠]
+- **Commerce micro-detail:** sale price in the accent with the original struck-through is a small,
+  expected, premium-reading signal — the kind of detail whose absence reads as unfinished. [S04 · 🟠]

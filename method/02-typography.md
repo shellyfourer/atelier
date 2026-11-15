@@ -111,3 +111,39 @@ authored style at each tier rather than interpolating one axis. [S04,S05,S08]
 centralize typography through named text styles while binding zero type to variables (reserving
 variables for color and number). When reverse-engineering, audit **both** substrates; when building,
 decide each on purpose. Variable-binding is not a prerequisite for centralization. [S05 · provisional]
+
+---
+
+## Premium craft signals (what makes type read as *authored*, not generated)
+
+Type carries more of the "is this premium" verdict than any other layer. The rules above make the
+scale *correct*; these make it read as *set by a typographer*.
+
+- **Pick faces for brand character, and write the reason** — never reach for the model-default
+  (Inter / Geist / Space Grotesk for sans; the usual monos) because it's safe. A popular face is
+  still fine *with* a reason. The display/body pairing should feel chosen for *this* subject's world.
+  [S02,S08 · 🟡 / anti-slop S09]
+- **Tracking is a register knob, not a reflex.** Hold tracking at 0 across the whole scale for
+  clinical / technical / B2B brands; reach for negative-on-large-display **only** for editorial /
+  luxury, and justify it. Tracked-out ALL-CAPS everywhere is a generated tell, not sophistication.
+  [S05 · 🟠]
+- **Let line-height follow the role, not a constant multiplier.** Tight for display (~1.05–1.1),
+  loose for body (~1.4–1.5), snapped to a rhythm grid — and **1.0 for single-line centered roles**
+  (buttons, nav, chips, run-in labels). One ratio for everything is a dead giveaway. [S01,S04,S05 · 🟡]
+- **Make tracking a proportional function of size** (large display tighter, small UI near-zero), so
+  the ramp is self-consistent and extends cleanly — not hand-tuned per step. [S01 · 🟠]
+- **Overlap size ranges deliberately** so the same optical size can carry a different personality by
+  role (a 24px title vs a 24px small-headline differ in LH/weight/tracking, not px). This is what a
+  linear h1…h6 ramp can't do. [S01,S08 · 🟡]
+- **Give every type role a JOB; a third face must earn its place.** A mono reserved strictly for
+  status/metadata/timestamps *signals* "system/factual"; an interactive-role face owns buttons/nav.
+  Never add a third face as decoration or let it leak into headings/body. Interactive roles get
+  their **own** named tokens — not "small bold headings." [S05,S08,S02 · 🟡]
+- **Set headlines whole — never accent one word** (one word italic/colored/bold for pop is a
+  generated tell). Let the whole type treatment carry the line; make the treatment itself the
+  memorable thing, not a neutral delivery vehicle. [anti-slop S09]
+- **Spend the eyebrow sparingly.** A tracked-caps kicker over *every* heading is template chrome;
+  use it on a few genuine section openers and let other sections open on the heading alone. When an
+  eyebrow just restates the heading, cut it. [anti-slop S09 · from the Kristina build]
+- **Document each family with a usage line + a live specimen**, so the right style is the easy style
+  to reach for. An unlabeled token dump gets misused. [S01 · 🟠]

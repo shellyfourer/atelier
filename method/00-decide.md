@@ -194,3 +194,44 @@ a stated *why*, which is the whole point of the engine.
 
 When every box carries a recorded answer, the register is set and the downstream chapters have
 their inputs. Build from there.
+
+---
+
+## The premium bar (the cross-cutting moves that decide "cheap vs expensive")
+
+The per-chapter method makes each layer *correct*. Correct is the floor, not the goal. What
+separates a premium, authored result from competent-but-generic output is a small set of
+**cross-cutting moves** that no single chapter owns — set them at decision time, hold them to the
+last section, and check them before delivery. Each chapter now carries its own "Premium craft
+signals" subsection; this is the project-level spine they hang from.
+
+1. **The swap test — the single gate.** If you swapped the logo and brand name, would this still
+   feel like a specific brand with its own character, or could it belong to any product? If *any
+   product*, it's too generic — the identity isn't doing work yet. Ask it before calling anything
+   done. [S09]
+2. **The void test — restraint is not sterility.** Removing slop leaves a void the model refills
+   with its most generic output. A flat-white, thin-grey-border, no-texture, default-font result is
+   its own slop. After cutting tells, confirm the page is *alive and specific*, not merely clean.
+   [S09]
+3. **Exactly one bold move / identity motif — nameable and repeated.** One deliberate risk (a type
+   move, a color decision, a layout break, a signature component detail, a graphic motif), spent
+   where it won't fight the funnel, and *recurring* so the design belongs to this brand. Zero =
+   templated; many = noise. If you can't name it in the finished work, it isn't finished. [all + S09]
+4. **Restraint reads as expensive.** Across every layer the same lesson recurs: monochrome field +
+   one accent (color), one tactile detail used everywhere (components), one geometry contract
+   (radius), one focal point per screen (composition). Scattered effects and competing accents read
+   as cheap. Spend boldness in one place; keep everything around it quiet. [S02,S06]
+5. **Quarantine loudness to one swappable layer.** The brand's register (muted↔loud) is tuned on a
+   single category/accent layer; the structural spine — neutral ramp, type scale, spacing, chrome —
+   stays constant. This is why one architecture serves a clinical client and a playful one; the
+   method is the quarantine, never the hot palette itself. [S08,S05]
+6. **Every technique needs a written one-line purpose.** The keystone. A gradient, a shadow, an
+   eyebrow, an arrow, a badge, a card — each is allowed only when you can say in one line what
+   hierarchy/identity/readability goal it serves. If the only reason is "it looks modern" or "it
+   looks AI-safe," cut it or rework it. This is what the aesthetic-slop pass (`anti-slop.md`
+   "Visual / aesthetic") checks. [S09]
+7. **Set and hold the three liveliness dials** — ENERGY (how hard it says hello), RHYTHM (how much
+   sections vary), MOTION (how much non-interaction movement, and why) — derived from the brand
+   book, and hit them with levers (one focal point, hierarchical contrast, whitespace as structure,
+   one deliberate accent, one identity motif) rather than decoration. A claimed "bold/varied" page
+   that renders uniform is a failure; so is a claimed "calm" page that's actually busy. [S09]

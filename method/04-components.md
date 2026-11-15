@@ -226,3 +226,36 @@ re-skinning. Low aesthetic commitment is the *method*, not an unfinished system:
 architecture decoupled from any look, so one structural library can parent several styled
 systems. Keep the three surfaces separated: a token/foundation sheet, a true-component library
 of reusable symbols, and composed layout sections/page skeletons. [S05 · provisional]
+
+---
+
+## Premium craft signals (what makes a component kit read as *authored*, not generated)
+
+The invariants above make the kit *correct*. These make it read as *designed by someone with taste*.
+
+- **One signature tactile detail, applied consistently, lifts the whole kit.** A single
+  well-chosen treatment — a skeuomorphic button (subtle drop + inner shadow + hairline highlight), a
+  distinctive focus ring, a particular corner treatment — used *everywhere* reads as expensive.
+  Scattered, per-component effects read as cheap. Pick the one detail and commit. [S02,S04 · 🟡]
+  (This is the component-layer expression of the one bold move.)
+- **A geometry contract IS an identity.** A deliberate, slightly unexpected pairing — fully-pilled
+  buttons against squared cards, say — repeated across the kit, is itself a design signature. Random
+  radius per component is the generated look; a stated contract is authorship. [S02 · 🟠]
+- **Don't make every card identical.** Copy-paste feature cards (same size, icon, padding, height)
+  are a top template tell; vary them to reflect real content hierarchy, and remember not every point
+  needs to be a card at all. [anti-slop S09 / S01]
+- **Icons must be genuinely relevant, from a set chosen for fit — not the recognizable default
+  library look** (thin-rounded Lucide-style strokes) and never the generic AI glyphs (sparkle, star,
+  magic, orb). If no icon is truly relevant, use none. [anti-slop S09]
+- **Collapse N visual looks to ONE themed atom** — externalize the per-instance delta to a single
+  data/category token binding rather than authoring N near-identical components. Component count stays
+  flat as the catalog grows; the kit reads as a system, not a pile. [S08 · 🟠]
+- **Data-density premium cues:** exactly **one** dominant value per stat card (everything else
+  subordinate); inline micro-charts (sparkline/mini-bar) by default, full chart cards only when the
+  plot is the subject; **tabular, right-aligned figures** so numeric columns compare vertically. The
+  absence of these reads as an un-finished dashboard. [S03 · 🟠]
+- **Every interactive element earns its existence** — a real destination, a real state change, a real
+  action — or it doesn't ship. A button that does nothing is a defect, not decoration; arrows and
+  badges are not free identity. [anti-slop S09]
+- **One-line usage note per component.** A self-describing API is a premium signal in itself: it
+  tells the next person the intent the redesign must preserve. [S01 · 🟠]
