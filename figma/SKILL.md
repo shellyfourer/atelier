@@ -53,6 +53,88 @@ build a component before its semantic variable is published.
 
 ---
 
+## Critical build rules (learned the hard way — read before any `use_figma` call)
+
+These are not style preferences. Each one is a failure that shipped broken output on a real
+first pass and had to be fully rebuilt. Violating any of them produces a design that looks like
+collapsed, overlapping garbage or that cannot convert to code.
+
+### R1 — EVERYTHING is auto-layout. Never absolute-position with guessed heights.
+
+The single biggest failure mode. `textAutoResize = 'HEIGHT'` + `resize()` **does NOT recompute
+the node's height inside the same `use_figma` call that created it** — the text node stays at
+its placeholder ~10px, and everything you positioned below it (using that stale height) overlaps
+into a pile. The first pass built heroes, cards, and headers with absolute `x/y` + hand-computed
+`y += node.height` offsets; every text node read as 10px, so the whole page collapsed. Only the
+Buttons survived — because they were the one thing built as pure auto-layout.
+
+**The rule:** build every container with `figma.createAutoLayout()` (or `layoutMode` +
+`primaryAxisSizingMode`). Append children, THEN set `layoutSizingHorizontal='FILL'` /
+`layoutSizingVertical='HUG'`. Let Figma compute heights. **Never** read `.height` and restack
+by hand. Absolute positioning is allowed ONLY for genuinely decorative overlapping art (e.g. a
+concentric-ring motif) — never for layout, never for anything containing text.
+
+This also makes the output convert cleanly to CSS flexbox. Absolute-positioned frames do not.
+
+### R2 — HUG axis depends on layout direction. Don't cross the enums.
+
+- `primaryAxisSizingMode` / `counterAxisSizingMode` take **`'FIXED' | 'AUTO'`** (set on the frame).
+- `layoutSizingHorizontal` / `layoutSizingVertical` take **`'FIXED' | 'HUG' | 'FILL'`** (child-side).
+- To hug height on a **VERTICAL** frame → `primaryAxisSizingMode = 'AUTO'`.
+- To hug height on a **HORIZONTAL** frame → `counterAxisSizingMode = 'AUTO'` (height is the
+  *counter* axis). Getting this backwards silently clamps the frame (e.g. a footer locked at
+  96px while its content is 220px, clipping everything). This bit the tablet footer on pass two.
+- After `combineAsVariants` or a `resize(w, 10)`, **re-assert the hug** (`primaryAxisSizingMode`),
+  because those operations can reset it to FIXED and leave a 10px-tall component.
+
+### R3 — Equal-height cards = FILL children on a FIXED-height row (CSS `align-items: stretch`).
+
+`counterAxisAlignItems` has **no `'STRETCH'` value** in Figma (only MIN/MAX/CENTER/BASELINE).
+To make a row of cards equal height: find the tallest card at natural HUG, set the row's
+`counterAxisSizingMode='FIXED'` + `resize(row.width, tallest)`, then set every card's
+`layoutSizingVertical='FILL'`. That is exactly `flex: 1; align-self: stretch` in code. The first
+pass left cards at 463/431/431px because they only HUGged — a visible, flagged defect.
+
+### R4 — Pages are Figma **Sections** wrapping a per-breakpoint page frame.
+
+Each page = a `figma.createSection()` named for the page, containing `<Page> · Desktop`,
+`<Page> · Tablet`, `<Page> · Mobile` frames side by side. The page frame is a VERTICAL
+auto-layout of **component instances** (header, hero, …, footer) — never hand-drawn bands,
+never inline-rebuilt chrome. The first pass built flat band frames directly on the canvas and
+forgot the Footer as a component entirely.
+
+### R5 — Chrome is components, placed as instances. Build the component, verify it in isolation, THEN assemble.
+
+Header, Footer, Hero, Newsletter, Section-Header, Card are all components (one `Breakpoint`
+variant set each). Pages place **instances** and `setProperties(...)` to fill text. **Read
+`componentPropertyDefinitions` before building pages** so you use the real property IDs
+(they are `Name#nn:n`, assigned by Figma — not guessable). Screenshot each component on its own
+and confirm it renders before placing dozens of instances of a broken one.
+
+### R6 — Real assets, no reconstruction, no emoji.
+
+Upload the real logo via `upload_assets` (POST the bytes → get `imageHash` → use as an IMAGE
+fill). Never rebuild a logo from text or shapes. The header logo lives on the **left**. Never
+use emoji as iconography in UI. And never add a section the register doesn't want — a
+trust/reviews strip on a personal blog is nonsense; cut it.
+
+### R7 — Verify by screenshot, every page, before claiming done.
+
+The first pass *claimed* the home page was clean while the section heading was clipped and the
+cards were unequal — because it wasn't actually looked at. Screenshot every page (and the tricky
+responsive frames) and read them. "I built it" is not "I verified it."
+
+### R8 — IDs don't persist across calls; text styles need font loaded.
+
+No JS reference survives between `use_figma` calls — pass node/variable IDs back as return
+values and re-resolve them with `getNodeByIdAsync` / `getVariableByIdAsync`. Load every font
+(`figma.loadFontAsync`) before writing text or applying a text style, and verify exact style
+strings with `listAvailableFontsAsync` (`"SemiBold"` vs `"Semi Bold"` is a real footgun). If a
+brand font isn't a Figma cloud font (e.g. Gambetta, a Fontshare face), pick the closest
+available old-style serif as a documented stand-in and note it in the style description.
+
+---
+
 ## Step 0 — Gate check
 
 Before anything else, read `system/<project>/brand-tokens.json` and confirm:
@@ -175,6 +257,11 @@ published in the Figma file. No component is drawn before this is complete.
 
 Build order: atoms → molecules → organisms. Never composite before its parts exist.
 
+> **Every component is auto-layout (R1) and verified in isolation before use (R5, R7).** Create
+> it, screenshot it on the Components page, confirm it renders correctly, record its
+> `componentPropertyDefinitions`, and only then place instances. A broken component multiplied
+> across five pages is five broken pages.
+
 ### 4a. Figma component invariants (from method/04-components.md)
 
 - **States and kinds as variant axes** — Default / Hover / Active / Disabled / Error on one variant set, not forked copies.
@@ -258,17 +345,31 @@ page type is in `page-skeletons.md`; the composition laws below apply to all of 
 
 ### 5b. Responsive authoring rule
 
-For every page, author three sibling frames:
+Each page is a **Section** (R4) containing three sibling frames, built side by side:
 - `<PageName> · Desktop` — 1440px wide, using Desktop grid style
 - `<PageName> · Tablet` — 768px wide, using Tablet grid style
 - `<PageName> · Mobile` — 390px wide, using Mobile grid style
 
+Each frame is a VERTICAL auto-layout of component **instances** at the matching `Breakpoint`
+variant, plus any inline bands (also auto-layout). Set the page frame to hug height
+(`primaryAxisSizingMode='AUTO'`) and every child to `layoutSizingHorizontal='FILL'`.
+
 **Section order is breakpoint-invariant.** Derive tablet/mobile ONLY by:
-1. Collapsing column count (N → N/2 → 1)
-2. Drawer-izing filters/sidebars behind a trigger + sticky "Show results" bar
-3. Nav collapse (hamburger replaces inline nav at Tablet; bar height held constant)
+1. Collapsing column count (N → N/2 → 1) — on a card row, change how many instances per row;
+   re-equalize heights per R3.
+2. Switching a 2-column split (hero split, contact form + aside) from a HORIZONTAL to a
+   **VERTICAL** auto-layout so it stacks — same children, same order, just the container direction.
+3. Drawer-izing filters/sidebars behind a trigger + sticky "Show results" bar.
+4. Nav collapse (hamburger replaces inline nav at Tablet; **bar height held constant**).
+5. Stacking an inline button row to full-width stacked buttons (`layoutSizingHorizontal='FILL'`).
 
 **Never re-order sections per breakpoint.** Re-ordering silently forks the funnel.
+
+**Responsive components carry the reflow, not the page.** A component that changes shape across
+breakpoints (Header → hamburger, Footer → stacked, Hero → stacked CTAs, Newsletter → stacked
+form) is **one variant set with a `Breakpoint` axis** — author all three variants, then the page
+just places the matching variant. Width-agnostic components (Card, Section-Header, Button) need
+no breakpoint variant; they FILL their container and reflow automatically.
 
 ### 5c. Page-by-page build (from page-skeletons.md)
 
@@ -320,7 +421,14 @@ lives on, then re-check. Only a clean pass means the file is deliverable.
 5. **Anti-slop color pass.** No equal-lightness steps. No swatch without contrast verdict in
    the description. No `dark-` prefix name on a semantic variable.
 
-6. **Provisional-principle flags.** Any component or composition decision that traces to a
+6. **Layout-integrity pass (R1–R3).** Screenshot **every** breakpoint frame of **every** page
+   and actually read it — this is not optional and not satisfiable by "I built it" (R7). Look for:
+   collapsed/10px-tall nodes, overlapping text, clipped headings, unequal sibling cards, any
+   frame shorter than its content. Equal-height card rows must be verified visually, not assumed.
+   Confirm there is **no absolute-positioned layout** (only decorative art may be absolute, R1)
+   and **no emoji iconography** (R6).
+
+7. **Provisional-principle flags.** Any component or composition decision that traces to a
    provisional-tier principle in `evidence/VALIDATION.md` must be noted in the frame's
    annotation so the human reviewer knows it is a bet, not a proven law.
 
