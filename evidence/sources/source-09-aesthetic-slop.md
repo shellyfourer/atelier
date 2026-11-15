@@ -35,9 +35,9 @@ tell families the method was missing:
   slop leaves a void that must be filled with real liveliness, not more bans. This operationalizes
   atelier's existing "one bold move" (Rule 0) rather than replacing it.
 
-## How it maps to the Kristina build's real failures
+## How it maps to real build failures
 
-The first Kristina Figma build passed the method-only anti-slop clean, yet carried three tells
+An editorial personal-brand blog build passed the method-only anti-slop clean, yet carried three tells
 these rules now catch:
 
 - `Read article →` on card links → arrow-on-every-button.
