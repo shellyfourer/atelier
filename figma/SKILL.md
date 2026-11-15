@@ -445,33 +445,44 @@ passed the first and shipped slop the second would have caught. Run **both** as 
    Confirm there is **no absolute-positioned layout** (only decorative art may be absolute, R1)
    and **no emoji iconography** (R6).
 
-7. **Skeleton + composition conformance (Pass A).** For **every page**, open its skeleton in
-   `page-skeletons.md` and confirm each **[required]** section is present and each **[recommended]**
+> **The per-page rule (both passes below). You verify PER PAGE, never once-and-generalize.**
+> Build a matrix: rows = every page × every breakpoint, columns = the checks. A check is "done"
+> only when every row has a recorded verdict. Fixing a tell on one page does **not** clear it on
+> the others — and because tells often live in a *shared component* (a newsletter eyebrow, a card
+> arrow), fixing one instance can miss the component source *or* the other instances. **Scan every
+> page even after a component-level fix, to confirm it propagated and nothing page-local survives.**
+> *(This is the exact failure that kept recurring on Kristina: a tell fixed on Home, declared
+> "fixed," still live on About / Blog Index / Contact because those pages were never scanned. An
+> em dash sat on all 5 pages; an eyebrow restated its heading on 3 — both passed a one-page QA.)*
+
+7. **Skeleton + composition conformance (Pass A) — per page.** For **every page**, open its skeleton
+   in `page-skeletons.md` and confirm each **[required]** section is present and each **[recommended]**
    section is present or consciously omitted with a reason — in the prescribed order. Then check the
    composition laws (`05-composition.md`): density/surface oscillation, grid-break-as-narrowing,
    **threaded proof at multiple depths** (not one block, not zero), section-opening grammar, and the
    correct closer for the register (editorial → lateral nav; commerce → cross-sell). A missing
-   recommended section is a finding, not a pass. *(The first Kristina build silently dropped the
-   blog featured post, pagination, article tag/share/related, and the contact direct-contact block —
-   because this check wasn't run.)*
+   recommended section is a finding, not a pass. Record one row per page.
 
-8. **Aesthetic-giveaway scan (Pass B).** Run the **"PASS B"** section of `anti-slop.md` against the
-   rendered screenshots, box by box: the B0 gates (swap / void / purpose), the B1–B4 tell families
-   (visual, layout, decoration, copy), and B5 liveliness (these must be YES). Record each hit with
-   its location — arrows on link/button text, dot-joined meta, an eyebrow above every heading, one
-   accent on everything, gradient/glow/glass defaults, generic CTAs, buzzwords, fabricated proof, a
-   palette drifting to the generated default, a sterile over-filtered result. For any tell you keep,
-   write the one-line purpose. **Independent of Pass A** — a file can pass all method checks and fail
-   here.
+8. **Aesthetic-giveaway scan (Pass B) — per page.** Run the **"PASS B"** section of `anti-slop.md`
+   against the rendered screenshots of **each page** (and the tricky responsive frames), box by box:
+   the B0 gates (swap / void / purpose), the B1–B4 tell families (visual, layout, decoration, copy),
+   and B5 liveliness (these must be YES). **Script the text scan where you can** — e.g. walk every
+   `TEXT` node for `—` (em dash), ` → ` (arrow), ` · ` (dot-meta), and all-caps-or-tracked kickers
+   that restate their heading — so a tell can't hide on an unviewed page. Record each hit with its
+   **page + location**; for any tell you keep, write the one-line purpose. For an eyebrow, test it
+   against both conditions (restates heading? / over every section?) on **each** page, since it may
+   come from a shared component. **Independent of Pass A** — a file can pass all method checks and
+   fail here.
 
 9. **Provisional-principle flags.** Any component or composition decision that traces to a
    provisional-tier principle in `evidence/VALIDATION.md` must be noted in the frame's
    annotation so the human reviewer knows it is a bet, not a proven law.
 
 **Record (brief record §Figma):** the file key, variable collections created, component list,
-the page frames built per breakpoint, the named bold move, the traceability verdict, **the Pass-A
-skeleton/composition findings, and the Pass-B aesthetic-slop findings** (both as explicit lists,
-not "looks good").
+the page frames built per breakpoint, the named bold move, the traceability verdict, and **a
+per-page × per-pass matrix** — every page gets its own Pass-A and Pass-B verdict with findings
+listed. A single global "looks good" or a verdict for only one page is an **incomplete QA**, not a
+pass.
 
 ---
 

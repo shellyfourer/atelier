@@ -213,8 +213,13 @@
 ## B3 · Decoration / typographic
 
 - [ ] An **arrow (→ / ↗) appended to link/button text** as default identity? [S09 · Kristina build]
-- [ ] A **tracked-out ALL-CAPS eyebrow / pill above a heading** (especially restating the heading,
-  or appearing over *every* section)? [S09 · Kristina build]
+- [ ] An **eyebrow / kicker / pill above a heading** that fails either test — **(a) it restates
+  what the heading already says** (`WEEKLY LETTERS` over "Get the Sunday Letter", `ABOUT KRISTINA`
+  over "Hi, I'm Kristina."), or **(b) one appears over *every* section** rather than a purposeful
+  few? Catch it regardless of case — a tracked sentence-case kicker over every band is the same tell
+  as the ALL-CAPS version. **Audit this per page** (a fix on one page does not clear the others; the
+  eyebrow often lives in a shared component — e.g. a newsletter band — and recurs sitewide).
+  [S09 · Kristina build]
 - [ ] **Middle-dot-joined meta** (`Author · 8 min read · Date`, `A · B · C`) as a reflex? [S09 · Kristina build]
 - [ ] A **`WORD — fragment` spaced-em-dash label**, **monospace for small data labels**, or
   **large-mono / extreme-tracked-uppercase** "AI typography"? [S09]
